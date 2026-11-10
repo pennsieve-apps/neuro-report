@@ -526,7 +526,7 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
         rec = C.lookup(d)
         e = C.entry(d)
         datasets.append({"doi": d, "url": e["url"], "known": e["known"], "title": e["title"] or d,
-                         "creators": e["authors"], "year": e["year"], "licence": licence, "how": how,
+                         "creators": e["authors"], "short": e["short"], "year": e["year"], "licence": licence, "how": how,
                          "dandiset": dandiset, "publisher": (rec or {}).get("publisher", ""),
                          "n": cite(d), "paper": cite(paper) if paper else None})
 
@@ -620,6 +620,22 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
             apps_cited.append({"app": s["app"], "version": s["version"], "repository": repo,
                                "license": info.get("license", "")})
 
+    def _tool_name(title: str) -> str:
+        # "neuroinformatics-unit/movement: v0.17.0" or "ndx-pose: NWB extension ..." -> "movement", "ndx-pose"
+        return title.split(": ")[0].split("/")[-1].strip() or title
+
+    # How to cite: the original works first, step by step (the tools the step used and the papers
+    # behind them, numbered as in References); the Pennsieve apps only record how the analysis ran.
+    cite_steps = []
+    for s in built:
+        if s["app"] in [c["app"] for c in cite_steps]:
+            continue
+        works = [{"n": n, "short": references[n - 1]["short"] or references[n - 1]["doi"]} for n in s["refs"]]
+        software = list(dict.fromkeys(_tool_name(sw["title"]) for sw in s["acknowledge"]))
+        if works or software:
+            cite_steps.append({"app": s["app"], "title": s["title"], "version": s["version"],
+                               "software": software, "works": works})
+
     return {
         "title": title, "subtitle": subtitle,
         "generated": now.strftime("%Y-%m-%d %H:%M UTC"),
@@ -640,6 +656,7 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
         "issues": issues,
         "acknowledgements": acknowledgements,
         "apps_cited": apps_cited,
+        "cite_steps": cite_steps,
         "version": version,
         "parameters": {k: v for k, v in params.items()},
     }

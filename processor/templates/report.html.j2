@@ -264,11 +264,16 @@ as platform apps; it did not develop them. The steps in this report are built on
 
 <section id="cite">
 <h2>How to cite this analysis</h2>
-<p>If you use these results, please cite the methods each step rests on (References {{ m.references|map(attribute='n')|list|refs if m.references else '' }}),
-the dataset{{ 's' if m.datasets|length != 1 }} analysed{% if m.datasets %} ({% for d in m.datasets %}doi:{{ d.doi }}{% if not loop.last %}; {% endif %}{% endfor %}){% endif %}, and the Pennsieve apps that ran the analysis, with their versions:
+<p>The methods in this report were developed by the researchers and software authors below; Pennsieve runs their
+tools. If you use these results, please cite the original works for each step:</p>
+<ul>
+{% for c in m.cite_steps %}<li><b>{{ c.title }}</b>{% if c.software %}: {{ c.software|join(', ') }}{% endif %}{% if c.works %}{{ '.' if c.software else ':' }} {% for w in c.works %}{{ w.short }} [{{ w.n }}]{% if not loop.last %}; {% endif %}{% endfor %}{% endif %}.</li>
+{% endfor %}</ul>
+{% if m.datasets %}<p>Please also cite the dataset{{ 's' if m.datasets|length != 1 }} analysed: {% for d in m.datasets %}{% if d.short %}{{ d.short }}{% if d.year and d.year|string not in d.short %} {{ d.year }}{% endif %}, {% endif %}doi:{{ d.doi }} [{{ d.n }}]{% if not loop.last %}; {% endif %}{% endfor %}.</p>{% endif %}
+<p>The analysis was run on Pennsieve with these apps, whose versions and parameters this report records:
 {% for a in m.apps_cited %}{{ a.app }} {{ a.version }}{% if a.repository %} (<a href="{{ a.repository }}">{{ a.repository }}</a>){% endif %}{% if not loop.last %}; {% endif %}{% endfor %}.
-Each app's CITATION.cff lists the full references. Keep this report with the results: it records the parameters and
-software versions that produced them.</p>
+Name them with their versions in your methods so the analysis can be reproduced, and keep this report with the
+results. Each app's CITATION.cff lists its full references.</p>
 </section>
 
 {% if m.issues %}

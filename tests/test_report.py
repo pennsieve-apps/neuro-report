@@ -454,3 +454,25 @@ def test_pdf_failure_still_writes_everything_else(tmp_path, monkeypatch):
         assert (out / name).is_file(), name
     assert not (out / "report.pdf").exists()
     assert any("report.pdf could not be written" in w for w in json.loads((out / "summary.json").read_text())["warnings"])
+
+
+def test_cite_names_original_works(full):
+    _, m, html = full
+    # Each step names its tools and the papers behind them (first author, year, reference number).
+    sp = next(c for c in m["cite_steps"] if c["app"] == "spike-sort")
+    assert {w["n"] for w in sp["works"]} == set(next(s for s in m["steps"] if s["app"] == "spike-sort")["refs"])
+    assert all(w["short"] for w in sp["works"])
+    cite = html[html.index('id="cite"'):]
+    cite = cite[:cite.index("</section>")]
+    assert "please cite the original works for each step" in cite
+    for w in sp["works"]:
+        assert f"{w['short']} [{w['n']}]" in cite
+    # The apps come last, as the record of how the analysis ran.
+    assert cite.index("original works") < cite.index("https://github.com/pennsieve-apps/spike-sort")
+
+
+def test_first_author_from_full_names():
+    assert C.first_author([{"name": "Niko Sirmpilatze"}, {"name": "Chang Huan Lo"}]) == "Sirmpilatze & Lo"
+    assert C.first_author([{"name": "Yaroslav Halchenko"}, {"name": "John T. Wodder II"}, {"name": "A B"}]) == "Halchenko et al."
+    assert C.first_author([{"name": "International Brain Laboratory"}]) == "International Brain Laboratory"
+    assert C.first_author([{"family": "Mathis", "given": "Alexander"}, {"family": "B"}, {"family": "C"}]) == "Mathis et al."
