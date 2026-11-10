@@ -80,6 +80,13 @@ def linkify(text: str) -> list[dict[str, str]]:
     return out
 
 
+
+def _as_list(v: Any) -> list[str]:
+    """A string or a list of strings as a list of strings; anything else as empty."""
+    if isinstance(v, str):
+        return [v]
+    return [str(x) for x in v if isinstance(x, str)] if isinstance(v, list) else []
+
 # What the SuperAnimal model card asks users to cite: the SuperAnimal paper and DeepLabCut.
 SUPERANIMAL_CITATIONS = ["10.1038/s41467-024-48792-2", "10.1038/s41593-018-0209-y"]
 
@@ -408,7 +415,7 @@ def build_step(step: Step, input_dir: Path, max_figures: int, issues: list[dict[
     notice = summ.get("licence_notice") or prov.get("licence_notice")
     licence = None
     if isinstance(notice, dict) and notice.get("text"):
-        licence = {"text": str(notice["text"]), "citations": [C.norm(d) for d in notice.get("citations") or []]}
+        licence = {"text": str(notice["text"]), "citations": [C.norm(d) for d in _as_list(notice.get("citations")) if C.valid(C.norm(d))]}
     elif isinstance(notice, str) and notice.strip():
         licence = {"text": notice.strip(), "citations": []}
     if licence:
