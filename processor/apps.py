@@ -38,8 +38,8 @@ APPS: dict[str, dict[str, Any]] = {
         "about": "Reads the raw extracellular recording, keeps the requested time window on the session clock, "
                  "removes the probe's channel phase shift, filters, detects and removes bad channels (dead, noisy, "
                  "outside the brain), re-references to suppress noise shared by all channels, and estimates the slow "
-                 "drift of the brain relative to the probe; it corrects the drift only when asked to, or when it is "
-                 "larger than a threshold, since the sorter can correct it too. The preprocessing follows the Allen "
+                 "drift of the brain relative to the probe; it corrects the drift itself only when asked to "
+                 "(MOTION_CORRECTION=apply) and the drift exceeds a threshold; by default the sorter corrects it. The preprocessing follows the Allen "
                  "Institute for Neural Dynamics and International Brain Laboratory pipelines, implemented with "
                  "SpikeInterface.",
         "headline": [("Duration (s)", "duration_s", "num"), ("Sampling rate (Hz)", "sampling_frequency", "num"),
