@@ -30,7 +30,7 @@ application:
     - quality-control
 runtime:
   # Measured (linux/amd64 under emulation on an M-series Mac): 150-250 MB peak (cgroup
-  # memory.peak) and under a minute on the five demo workflows (up to 71 figures); the report reads
+  # memory.peak) and under a minute on the five demo workflows (up to 75 figures); the report reads
   # summary.json, provenance.json, PNGs and small CSVs only. Lambda-eligible as sized; 2048 MiB is
   # the smallest Fargate size for 1 vCPU. See README "Runtime".
   cpu: 1024

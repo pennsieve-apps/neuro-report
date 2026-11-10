@@ -156,6 +156,6 @@ Demo data (CC-BY-4.0):
 ## Acknowledgements
 
 The methods in every report belong to their authors, credited in each report's Acknowledgements and References and
-in each app's README. We thank the International Brain Laboratory, the Allen Institute, the Buzsáki lab, the
+in each app's README. We thank the International Brain Laboratory, the Allen Institute, the Buzsáki lab,
 Viktor Plusnin, Nikita Pospelov and colleagues, and Laquitaine et al. for sharing their data on the DANDI Archive, and the Neurodata Without Borders
 and DANDI teams for the standards and archive the workflows are built on.
