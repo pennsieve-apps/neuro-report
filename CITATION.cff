@@ -1,0 +1,477 @@
+cff-version: 1.2.0
+message: If you use this app, please cite it and the works it builds on, listed under references.
+type: software
+title: neuro-report
+abstract: 'The last step of the systems neuroscience workflows (Neuropixels Spike Sorting, Two-photon Calcium Imaging,
+  Markerless Behaviour, Neural Population Dynamics & Decoding, and the end-to-end IBL workflow): reads whatever
+  step outputs are linked (each app''s summary.json and provenance.json) and writes one report a neuroscientist
+  can read and share, as a self-contained offline HTML page, a PDF and report.json, with each step''s headline numbers,
+  figures and captions, warnings, methods, software versions and the union of every step''s citations.'
+authors:
+- name: Pennsieve (University of Pennsylvania)
+contact:
+- given-names: Joost
+  family-names: Wagenaar
+  orcid: https://orcid.org/0009-0004-5925-5451
+  affiliation: University of Pennsylvania
+repository-code: https://github.com/pennsieve-apps/neuro-report
+license: Apache-2.0
+keywords:
+- neuroscience
+- electrophysiology
+- calcium-imaging
+- behavior
+- neural-decoding
+- nwb
+- report
+references:
+- type: article
+  title: 'Matplotlib: A 2D Graphics Environment'
+  authors:
+  - family-names: Hunter
+    given-names: John D.
+  year: 2007
+  journal: Computing in Science & Engineering
+  volume: '9'
+  issue: '3'
+  start: '90'
+  end: '95'
+  doi: 10.1109/MCSE.2007.55
+- type: data
+  title: IBL - Brain Wide Map
+  authors:
+  - name: International Brain Laboratory
+  year: 2026
+  publisher:
+    name: DANDI Archive
+  doi: 10.48324/dandi.000409/0.260309.1324
+- type: article
+  title: A brain-wide map of neural activity during complex behaviour
+  authors:
+  - family-names: Angelaki
+    given-names: Dora
+  - family-names: Benson
+    given-names: Brandon
+  - family-names: Benson
+    given-names: Julius
+  - family-names: Birman
+    given-names: Daniel
+  - family-names: Bonacchi
+    given-names: Niccolò
+  - family-names: Bougrova
+    given-names: Kcénia
+  - family-names: Bruijns
+    given-names: Sebastian A
+  - family-names: Carandini
+    given-names: Matteo
+  - family-names: Catarino
+    given-names: Joana A
+  - family-names: Chapuis
+    given-names: Gaelle A
+  - family-names: Churchland
+    given-names: Anne K
+  - family-names: Dan
+    given-names: Yang
+  - family-names: Davatolhagh
+    given-names: Felicia
+  - family-names: Dayan
+    given-names: Peter
+  - family-names: DeWitt
+    given-names: Eric Ej
+  - family-names: Engel
+    given-names: Tatiana A
+  - family-names: Fabbri
+    given-names: Michele
+  - family-names: Faulkner
+    given-names: Mayo
+  - family-names: Fiete
+    given-names: Ila Rani
+  - family-names: Findling
+    given-names: Charles
+  - family-names: Freitas-Silva
+    given-names: Laura
+  - family-names: Gerçek
+    given-names: Berk
+  - family-names: Harris
+    given-names: Kenneth D
+  - family-names: Häusser
+    given-names: Michael
+  - family-names: Hofer
+    given-names: Sonja B
+  - family-names: Hu
+    given-names: Fei
+  - family-names: Hubert
+    given-names: Félix
+  - family-names: Huntenburg
+    given-names: Julia M
+  - family-names: Khanal
+    given-names: Anup
+  - family-names: Krasniak
+    given-names: Christopher S
+  - family-names: Langdon
+    given-names: Christopher
+  - family-names: Langfield
+    given-names: Christopher
+  - family-names: Lau
+    given-names: Petrina Y P
+  - family-names: Mainen
+    given-names: Zachary F
+  - family-names: Meijer
+    given-names: Guido T
+  - family-names: Miska
+    given-names: Nathaniel J
+  - family-names: Mrsic-Flogel
+    given-names: Thomas D
+  - family-names: Noel
+    given-names: Jean-Paul
+  - family-names: Nylund
+    given-names: Kai
+  - family-names: Pan-Vazquez
+    given-names: Alejandro
+  - family-names: Paninski
+    given-names: Liam
+  - family-names: Pouget
+    given-names: Alexandre
+  - family-names: Rossant
+    given-names: Cyrille
+  - family-names: Roth
+    given-names: Noam
+  - family-names: Schaeffer
+    given-names: Rylan
+  - family-names: Schartner
+    given-names: Michael
+  - family-names: Shi
+    given-names: Yanliang
+  - family-names: Socha
+    given-names: Karolina Z
+  - family-names: Steinmetz
+    given-names: Nicholas A
+  - family-names: Svoboda
+    given-names: Karel
+  - family-names: Urai
+    given-names: Anne E
+  - family-names: Wells
+    given-names: Miles J
+  - family-names: West
+    given-names: Steven J
+  - family-names: Whiteway
+    given-names: Matthew R
+  - family-names: Winter
+    given-names: Olivier
+  - family-names: Witten
+    given-names: Ilana B
+  year: 2025
+  journal: Nature
+  volume: '645'
+  issue: '8079'
+  start: '177'
+  end: '191'
+  doi: 10.1038/s41586-025-09235-0
+  identifiers:
+  - type: other
+    value: '40903598'
+    description: PubMed ID
+  notes: Authored by the International Brain Laboratory consortium. Author list as in PubMed (PMID 40903598, the
+    consortium and 56 members, alphabetical). Crossref's record has 179 person entries (131 distinct, with repeats,
+    and further names not in PubMed's list), which CITATION.cff cannot hold as is (authors must be unique).
+- type: data
+  title: Spike sorting biases and information loss in a detailed cortical model
+  authors:
+  - family-names: Laquitaine
+    given-names: Steeve
+  - family-names: Imbeni
+    given-names: Milo
+  - family-names: Tharayil
+    given-names: Joseph
+  - family-names: Isbister
+    given-names: James
+  - family-names: Reimann
+    given-names: Michael
+  year: 2026
+  publisher:
+    name: DANDI Archive
+  doi: 10.48324/dandi.001250/0.261108.1908
+- type: article
+  title: Spike sorting biases and information loss in a detailed cortical model
+  authors:
+  - family-names: Laquitaine
+    given-names: Steeve
+    orcid: https://orcid.org/0000-0002-9647-3149
+  - family-names: Imbeni
+    given-names: Milo
+    orcid: https://orcid.org/0000-0002-4482-8390
+  - family-names: Tharayil
+    given-names: Joseph
+    orcid: https://orcid.org/0000-0002-2390-4104
+  - family-names: Isbister
+    given-names: James B.
+    orcid: https://orcid.org/0000-0002-1013-3013
+  - family-names: Reimann
+    given-names: Michael W.
+    orcid: https://orcid.org/0000-0003-3455-2367
+  year: 2024
+  journal: bioRxiv
+  doi: 10.1101/2024.12.04.626805
+- type: data
+  title: Allen Institute - Visual Coding - Optical Physiology
+  authors:
+  - family-names: Baker
+    given-names: Cody
+  year: 2024
+  doi: 10.48324/dandi.000728/0.240827.1809
+  url: https://doi.org/10.48324/dandi.000728/0.240827.1809
+  publisher:
+    name: DANDI Archive
+- type: article
+  title: A large-scale standardized physiological survey reveals functional organization of the mouse visual cortex
+  authors:
+  - family-names: de Vries
+    given-names: Saskia E. J.
+  - family-names: Lecoq
+    given-names: Jerome A.
+  - family-names: Buice
+    given-names: Michael A.
+  - family-names: Groblewski
+    given-names: Peter A.
+  - family-names: Ocker
+    given-names: Gabriel K.
+  - family-names: Oliver
+    given-names: Michael
+  - family-names: Feng
+    given-names: David
+  - family-names: Cain
+    given-names: Nicholas
+  - family-names: Ledochowitsch
+    given-names: Peter
+  - family-names: Millman
+    given-names: Daniel
+  - family-names: Roll
+    given-names: Kate
+  - family-names: Garrett
+    given-names: Marina
+  - family-names: Keenan
+    given-names: Tom
+  - family-names: Kuan
+    given-names: Leonard
+  - family-names: Mihalas
+    given-names: Stefan
+  - family-names: Olsen
+    given-names: Shawn
+  - family-names: Thompson
+    given-names: Carol
+  - family-names: Wakeman
+    given-names: Wayne
+  - family-names: Waters
+    given-names: Jack
+  - family-names: Williams
+    given-names: Derric
+  - family-names: Barber
+    given-names: Chris
+  - family-names: Berbesque
+    given-names: Nathan
+  - family-names: Blanchard
+    given-names: Brandon
+  - family-names: Bowles
+    given-names: Nicholas
+  - family-names: Caldejon
+    given-names: Shiella D.
+  - family-names: Casal
+    given-names: Linzy
+  - family-names: Cho
+    given-names: Andrew
+  - family-names: Cross
+    given-names: Sissy
+  - family-names: Dang
+    given-names: Chinh
+  - family-names: Dolbeare
+    given-names: Tim
+  - family-names: Edwards
+    given-names: Melise
+  - family-names: Galbraith
+    given-names: John
+  - family-names: Gaudreault
+    given-names: Nathalie
+  - family-names: Gilbert
+    given-names: Terri L.
+  - family-names: Griffin
+    given-names: Fiona
+  - family-names: Hargrave
+    given-names: Perry
+  - family-names: Howard
+    given-names: Robert
+  - family-names: Huang
+    given-names: Lawrence
+  - family-names: Jewell
+    given-names: Sean
+  - family-names: Keller
+    given-names: Nika
+  - family-names: Knoblich
+    given-names: Ulf
+  - family-names: Larkin
+    given-names: Josh D.
+  - family-names: Larsen
+    given-names: Rachael
+  - family-names: Lau
+    given-names: Chris
+  - family-names: Lee
+    given-names: Eric
+  - family-names: Lee
+    given-names: Felix
+  - family-names: Leon
+    given-names: Arielle
+  - family-names: Li
+    given-names: Lu
+  - family-names: Long
+    given-names: Fuhui
+  - family-names: Luviano
+    given-names: Jennifer
+  - family-names: Mace
+    given-names: Kyla
+  - family-names: Nguyen
+    given-names: Thuyanh
+  - family-names: Perkins
+    given-names: Jed
+  - family-names: Robertson
+    given-names: Miranda
+  - family-names: Seid
+    given-names: Sam
+  - family-names: Shea-Brown
+    given-names: Eric
+  - family-names: Shi
+    given-names: Jianghong
+  - family-names: Sjoquist
+    given-names: Nathan
+  - family-names: Slaughterbeck
+    given-names: Cliff
+  - family-names: Sullivan
+    given-names: David
+  - family-names: Valenza
+    given-names: Ryan
+  - family-names: White
+    given-names: Casey
+  - family-names: Williford
+    given-names: Ali
+  - family-names: Witten
+    given-names: Daniela M.
+  - family-names: Zhuang
+    given-names: Jun
+  - family-names: Zeng
+    given-names: Hongkui
+  - family-names: Farrell
+    given-names: Colin
+  - family-names: Ng
+    given-names: Lydia
+  - family-names: Bernard
+    given-names: Amy
+  - family-names: Phillips
+    given-names: John W.
+  - family-names: Reid
+    given-names: R. Clay
+  - family-names: Koch
+    given-names: Christof
+  year: 2020
+  doi: 10.1038/s41593-019-0550-9
+  journal: Nature Neuroscience
+  volume: 23
+  start: '138'
+  end: '151'
+  identifiers:
+  - type: other
+    value: '31844315'
+    description: PubMed ID
+- type: data
+  title: Hippocampal CA1 one-photon calcium imaging and pose-tracked behavior in wild-type and 5xFAD mice across
+    four behavioral paradigms
+  authors:
+  - family-names: Plusnin
+    given-names: Viktor
+  - family-names: Pospelov
+    given-names: Nikita
+  year: 2026
+  publisher:
+    name: DANDI Archive
+  url: https://doi.org/10.48324/dandi.002047/0.261106.0903
+  doi: 10.48324/dandi.002047/0.261106.0903
+- type: data
+  title: Diversity in neural firing dynamics supports both rigid and learned hippocampal sequences
+  authors:
+  - family-names: Grosmark
+    given-names: Andres D.
+  - family-names: Buzsáki
+    given-names: György
+  year: 2026
+  publisher:
+    name: DANDI Archive
+  version: 0.261106.0236
+  doi: 10.48324/dandi.000044/0.261106.0236
+- type: article
+  title: Diversity in neural firing dynamics supports both rigid and learned hippocampal sequences
+  authors:
+  - family-names: Grosmark
+    given-names: Andres D.
+  - family-names: Buzsáki
+    given-names: György
+  year: 2016
+  journal: Science
+  volume: 351
+  issue: '6280'
+  start: '1440'
+  end: '1443'
+  doi: 10.1126/science.aad1935
+  identifiers:
+  - type: other
+    value: '27013730'
+    description: PMID
+- type: article
+  title: The Neurodata Without Borders ecosystem for neurophysiological data science
+  authors:
+  - family-names: Rübel
+    given-names: Oliver
+    orcid: https://orcid.org/0000-0001-9902-1984
+  - family-names: Tritt
+    given-names: Andrew
+  - family-names: Ly
+    given-names: Ryan
+    orcid: https://orcid.org/0000-0001-9238-0642
+  - family-names: Dichter
+    given-names: Benjamin K
+  - family-names: Ghosh
+    given-names: Satrajit
+    orcid: https://orcid.org/0000-0002-5312-6729
+  - family-names: Niu
+    given-names: Lawrence
+  - family-names: Baker
+    given-names: Pamela
+  - family-names: Soltesz
+    given-names: Ivan
+  - family-names: Ng
+    given-names: Lydia
+  - family-names: Svoboda
+    given-names: Karel
+  - family-names: Frank
+    given-names: Loren
+  - family-names: Bouchard
+    given-names: Kristofer E
+    orcid: https://orcid.org/0000-0002-1974-4603
+  year: 2022
+  journal: eLife
+  volume: '11'
+  start: e78362
+  doi: 10.7554/elife.78362
+  identifiers:
+  - type: other
+    value: '36193886'
+    description: PubMed ID
+- type: software
+  title: ReportLab
+  authors:
+  - name: ReportLab Inc.
+  repository-code: https://hg.reportlab.com/hg-public/reportlab
+  url: https://www.reportlab.com/opensource/
+  license: BSD-3-Clause
+- type: software
+  title: Jinja
+  authors:
+  - name: Pallets
+  repository-code: https://github.com/pallets/jinja
+  license: BSD-3-Clause

@@ -1,0 +1,19 @@
+# Resolved in python:3.12.16-slim-bookworm (linux/amd64), wheels only, 2026-11-09.
+# Direct: jinja2 (HTML), reportlab (PDF), matplotlib (overview diagram; its bundled DejaVu fonts
+# are the PDF's fonts), pillow (figure downscaling), numpy (matplotlib).
+Jinja2==3.1.6
+reportlab==5.1.0
+matplotlib==3.11.2
+numpy==2.5.4
+pillow==13.0.0
+# Transitive
+charset-normalizer==3.5.2
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+kiwisolver==1.5.1
+MarkupSafe==3.0.4
+packaging==26.3
+pyparsing==3.3.3
+python-dateutil==4.0.0
+tzdata==2026.6

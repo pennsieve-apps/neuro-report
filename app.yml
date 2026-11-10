@@ -1,0 +1,94 @@
+# yaml-language-server: $schema=https://schemas.pennsieve.io/app-manifest/v1.json
+schemaVersion: "1.0"
+application:
+  name: Neuroscience Report
+  description: >-
+    The last step of the systems neuroscience workflows (Neuropixels Spike Sorting, Two-photon
+    Calcium Imaging, Markerless Behaviour, Neural Population Dynamics & Decoding, and the
+    end-to-end raw Neuropixels to decoding workflow). Link any combination of step outputs into
+    `steps`: the report finds each step by its provenance.json, and writes one report a
+    neuroscientist can read and share, as a self-contained offline HTML page (figures embedded),
+    a PDF and report.json: the workflows found, an overview diagram, a sessions table, every
+    step's description, headline numbers per session, figures in the step's order with its
+    captions, and warnings (shown prominently); a methods summary; a software and provenance
+    table (versions, variant, tool versions, run time, peak memory, GPU); references (the union
+    of every step's citations, with full author lists from the apps' verified CITATION.cff
+    files; unknown DOIs listed DOI-only); acknowledgements of the upstream projects and datasets;
+    and how to cite the analysis. Works for apps it does not know, generically from their
+    summary.json. Copies numbers and captions; does not recompute or interpret them.
+  type: processor
+  tags:
+    - neuroscience
+    - electrophysiology
+    - calcium-imaging
+    - behavior
+    - neural-decoding
+    - nwb
+    - neuropixels
+    - two-photon
+    - report
+    - quality-control
+runtime:
+  # Measured (linux/amd64 under emulation on an M-series Mac): 150-250 MB peak (cgroup
+  # memory.peak) and under a minute on the five demo workflows (up to 75 figures); the report reads
+  # summary.json, provenance.json, PNGs and small CSVs only. Lambda-eligible as sized; 2048 MiB is
+  # the smallest Fargate size for 1 vCPU. See README "Runtime".
+  cpu: 1024
+  memory: 2048
+  computeTypes:
+    - standard
+  timeoutSeconds: 600
+parameters:
+  - name: REPORT_TITLE
+    type: string
+    description: >-
+      Title of the report. Empty: "Analysis report: " and the names of the workflows found.
+    defaultValue: ""
+  - name: MAX_FIGURES
+    type: integer
+    description: >-
+      Figures shown per step, in the order the step listed them. Further figures stay in the
+      step's own output; the report names them. 0 shows none.
+    defaultValue: 24
+    min: 0
+  - name: DATASET_DOIS
+    type: string
+    description: >-
+      DOIs of the datasets analysed (comma-separated, e.g. a DANDI version DOI), credited in
+      Acknowledgements and References. The demo datasets are recognised from their session ids;
+      a session sheet's dataset_doi column is read too.
+    defaultValue: ""
+  - name: WRITE_PDF
+    type: boolean
+    description: Also write report.pdf (same content as the HTML page).
+    defaultValue: true
+inputs:
+  - name: steps
+    description: >-
+      Outputs of the workflow's steps; link as many as you like (they land side by side, each app
+      in its own <app>/ folder). Read: each app's provenance.json, summary.json, the PNG figures
+      and the CSV tables it lists. NWB, binary and other data files are not read.
+    mediaTypes: [application/json, image/png, text/csv]
+    placement: subfolder
+    required: true
+  - name: metadata
+    description: >-
+      Optional session sheet (sessions.csv: session_id, subject_id, condition, group, optional
+      dataset_doi / dandiset), for the sessions table and dataset credits.
+    mediaTypes: [text/csv]
+    placement: subfolder
+    required: false
+outputs:
+  - name: report
+    description: >-
+      neuro-report/: report.html (self-contained, offline), report.pdf, report.json (everything
+      the report shows, as data), summary.json, provenance.json, figures/workflow_overview.png.
+    mediaTypes: [text/html, application/pdf, application/json, image/png]
+
+# How a release is tested before it is made public: the inputs a review run uses.
+# See app-deploy-service docs/app-manifest-review.md.
+review:
+  version: 1
+  generate:
+    command: python -m tests.make_fixture "$REVIEW_INPUT_DIR" --layout linked
+    root: linked
