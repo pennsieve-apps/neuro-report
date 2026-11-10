@@ -65,13 +65,30 @@ def authors_text(authors: list[dict[str, str]]) -> str:
     return ", ".join(author_text(a) for a in authors)
 
 
+ORG_WORDS = {"laboratory", "lab", "consortium", "university", "institute", "team", "project", "foundation",
+             "contributors", "developers", "society", "center", "centre", "collaboration"}
+NAME_SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv"}
+
+
+def surname(a: dict[str, str]) -> str:
+    """A person's family name; a DataCite/Zenodo person given only as "Given Family" (Niko Sirmpilatze)
+    gives its last word (suffixes such as II skipped). Organisations keep their full name."""
+    if a.get("family"):
+        return ((a.get("particle") + " ") if a.get("particle") else "") + a["family"]
+    name = (a.get("name") or "").strip()
+    words = name.split()
+    if len(words) < 2 or ORG_WORDS & {w.lower().strip(",.") for w in words}:
+        return name
+    while len(words) > 1 and words[-1].lower() in NAME_SUFFIXES:
+        words.pop()
+    return words[-1]
+
+
 def first_author(authors: list[dict[str, str]]) -> str:
     if not authors:
         return ""
-    a = authors[0]
-    name = a.get("name") or (((a.get("particle") + " ") if a.get("particle") else "") + a.get("family", ""))
-    return name + (" et al." if len(authors) > 2 else (f" & {authors[1].get('name') or authors[1].get('family', '')}"
-                                                         if len(authors) == 2 else ""))
+    return surname(authors[0]) + (" et al." if len(authors) > 2 else
+                                  (f" & {surname(authors[1])}" if len(authors) == 2 else ""))
 
 
 def entry(doi: str) -> dict[str, Any]:

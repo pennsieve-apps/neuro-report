@@ -357,16 +357,34 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
                                "Archive.", st["body"]))
 
     story.append(Paragraph("How to cite this analysis", st["h2"]))
+    story.append(Paragraph(
+        "The methods in this report were developed by the researchers and software authors below; Pennsieve runs "
+        "their tools. If you use these results, please cite the original works for each step:", st["body"]))
+    items = []
+    for c in m["cite_steps"]:
+        t = f"<b>{e(c['title'])}</b>"
+        if c["software"]:
+            t += ": " + e(", ".join(c["software"]))
+        if c["works"]:
+            t += (". " if c["software"] else ": ") + "; ".join(f"{e(w['short'])} [{w['n']}]" for w in c["works"])
+        items.append(t + ".")
+    if items:
+        story.append(_bullets(items, st["body"]))
+    if m["datasets"]:
+        ds = []
+        for d in m["datasets"]:
+            who = d.get("short") or ""
+            if who and d.get("year") and str(d["year"]) not in who:
+                who += f" {d['year']}"
+            ds.append((f"{e(who)}, " if who else "") + f"doi:{e(d['doi'])} [{d['n']}]")
+        story.append(Paragraph("Please also cite the dataset" + ("s" if len(ds) != 1 else "") + " analysed: "
+                               + "; ".join(ds) + ".", st["body"]))
     apps = "; ".join(f"{a['app']} {a['version']}" + (f" ({a['repository']})" if a["repository"] else "")
                      for a in m["apps_cited"])
-    ds = "; ".join(f"doi:{d['doi']}" for d in m["datasets"])
     story.append(Paragraph(
-        "If you use these results, please cite the methods each step rests on (References "
-        + (refs([r["n"] for r in m["references"]]) if m["references"] else "") + "), the dataset"
-        + ("s" if len(m["datasets"]) != 1 else "") + " analysed" + (f" ({e(ds)})" if ds else "")
-        + ", and the Pennsieve apps that ran the analysis, with their versions: " + e(apps)
-        + ". Each app's CITATION.cff lists the full references. Keep this report with the results: it records the "
-        "parameters and software versions that produced them.", st["body"]))
+        "The analysis was run on Pennsieve with these apps, whose versions and parameters this report records: "
+        + e(apps) + ". Name them with their versions in your methods so the analysis can be reproduced, and keep "
+        "this report with the results. Each app's CITATION.cff lists its full references.", st["body"]))
 
     if m["issues"]:
         story.append(Paragraph("Notes on the inputs", st["h2"]))
