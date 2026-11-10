@@ -40,6 +40,9 @@ table.kv th { background: none; color: var(--muted); font-weight: normal; }
 .warnbox h3, .warnbox h4 { margin: 4px 0; color: var(--warn-ink); }
 .warnbox ul { margin: 4px 0; padding-left: 18px; }
 .note { color: var(--muted); font-size: 13px; }
+.licbox { background: #eef4fb; border-left: 4px solid var(--accent); padding: 8px 14px; margin: 12px 0;
+  border-radius: 0 6px 6px 0; }
+.licbox h3, .licbox h4 { margin: 4px 0; }
 figure { margin: 18px 0 22px; page-break-inside: avoid; }
 figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; }
 figure img.overview { max-width: min(100%, 720px); border: none; }
@@ -73,6 +76,14 @@ footer { margin-top: 48px; color: var(--faint); font-size: 12.5px; border-top: 1
   {% if m.datasets %}<dt>Data</dt><dd>{% for d in m.datasets %}<a href="{{ d.url }}">{{ d.title }}</a>{% if d.dandiset %} (DANDI:{{ d.dandiset }}){% endif %}{% if not loop.last %}; {% endif %}{% endfor %}</dd>{% endif %}
 </dl>
 </header>
+
+{% if m.licences %}
+<section id="licence" class="licbox">
+<h3>Usage and licence</h3>
+<p>Parts of this analysis come with terms of use. Respect them when you use or share the results.</p>
+<ul>{% for l in m.licences %}<li><b><a href="#step-{{ l.index }}">{{ l.step }}</a>:</b> {% for seg in l.segments %}{% if seg.url %}<a href="{{ seg.url }}">{{ seg.text }}</a>{% else %}{{ seg.text }}{% endif %}{% endfor %}{% if l.refs %} Please cite {{ l.refs|refs }}.{% endif %}</li>{% endfor %}</ul>
+</section>
+{% endif %}
 
 <nav class="toc"><b>Contents</b>
 <ol>
@@ -123,6 +134,8 @@ the report (their results may still exist elsewhere).</figcaption></figure>
 <h2>{{ loop.index }}. {{ s.title }}</h2>
 <p class="step-meta">{{ s.app }} {{ s.version }}{% if s.variant %} · variant {{ s.variant }}{% endif %}{% if s.wall_seconds is not none %} · {{ s.wall_seconds|duration }}{% endif %}{% if s.refs %} · references {{ s.refs|refs }}{% endif %}</p>
 {% if s.about %}<p>{{ s.about }}{% if s.run_note %} <b>{{ s.run_note }}</b>{% endif %}</p>{% else %}<p class="note">No description is built into this report for <code>{{ s.app }}</code>; its results are shown as the app wrote them.</p>{% if s.run_note %}<p><b>{{ s.run_note }}</b></p>{% endif %}{% endif %}
+
+{% if s.licence %}<div class="licbox"><h4>Usage and licence</h4><p>{% for seg in s.licence.segments %}{% if seg.url %}<a href="{{ seg.url }}">{{ seg.text }}</a>{% else %}{{ seg.text }}{% endif %}{% endfor %}{% if s.licence.refs %} Please cite {{ s.licence.refs|refs }}.{% endif %}</p></div>{% endif %}
 
 {% if s.warnings %}<div class="warnbox"><h4>Warnings</h4><ul>{% for w in s.warnings %}<li>{{ w }}</li>{% endfor %}</ul></div>{% endif %}
 

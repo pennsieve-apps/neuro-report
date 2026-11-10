@@ -31,6 +31,7 @@ WARN_BG = colors.HexColor("#fff7e6")
 WARN_LINE = colors.HexColor("#d97706")
 WARN_INK = colors.HexColor("#7c2d12")
 OK = colors.HexColor("#166534")
+LIC_BG = colors.HexColor("#eef4fb")
 BAD = colors.HexColor("#991b1b")
 
 PAGE_W, PAGE_H = A4
@@ -112,12 +113,33 @@ def _table(header: list[str], rows: list[list[str]], st: dict[str, ParagraphStyl
     return t
 
 
-def _box(flowables: list, st: dict[str, ParagraphStyle]) -> Table:
-    t = Table([[flowables]], colWidths=[FRAME_W], hAlign="LEFT")
-    t.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), WARN_BG), ("LINEBEFORE", (0, 0), (0, -1), 3, WARN_LINE),
+def _linked(segments: list[dict[str, str]]) -> str:
+    """Notice text with its (already vetted http(s)/doi.org) links, escaped for ReportLab."""
+    return "".join(f"<a href='{e(seg['url'])}' color='#1f4e8c'>{e(seg['text'])}</a>" if seg.get("url") else e(seg["text"])
+                   for seg in segments)
+
+
+def _box(flowables: list, st: dict[str, ParagraphStyle], bg=None, line=None) -> Table:
+    """A shaded box with one row per paragraph (lists are expanded into one row per bullet), so it
+    splits across pages however many warnings it holds."""
+    rows = []
+    for f in flowables:
+        rows.extend([[x] for x in f] if isinstance(f, list) else [[f]])
+    t = Table(rows, colWidths=[FRAME_W], hAlign="LEFT", splitByRow=1)
+    t.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), bg or WARN_BG),
+                           ("LINEBEFORE", (0, 0), (0, -1), 3, line or WARN_LINE),
                            ("LEFTPADDING", (0, 0), (-1, -1), 8), ("RIGHTPADDING", (0, 0), (-1, -1), 8),
-                           ("TOPPADDING", (0, 0), (-1, -1), 5), ("BOTTOMPADDING", (0, 0), (-1, -1), 6)]))
+                           ("TOPPADDING", (0, 0), (-1, -1), 1), ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+                           ("TOPPADDING", (0, 0), (-1, 0), 5), ("BOTTOMPADDING", (0, -1), (-1, -1), 6)]))
     return t
+
+
+MAX_ITEM_CHARS = 3000  # one bullet never outgrows a page
+
+
+def _bullet_rows(items: list[str], style: ParagraphStyle) -> list[Paragraph]:
+    bs = ParagraphStyle(style.name + "-bullet", parent=style, leftIndent=10, bulletIndent=0)
+    return [Paragraph(i if len(i) <= MAX_ITEM_CHARS else i[:MAX_ITEM_CHARS] + " …", bs, bulletText="•") for i in items]
 
 
 def _image(png: bytes, w_px: int, h_px: int, max_w: float = FRAME_W, max_h: float = PAGE_H * 0.58) -> Image:
@@ -147,6 +169,15 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
         meta.append(["Data", "; ".join(d["title"] + (f" (DANDI:{d['dandiset']})" if d["dandiset"] else "")
                                       for d in m["datasets"])])
     story.append(_table([], meta, st, widths=[30 * mm, FRAME_W - 30 * mm], kv=True))
+
+    if m["licences"]:
+        story.append(Spacer(1, 6))
+        items = [f"<b>{e(l['step'])}:</b> {_linked(l['segments'])}" + (f" Please cite {refs(l['refs'])}." if l["refs"] else "")
+                 for l in m["licences"]]
+        story.append(_box([Paragraph("<b>Usage and licence</b>", st["body"]),
+                           Paragraph("Parts of this analysis come with terms of use. Respect them when you use or "
+                                     "share the results.", st["body"]), _bullet_rows(items, st["body"])],
+                          st, bg=LIC_BG, line=ACCENT))
 
     story.append(Paragraph("Overview", st["h2"]))
     wf = [w["name"] for w in m["workflows"]]
@@ -178,7 +209,7 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
         story.append(Spacer(1, 6))
         story.append(_box([Paragraph(f"<b>Warnings ({len(items)})</b>", st["warn"]),
                            Paragraph("Read these before interpreting the results. Each is repeated in its step's "
-                                     "section.", st["warn"]), _bullets(items, st["warn"])], st))
+                                     "section.", st["warn"]), _bullet_rows(items, st["warn"])], st))
 
     for i, s in enumerate(m["steps"], 1):
         story.append(PageBreak())
@@ -195,9 +226,14 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
                                 f"No description is built into this report for {e(s['app'])}; its results are shown "
                                 "as the app wrote them.") + (f" <b>{e(s['run_note'])}</b>" if s["run_note"] else ""),
                                st["body"]))
+        if s["licence"]:
+            story.append(_box([Paragraph("<b>Usage and licence</b>", st["body"]),
+                               Paragraph(_linked(s["licence"]["segments"]) + (
+                                   f" Please cite {refs(s['licence']['refs'])}." if s["licence"]["refs"] else ""),
+                                   st["body"])], st, bg=LIC_BG, line=ACCENT))
         if s["warnings"]:
             story.append(_box([Paragraph("<b>Warnings</b>", st["warn"]),
-                               _bullets([e(w) for w in s["warnings"]], st["warn"])], st))
+                               _bullet_rows([e(w) for w in s["warnings"]], st["warn"])], st))
         if s["overall"]:
             story.append(Spacer(1, 4))
             story.append(_table([], [[k, v] for k, v in s["overall"]], st, widths=[55 * mm, FRAME_W - 55 * mm], kv=True))

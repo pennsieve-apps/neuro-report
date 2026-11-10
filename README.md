@@ -39,9 +39,10 @@ so it works whether links land in `steps/<app>/`, side by side, or merged at the
 generically: the numeric values of each session become the headline table, nested records (e.g. decoded variables,
 units per region, syllables) small tables, other per-session values a "More numbers" list, top-level values an
 "overall" table. For the known apps it adds a built-in description of what the step can do, a curated choice of
-headline numbers, and a methods sentence and run note built from what this run did: its provenance parameters
-(sorter, embedding methods, decoders, checks, ...), tools and per-session values. When a value is missing the
-sentence says less. Acknowledgements follow the same rule: the upstream software the run used (provenance `tools`,
+headline numbers, and a methods sentence and run note built from what the step's outputs show it did (per-session
+values; ephys-prep's `session.json` preprocessing list; neuro-align's `manifest.json` unit filters; the decoders
+whose results neuro-decoding wrote, `rrr.csv`, ...), with parameters used only to qualify it (thresholds, number
+of shuffles). When a value is missing the sentence says less. Acknowledgements follow the same rule: the upstream software the run used (provenance `tools`,
 minus what its settings left unused, plus each app's primary tools). Nothing is recomputed: the numbers are the
 step's, formatted (integers exactly, rates and sampling frequencies to two decimals, other numbers to four
 significant digits, fractions marked as such as percentages; units per session). DOIs in `provenance.citations` are resolved from a citation table bundled at build time
@@ -77,12 +78,17 @@ folder) the report still renders it and lists the problem under "Notes on the in
   references, acknowledgements, how to cite, notes on the inputs.
 - `report.pdf`: the same content, A4, ReportLab with the DejaVu fonts from matplotlib's wheel (no system fonts).
   Figures wider than 1600 px are downscaled for both files.
+- A "Usage and licence" box near the top (and in the step's section) when a step declares a `licence_notice`
+  (pose-estimate, for the SuperAnimal weights): its text with its http(s) and DOI links (nothing else becomes a
+  link), and the works it names, cited in References.
 - `report.json`: everything the report shows, as data (steps, headline tables, figure paths and captions,
   warnings, references, datasets, input notes).
 - `summary.json` and `provenance.json` (conventions.md); `summary.json` lists the overview figure, and counts of
   steps, figures, references, DOI-only references and input notes.
 
-Exit codes: `0` ok, `1` no step output found, `2` bad parameters.
+Exit codes: `0` ok, `1` no step output found (or the PDF could not be written: the HTML, report.json,
+summary.json and provenance.json are written first, and the error is logged and listed in summary.json), `2` bad
+parameters.
 
 ## Runtime
 

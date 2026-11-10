@@ -27,6 +27,12 @@ os.environ.setdefault("MPLBACKEND", "Agg")
 
 SESSIONS = [("sub-A01_ses-day1", "A01", "control"), ("sub-B02_ses-day1", "B02", "treated")]
 UNKNOWN_DOI = "10.9999/not-in-the-table.2026"
+# As pose-estimate writes it when the SuperAnimal weights were used (with links), plus a link that
+# must never become one.
+LICENCE_NOTICE = ("SuperAnimal model weights (Mathis lab, https://www.mackenziemathislab.org): academic, "
+                  "non-commercial use only; see https://huggingface.co/mwmathis/DeepLabCutModelZoo-SuperAnimal-TopViewMouse "
+                  "and https://github.com/DeepLabCut/DeepLabCut. Cite https://doi.org/10.1038/s41467-024-48792-2 and "
+                  "10.1038/s41596-019-0176-0. Not a link: javascript:alert(1).")
 
 # Citations as the real apps list them (all in processor/references.json).
 CITES = {
@@ -71,10 +77,11 @@ HEADLINE = {
     "behavior-syllables": {"n_frames": 1800, "modelled_fraction": 0.95, "n_bouts": 140},
     "neuro-align": {"neural_kind": "units", "n_neurons": 61, "bin_size_s": 0.025, "n_bins": 2400, "duration_s": 60.0},
     "neuro-encoding": {"n_neurons": 61, "n_place_cells": 17, "glm": {"median_d2": 0.04, "n_fitted": 61}},
-    "neuro-embedding": {"n_neurons": 61, "pca_n_pc_80": 12, "pca_var_3pc": 0.41, "cebra_behavior_gof_bits": 0.52,
+    "neuro-embedding": {"n_neurons": 61, "pca_n_pc_80": 12, "pca_var_3pc": 0.41, "fa_n_factors": 6, "cebra_behavior_gof_bits": 0.52,
                         "knn_r2_test": {"cebra_behavior": 0.61, "cebra_shuffled": -0.05}},
     "neuro-decoding": {"n_neurons": 61, "decode_bin_s": 0.1,
-                       "variables": {"position": {"ridge_r2": 0.63, "null_p95": 0.02, "p_value": 0.005, "unit": "cm"},
+                       "variables": {"position": {"ridge_r2": 0.63, "bayes_r2": 0.58, "null_p95": 0.02, "p_value": 0.005,
+                                                  "unit": "cm"},
                                      "speed": {"ridge_r2": 0.21, "null_p95": 0.03, "p_value": 0.005, "unit": "cm/s"}}},
     "nwb-inspect": {"dandi_ready": True, "n_critical": 0, "n_violations": 1, "n_suggestions": 4, "nwb_version": "2.7.0",
                     "file_size_mb": 12.5},
@@ -88,8 +95,8 @@ TOOLS = {"spike-sort": {"spikeinterface": "0.105.4", "kilosort": "4.1.7", "torch
          "neuro-embedding": {"cebra": "0.6.1", "elephant": "1.2.1", "torch": "2.15.0", "scikit-learn": "1.9.1"},
          "behavior-syllables": {"dynamax": "1.0.3", "jax": "0.12.0"}}
 PARAMS = {"spike-sort": {"SORTER": "kilosort4"},
-          "neuro-embedding": {"METHODS": ["pca", "fa", "cebra"]},
-          "neuro-decoding": {"DECODERS": ["ridge", "bayes"], "CV_FOLDS": 5, "N_SHUFFLES": 200},
+          "neuro-embedding": {"METHODS": ["pca", "fa", "cebra", "gpfa"]},
+          "neuro-decoding": {"DECODERS": ["ridge", "mlp", "bayes", "rrr"], "CV_FOLDS": 5, "N_SHUFFLES": 200},
           "behavior-syllables": {"METHOD": "hmm"}}
 
 
@@ -134,8 +141,12 @@ def write_app(root: Path, app: str, seed: int) -> Path:
     summary = {"app": app, "version": "0.1.0", "sessions": sessions, "figures": figures,
                "tables": [{"path": "sessions.csv", "caption": "One row per session."}],
                "warnings": [f"{SESSIONS[1][0]}: synthetic warning from {app}"] if app in ("ephys-prep", "neuro-align") else []}
+    if app == "pose-estimate":
+        summary["model_kind"] = "superanimal"
+        summary["licence_notice"] = LICENCE_NOTICE
     if app == "behavior-syllables":
         summary["n_syllables"] = 6
+        summary["method"] = "hmm"
         summary["syllables"] = [{"syllable": k, "usage": round(0.3 - 0.04 * k, 3), "mean_duration_s": 0.4} for k in range(6)]
     (top / "summary.json").write_text(json.dumps(summary, indent=1))
     prov = {"app": app, "version": "0.1.0", "variant": "cpu" if app in ("spike-sort", "suite2p") else "",

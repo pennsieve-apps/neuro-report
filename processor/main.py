@@ -135,15 +135,21 @@ def run(input_dir: Path, output_dir: Path, params: dict[str, Any]) -> int:
     images = render_html.load_images(model)
     render_html.write(model, overview, out / "report.html", images)
     log.info("wrote report.html (%.1f MB, %d figures)", (out / "report.html").stat().st_size / 1e6, n)
-    if params["WRITE_PDF"]:
-        render_pdf.write(model, overview, out / "report.pdf", images)
-        log.info("wrote report.pdf (%.1f MB)", (out / "report.pdf").stat().st_size / 1e6)
-
     report = json.loads(json.dumps(model, default=str))
     for s in report["steps"]:
         for f in s["figures"]:
             f["path"] = f["rel"]
     (out / "report.json").write_text(json.dumps(report, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    # The PDF last: if it fails, everything else is already written, and the step still fails.
+    pdf_error = ""
+    if params["WRITE_PDF"]:
+        try:
+            render_pdf.write(model, overview, out / "report.pdf", images)
+            log.info("wrote report.pdf (%.1f MB)", (out / "report.pdf").stat().st_size / 1e6)
+        except Exception as exc:  # noqa: BLE001
+            pdf_error = f"{type(exc).__name__}: {exc}"[:500]
+            log.exception("report.pdf could not be written: %s", pdf_error)
+            (out / "report.pdf").unlink(missing_ok=True)
 
     finished = datetime.now(timezone.utc)
     summary = {
@@ -159,7 +165,8 @@ def run(input_dir: Path, output_dir: Path, params: dict[str, Any]) -> int:
                      "caption": "The steps of each workflow found in this report, in pipeline order; filled boxes "
                                 "are included, grey dashed boxes were not linked into the report."}],
         "tables": [{"path": "report.json", "caption": "Everything the report shows, as data."}],
-        "warnings": [f"{w['step']}: {w['text']}" for w in model["warnings"]],
+        "warnings": [f"{w['step']}: {w['text']}" for w in model["warnings"]]
+        + ([f"neuro-report: report.pdf could not be written ({pdf_error})"] if pdf_error else []),
     }
     (out / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     provenance = {
@@ -176,6 +183,9 @@ def run(input_dir: Path, output_dir: Path, params: dict[str, Any]) -> int:
              "%.1f s, peak %.0f MB", len(model["steps"]), len(model["sessions"]), n, len(model["references"]),
              summary["n_unknown_dois"], len(model["warnings"]), len(model["issues"]), provenance["wall_seconds"],
              provenance["peak_rss_mb"])
+    if pdf_error:
+        log.error("failing the step: report.pdf could not be written (HTML and JSON are complete)")
+        return 1
     return 0
 
 

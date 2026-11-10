@@ -42,6 +42,47 @@ def _num(v: Any) -> float | None:
     return None
 
 
+LINK = re.compile(r"(https?://[^\s<>\"'\]\[]+)|((?:doi:\s*)?10\.\d{4,9}/[^\s<>\"'\]\[,;]+)", re.I)
+
+
+def safe_url(url: str) -> str:
+    """The URL if it is plain http(s) with a host, else empty: never javascript:, data: or the like."""
+    from urllib.parse import urlsplit
+
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        return ""
+    if parts.scheme.lower() not in ("http", "https") or not parts.netloc or re.search(r"[\s<>\"'\\]", url):
+        return ""
+    return url
+
+
+def linkify(text: str) -> list[dict[str, str]]:
+    """Text split into segments; http(s) URLs and DOIs become links (DOIs to doi.org)."""
+    out: list[dict[str, str]] = []
+    pos = 0
+    for m in LINK.finditer(text):
+        raw = m.group(0)
+        trail = len(raw) - len(raw.rstrip(".,;:)"))
+        if trail and raw.rstrip(".,;:)").count("(") > raw.rstrip(".,;:)").count(")"):
+            trail = len(raw) - len(raw.rstrip(".,;:"))
+        token = raw[:len(raw) - trail] if trail else raw
+        url = safe_url(token) if m.group(1) else C.doi_url(re.sub(r"^doi:\s*", "", token, flags=re.I))
+        if not url:
+            continue
+        if m.start() > pos:
+            out.append({"text": text[pos:m.start()], "url": ""})
+        out.append({"text": token, "url": url})
+        pos = m.start() + len(token)
+    if pos < len(text):
+        out.append({"text": text[pos:], "url": ""})
+    return out
+
+
+# What the SuperAnimal model card asks users to cite: the SuperAnimal paper and DeepLabCut.
+SUPERANIMAL_CITATIONS = ["10.1038/s41467-024-48792-2", "10.1038/s41593-018-0209-y"]
+
 RATE_KEY = re.compile(r"(rate|frequency|fps|_hz)(_|$)", re.I)
 
 
@@ -359,15 +400,34 @@ def build_step(step: Step, input_dir: Path, max_figures: int, issues: list[dict[
     params = prov.get("parameters") if isinstance(prov.get("parameters"), dict) else {}
     tools = tools if isinstance(tools, dict) else {}
     variant = str(prov.get("variant") or summ.get("variant") or "")
-    used = D.used_tools(app, params, sessions, tools, summ)
+    used = D.used_tools(app, params, sessions, tools, summ, step.folder)
     main_tools = [f"{k} {v}" for k, v in tools.items() if k.lower() not in COMMON_TOOLS and k.lower() in used][:4]
+
+    # A usage restriction the step declares (pose-estimate: SuperAnimal weights are for academic,
+    # non-commercial use). A string, or {text, citations}; DOIs named in it are cited.
+    notice = summ.get("licence_notice") or prov.get("licence_notice")
+    licence = None
+    if isinstance(notice, dict) and notice.get("text"):
+        licence = {"text": str(notice["text"]), "citations": [C.norm(d) for d in notice.get("citations") or []]}
+    elif isinstance(notice, str) and notice.strip():
+        licence = {"text": notice.strip(), "citations": []}
+    if licence:
+        licence["segments"] = linkify(licence["text"])
+        # DOIs it names (bare or as doi.org links) are cited.
+        from urllib.parse import unquote
+        licence["citations"] += [C.norm(unquote(seg["url"])) for seg in licence["segments"]
+                                 if re.match(r"https?://(dx\.)?doi\.org/", seg["url"], re.I) and C.valid(unquote(seg["url"]))]
+        if app == "pose-estimate" and "superanimal" in licence["text"].lower() and "not used" not in licence["text"].lower():
+            licence["citations"] += SUPERANIMAL_CITATIONS
+        licence["citations"] = list(dict.fromkeys(d.rstrip(".") for d in licence["citations"]))
 
     return {
         "app": app, "label": step.label, "folder": step.rel, "known": app in A.APPS,
+        "licence": licence,
         "title": info.get("title", step.label) if step.label == app else f"{info.get('title', app)} — {step.label}",
         "about": info.get("about", ""),
         "run_note": D.run_note(app, params, sessions),
-        "methods": D.methods(app, params, sessions, tools, variant, summ),
+        "methods": D.methods(app, params, sessions, tools, variant, summ, step.folder),
         "acknowledge": D.acknowledged(C.software_of(app), used),
         "version": prov.get("version") or summ.get("version") or "",
         "variant": variant,
@@ -437,6 +497,12 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
 
     for s in built:
         s["refs"] = sorted({cite(d) for d in s["citations"]})
+    licences = []
+    for s in built:
+        if s["licence"]:
+            s["licence"]["refs"] = sorted({cite(d) for d in s["licence"]["citations"]})
+            s["refs"] = sorted(set(s["refs"]) | set(s["licence"]["refs"]))
+            licences.append({"step": s["label"], "index": None, **s["licence"]})
 
     # Datasets: the demo datasets recognised by session id, DATASET_DOIS, and dataset columns of
     # the session sheet. They are cited too.
@@ -516,6 +582,8 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
     names = [w["name"] for w in workflows] or ["Systems neuroscience analysis"]
     for i, s in enumerate(built, 1):
         s["index"] = i
+    for lic in licences:
+        lic["index"] = next(s["index"] for s in built if s["label"] == lic["step"])
     if params.get("REPORT_TITLE"):
         title, subtitle = params["REPORT_TITLE"], " · ".join(names)
     else:
@@ -557,6 +625,7 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
         "extra_apps": extra,
         "steps": built,
         "sessions": list(by_session.values()),
+        "licences": licences,
         "datasets": datasets, "dandisets": dandisets,
         "dandi": bool(dandisets) or any(d["doi"].startswith("10.48324/dandi.") for d in datasets),
         "references": references,
