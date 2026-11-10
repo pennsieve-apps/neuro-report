@@ -80,7 +80,8 @@ def _styles() -> dict[str, ParagraphStyle]:
 
 
 def e(text: Any) -> str:
-    return escape(str(text))
+    """Escaped for ReportLab's paragraph markup, attributes included (quotes too)."""
+    return escape(str(text), {'"': "&quot;", "'": "&#39;"})
 
 
 def _table(header: list[str], rows: list[list[str]], st: dict[str, ParagraphStyle], num_from: int = 1,
@@ -190,9 +191,10 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
         if s["refs"]:
             bits.append("references " + refs(s["refs"]))
         story.append(Paragraph(e(" · ".join(bits)), st["note"]))
-        story.append(Paragraph(e(s["about"]) if s["about"] else
-                               f"No description is built into this report for {e(s['app'])}; its results are shown "
-                               "as the app wrote them.", st["body"]))
+        story.append(Paragraph((e(s["about"]) if s["about"] else
+                                f"No description is built into this report for {e(s['app'])}; its results are shown "
+                                "as the app wrote them.") + (f" <b>{e(s['run_note'])}</b>" if s["run_note"] else ""),
+                               st["body"]))
         if s["warnings"]:
             story.append(_box([Paragraph("<b>Warnings</b>", st["warn"]),
                                _bullets([e(w) for w in s["warnings"]], st["warn"])], st))
@@ -221,15 +223,15 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
                 story.append(Paragraph(e(t["name"]) + (f" (first {len(t['rows'])} of {t['n_rows']})" if t["truncated"] else ""),
                                        st["h4"]))
                 story.append(_table(t["header"], t["rows"], st))
-        if s["figures"]:
-            story.append(Paragraph("Figures", st["h3"]))
-        for f in s["figures"]:
+        for j, f in enumerate(s["figures"]):
+            head = [Paragraph("Figures", st["h3"])] if j == 0 else []
             cap = Paragraph(f"<b>Figure {f['number']}.</b> {e(f['caption'] or '(no caption in summary.json)')} "
                             f"<font color='#6b7280'>({e(f['rel'])})</font>", st["cap"])
             got = images.get(f["path"])
             if got:
-                story.append(KeepTogether([_image(*got), cap]))
+                story.append(KeepTogether(head + [_image(*got), cap]))
             else:
+                story.extend(head)
                 story.append(Paragraph(f"(figure could not be read: {e(f['rel'])})", st["note"]))
                 story.append(cap)
         if s["omitted_figures"]:
@@ -287,11 +289,13 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
                            "DataCite and PubMed.", st["note"]))
     story.append(Spacer(1, 4))
     for r in m["references"]:
-        link = f"<a href='{e(r['url'])}' color='#1f4e8c'>doi:{e(r['doi'])}</a>"
+        link = f"<a href='{e(r['url'])}' color='#1f4e8c'>doi:{e(r['doi'])}</a>" if r["url"] else e(r["doi"])
         if r["known"]:
             text = f"{r['n']}. {e(r['authors'])}. {e(r['title'])}. {e(r['where'])} {link}"
-        else:
+        elif r["url"]:
             text = f"{r['n']}. <font color='#991b1b'>DOI only (not in the report's citation table):</font> {link}"
+        else:
+            text = f"{r['n']}. <font color='#991b1b'>Not a DOI, as the step gave it:</font> {link}"
         story.append(Paragraph(text, st["ref"]))
 
     story.append(Paragraph("Acknowledgements", st["h2"]))
@@ -309,11 +313,12 @@ def write(model: dict[str, Any], overview_png: Path | None, path: Path,
             t += f"<i>{e(d['title'])}</i>" + (f", {e(d['publisher'])}" if d["publisher"] else "")
             t += (f" (DANDI:{e(d['dandiset'])})" if d["dandiset"] else "") + f". doi:{e(d['doi'])}"
             t += (f", {e(d['licence'])}" if d["licence"] else "") + f" [{d['n']}]"
-            t += (f"; described in [{d['paper']}]" if d["paper"] else "") + "."
+            t += (f"; described in [{d['paper']}]" if d["paper"] else "") + f". ({e(d['how'])})"
             items.append(t)
         story.append(_bullets(items, st["body"]))
-    story.append(Paragraph("The data are shared in the Neurodata Without Borders (NWB) format and the DANDI "
-                           "Archive.", st["body"]))
+    if m["dandi"]:
+        story.append(Paragraph("The data are shared in the Neurodata Without Borders (NWB) format on the DANDI "
+                               "Archive.", st["body"]))
 
     story.append(Paragraph("How to cite this analysis", st["h2"]))
     apps = "; ".join(f"{a['app']} {a['version']}" + (f" ({a['repository']})" if a["repository"] else "")

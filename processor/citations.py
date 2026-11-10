@@ -7,9 +7,11 @@ A DOI that is not in the table is never filled in: it is listed DOI-only, with a
 from __future__ import annotations
 
 import json
+import re
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 TABLE = Path(__file__).parent / "references.json"
 
@@ -26,6 +28,19 @@ def norm(doi: str) -> str:
         if d.lower().startswith(prefix):
             d = d[len(prefix):]
     return d.strip().lower()
+
+
+DOI_RE = re.compile(r"^10\.\d{4,9}/[^\s\"'<>]+$")
+
+
+def valid(doi: str) -> bool:
+    return bool(DOI_RE.match(norm(doi)))
+
+
+def doi_url(doi: str) -> str:
+    """https://doi.org/<doi> for a well-formed DOI, else empty (never a link to anything else)."""
+    d = norm(doi)
+    return "https://doi.org/" + quote(d, safe="/:;()._-") if valid(d) else ""
 
 
 def lookup(doi: str) -> dict[str, Any] | None:
@@ -63,7 +78,7 @@ def entry(doi: str) -> dict[str, Any]:
     """A reference ready to print: {doi, url, known, authors, title, where, kind, short}."""
     d = norm(doi)
     rec = lookup(d)
-    url = f"https://doi.org/{d}"
+    url = doi_url(d)
     if rec is None:
         return {"doi": d, "url": url, "known": False, "authors": "", "title": "", "where": "", "kind": "unknown",
                 "short": d, "year": ""}
@@ -76,7 +91,11 @@ def entry(doi: str) -> dict[str, Any]:
     else:
         journal = rec.get("journal") or rec.get("publisher") or ""
         vol = rec.get("volume") or ""
-        loc = vol + (f"({rec['issue']})" if rec.get("issue") and vol else "") + (f":{rec['pages']}" if rec.get("pages") else "")
+        pages = rec.get("pages") or ""
+        if vol:
+            loc = vol + (f"({rec['issue']})" if rec.get("issue") else "") + (f":{pages}" if pages else "")
+        else:
+            loc = pages
         where = f"{journal} {year}" + (f";{loc}" if loc else "")
     where = where.strip().rstrip(".") + "."
     if rec.get("pmid"):

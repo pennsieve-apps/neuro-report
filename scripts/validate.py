@@ -23,6 +23,8 @@ for e in errors:
     print(f"app.yml: {e.message} at {list(e.path)}")
 print(f"app.yml: {'valid' if not errors else f'{len(errors)} error(s)'}")
 cff = os.environ.get("CFFCONVERT") or shutil.which("cffconvert")
+if not cff and (ROOT / ".venv/bin/cffconvert").exists():
+    cff = str(ROOT / ".venv/bin/cffconvert")
 rc = 0
 if cff:
     rc = subprocess.run([cff, "--validate", "-i", str(ROOT / "CITATION.cff")]).returncode

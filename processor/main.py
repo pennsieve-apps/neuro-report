@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 import resource
 import sys
 import tempfile
@@ -56,9 +57,15 @@ def parameters() -> dict[str, Any]:
         raise ParameterError(f"MAX_FIGURES must be an integer, got {raw!r}") from None
     if max_figures < 0:
         raise ParameterError("MAX_FIGURES must be >= 0")
+    dois = os.environ.get("DATASET_DOIS", "").strip()
+    from processor.citations import valid
+
+    bad = [d for d in re.split(r"[\s,;]+", dois) if d and not valid(d)]
+    if bad:
+        raise ParameterError(f"DATASET_DOIS must be DOIs (10.<registrant>/<suffix>), got {', '.join(map(repr, bad))}")
     return {"REPORT_TITLE": os.environ.get("REPORT_TITLE", "").strip(),
             "MAX_FIGURES": max_figures,
-            "DATASET_DOIS": os.environ.get("DATASET_DOIS", "").strip(),
+            "DATASET_DOIS": dois,
             "WRITE_PDF": _bool("WRITE_PDF", True)}
 
 

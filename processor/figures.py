@@ -27,16 +27,26 @@ def load_png(path: Path, max_width: int = MAX_WIDTH_PX) -> tuple[bytes, int, int
     try:
         with Image.open(path) as im:
             im.load()
-            w, h = im.size
-            if w > max_width or im.format != "PNG":
-                if w > max_width:
-                    h = round(h * max_width / w)
-                    w = max_width
-                    im = im.resize((w, h), Image.LANCZOS)
-                buf = io.BytesIO()
-                im.save(buf, format="PNG", optimize=True)
+            w0, h0 = im.size
+            original = path.read_bytes()
+            if w0 <= max_width and im.format == "PNG":
+                return original, w0, h0
+            w, h = w0, h0
+            if im.mode in ("RGBA", "LA", "P"):
+                # Figures are drawn on white; flattening the alpha channel keeps the file small.
+                rgba = im.convert("RGBA")
+                im = Image.new("RGB", rgba.size, "white")
+                im.paste(rgba, mask=rgba.getchannel("A"))
+            if w0 > max_width:
+                h = round(h0 * max_width / w0)
+                w = max_width
+                im = im.resize((w, h), Image.LANCZOS)
+            buf = io.BytesIO()
+            im.save(buf, format="PNG", optimize=True)
+            # Keep the original PNG when re-encoding would not make it smaller.
+            if len(buf.getvalue()) < len(original) or path.suffix.lower() != ".png":
                 return buf.getvalue(), w, h
-        return path.read_bytes(), w, h
+            return original, w0, h0
     except Exception as exc:  # noqa: BLE001 - a broken figure must not stop the report
         log.warning("cannot read figure %s: %s", path, exc)
         return None

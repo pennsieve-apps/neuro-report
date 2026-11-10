@@ -37,10 +37,14 @@ folder `<app>/` with `provenance.json` (`app`, `version`, `variant`, `tools`, `p
 so it works whether links land in `steps/<app>/`, side by side, or merged at the input root; other
 `provenance.json` files (SpikeInterface writes one into every saved folder) are ignored. It renders any app
 generically: the numeric values of each session become the headline table, nested records (e.g. decoded variables,
-units per region, syllables) small tables, top-level values an "overall" table. For the known apps it adds a
-built-in description, a methods sentence and a curated choice of headline numbers. Nothing is recomputed: the
-numbers are the step's, formatted (integers exactly, other numbers to three significant digits, fractions marked as
-such as percentages). DOIs in `provenance.citations` are resolved from a citation table bundled at build time
+units per region, syllables) small tables, other per-session values a "More numbers" list, top-level values an
+"overall" table. For the known apps it adds a built-in description of what the step can do, a curated choice of
+headline numbers, and a methods sentence and run note built from what this run did: its provenance parameters
+(sorter, embedding methods, decoders, checks, ...), tools and per-session values. When a value is missing the
+sentence says less. Acknowledgements follow the same rule: the upstream software the run used (provenance `tools`,
+minus what its settings left unused, plus each app's primary tools). Nothing is recomputed: the numbers are the
+step's, formatted (integers exactly, rates and sampling frequencies to two decimals, other numbers to four
+significant digits, fractions marked as such as percentages; units per session). DOIs in `provenance.citations` are resolved from a citation table bundled at build time
 (`processor/references.json`, written by `scripts/build_citations.py` from the sibling apps' verified
 CITATION.cff files); a DOI not in it is listed DOI-only with a warning, never filled in from elsewhere. Where a
 step's output departs from the contract (a figure listed but missing, no caption, a caption with an unformatted
@@ -88,8 +92,8 @@ read-only file system, uid 65534, HOME and TMPDIR under `/tmp/w`, `--memory 2g`,
 
 | Demo | Steps | Figures | Wall time (container) | Peak memory |
 |---|---|---|---|---|
-| IBL end-to-end (`ibl`) | 8 | 28 | 15 s | 279 MB |
-| Markerless Behaviour (`openfield-5xfad`, 6 sessions) | 4 | 75 | 17 s | 186 MB |
+| IBL end-to-end (`ibl`) | 8 | 28 | 11 s | 300 MB |
+| Markerless Behaviour (`openfield-5xfad`, 6 sessions) | 4 | 75 | 15 s | 193 MB |
 
 The other demos (ground truth, Allen 2p, Grosmark) take 1-3 s outside Docker. Image 444 MB (105 MB compressed).
 Memory grows with the largest figure, not with the data: the report never opens NWB or binary files. Output size
@@ -101,8 +105,8 @@ is dominated by the embedded figures (2-14 MB per file on the demos).
   sessions; a wrong caption or number upstream is a wrong caption or number in the report.
 - Session ids are taken as each step wrote them; `nwb-inspect` reports files, which are mapped to the session
   through their `session_id`.
-- Datasets are credited only when recognised (demo session ids), given in `DATASET_DOIS`, or named in the
-  session sheet: provenance.json does not record the source dataset.
+- Datasets are credited only when recognised (the demo datasets' exact session ids), given in `DATASET_DOIS`
+  (validated as DOIs), or named in the session sheet: provenance.json does not record the source dataset.
 - A cited DOI that is not in the bundled table is shown DOI-only; rebuild the table (`make citations`) after a
   sibling app adds a citation.
 

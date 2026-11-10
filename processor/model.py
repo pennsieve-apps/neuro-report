@@ -15,6 +15,7 @@ from typing import Any
 
 from processor import apps as A
 from processor import citations as C
+from processor import describe as D
 from processor.inputs import Step
 
 SUMMARY_KEYS = {"app", "version", "sessions", "figures", "tables", "warnings"}
@@ -41,9 +42,17 @@ def _num(v: Any) -> float | None:
     return None
 
 
+RATE_KEY = re.compile(r"(rate|frequency|fps|_hz)(_|$)", re.I)
+
+
+def kind_for(key: str, kind: str = "auto") -> str:
+    """Rates and sampling frequencies keep their decimals (30,000.48 Hz, 15.04 Hz)."""
+    return "rate" if kind in ("auto", "num") and RATE_KEY.search(key.split(".")[-1]) else kind
+
+
 def fmt(v: Any, kind: str = "auto") -> str:
-    """A number as a person reads it: integers with thousands separators, others to 3 significant
-    digits; fractions as percentages when the format says so."""
+    """A number as a person reads it: integers with thousands separators, others to 4 significant
+    digits (rates to 2 decimals); fractions as percentages when the format says so."""
     if v is None or v == "":
         return "–"
     if isinstance(v, bool) or (kind == "bool" and str(v).lower() in ("true", "false")):
@@ -62,12 +71,13 @@ def fmt(v: Any, kind: str = "auto") -> str:
     ax = abs(x)
     if ax == 0:
         return "0"
+    if kind == "rate" and ax >= 1:
+        return f"{x:,.2f}".rstrip("0").rstrip(".")
     if ax >= 1000:
-        return f"{x:,.0f}"
+        return f"{x:,.1f}".removesuffix(".0")
     if ax >= 0.001:
-        s = f"{x:.3g}"
-        return s
-    return f"{x:.2e}"
+        return f"{x:.4g}"
+    return f"{x:.3e}"
 
 
 def _get(d: dict[str, Any], path: str) -> Any:
@@ -151,7 +161,7 @@ def _nested_table(name: str, val: Any) -> dict[str, Any] | None:
     cols = cols[:NESTED_COLS]
     keyed = any(k for k, _ in rows)
     header = ([""] if keyed else []) + [_humanise(c) for c in cols]
-    body = [([k] if keyed else []) + [fmt(r.get(c)) for c in cols] for k, r in rows[:NESTED_ROWS]]
+    body = [([k] if keyed else []) + [fmt(r.get(c), kind_for(c)) for c in cols] for k, r in rows[:NESTED_ROWS]]
     return {"name": _humanise(name), "header": header, "rows": body, "n_rows": len(rows),
             "truncated": len(rows) > NESTED_ROWS}
 
@@ -159,45 +169,47 @@ def _nested_table(name: str, val: Any) -> dict[str, Any] | None:
 def _kv_line(val: dict[str, Any]) -> str | None:
     if not isinstance(val, dict) or not val or not all(_scalar(v) for v in val.values()):
         return None
-    return "; ".join(f"{k}: {fmt(v)}" for k, v in val.items())
+    return "; ".join(f"{k}: {fmt(v, kind_for(str(k)))}" for k, v in val.items())
+
+
+OK_STATUS = {"ok", "success", "pass", "warn"}
 
 
 def _warnings(step: Step) -> list[str]:
     out: list[str] = []
     for w in step.summary.get("warnings") or []:
         out.append(w if isinstance(w, str) else "; ".join(f"{k}: {v}" for k, v in w.items()) if isinstance(w, dict) else str(w))
-    for sid, s in (step.summary.get("sessions") or {}).items():
+    sessions = step.summary.get("sessions")
+    for sid, s in (sessions.items() if isinstance(sessions, dict) else []):
         if not isinstance(s, dict):
             continue
         for w in s.get("warnings") or []:
-            text = w if isinstance(w, str) else str(w)
-            if not any(text in o for o in out):
-                out.append(f"{sid}: {text}")
-        status = s.get("status")
-        if status and status not in ("ok", "success"):
-            out.append(f"{sid}: status {status}" + (f" ({s.get('error')})" if s.get("error") else ""))
-    for sid, s in (step.provenance.get("sessions") or {}).items():
-        if isinstance(s, dict) and s.get("status") not in (None, "ok", "success"):
-            msg = f"{sid}: status {s.get('status')}" + (f" ({s.get('error')})" if s.get("error") else "")
-            if msg not in out and not any(o.startswith(f"{sid}: status") for o in out):
+            msg = f"{sid}: {w if isinstance(w, str) else w}"
+            if msg not in out:
                 out.append(msg)
+        status = str(s.get("status") or "")
+        # A failed session, unless the step already warns about it (nwb-inspect's pass/warn/fail
+        # are verdicts on a file, listed in its own warnings).
+        if status and status not in OK_STATUS and not any(o.startswith(f"{sid}: ") for o in out):
+            out.append(f"{sid}: status {status}" + (f" ({s.get('error')})" if s.get("error") else ""))
+    prov_sessions = step.provenance.get("sessions")
+    for sid, s in (prov_sessions.items() if isinstance(prov_sessions, dict) else []):
+        status = str(s.get("status") or "") if isinstance(s, dict) else ""
+        if status and status not in OK_STATUS and not any(o.startswith(f"{sid}: ") for o in out):
+            out.append(f"{sid}: status {status}" + (f" ({s.get('error')})" if s.get("error") else ""))
     return out
-
-
-def _template(text: str, values: dict[str, Any]) -> str:
-    def sub(m: re.Match) -> str:
-        v = values.get(m.group(1))
-        return str(v) if v not in (None, "") else m.group(0)
-    out = re.sub(r"\{(\w+)\}", sub, text)
-    return re.sub(r"\s*\{\w+\}", "", out)
 
 
 def build_step(step: Step, input_dir: Path, max_figures: int, issues: list[dict[str, str]]) -> dict[str, Any]:
     app, summ, prov = step.app, step.summary, step.provenance
     info = A.APPS.get(app, {})
-    sessions = {k: v for k, v in (summ.get("sessions") or {}).items() if isinstance(v, dict)}
-    if summ and not isinstance(summ.get("sessions"), dict):
+    raw_sessions = summ.get("sessions")
+    sessions = {str(k): v for k, v in raw_sessions.items() if isinstance(v, dict)} if isinstance(raw_sessions, dict) else {}
+    if summ and raw_sessions is None:
         step.problems.append("summary.json has no `sessions` object")
+    elif summ and not isinstance(raw_sessions, dict):
+        step.problems.append(f"summary.json `sessions` is a {type(raw_sessions).__name__}, not an object keyed by "
+                             "session id; the step's session table is left out")
 
     def issue(msg: str) -> None:
         issues.append({"app": step.label, "folder": step.rel, "problem": msg})
@@ -215,14 +227,31 @@ def build_step(step: Step, input_dir: Path, max_figures: int, issues: list[dict[
         issue(f"summary.json version {summ['version']} differs from provenance.json version {prov['version']}")
 
     # Headline numbers per session.
-    units = next((s.get("units") for s in sessions.values() if s.get("units")), None) or "px"
+    # Units ("{units}" in a label) are per session: in the header when all sessions agree, else in
+    # the cells.
+    session_units = {sid: str(s.get("units") or "") for sid, s in sessions.items()}
+    known_units = set(session_units.values()) - {""}
+    shared_units = known_units.pop() if len(known_units) == 1 and all(session_units.values()) else None
     cols = _headline(app, sessions)
     sheet = [c for c in A.SHEET_COLUMNS if any(str(s.get(c) or "").strip() for s in sessions.values())]
+
+    def label_of(label: str) -> str:
+        if "{units}" not in label:
+            return label
+        return label.replace("{units}", shared_units) if shared_units else re.sub(r"\s*\([^)]*\{units\}[^)]*\)", "", label)
+
     header = ["Session"] + [_humanise(c).replace("Subject id", "Subject") for c in sheet] + \
-             [label.replace("{units}", str(units)) for label, _, _ in cols]
+             [label_of(label) for label, _, _ in cols]
     rows = []
     for sid, s in sessions.items():
-        rows.append([sid] + [fmt(s.get(c), "text") for c in sheet] + [fmt(_get(s, key), kind) for _, key, kind in cols])
+        cells = []
+        for label, key, kind in cols:
+            text = fmt(_get(s, key), kind_for(key, kind))
+            if "{units}" in label and not shared_units and session_units[sid] and text != "–":
+                unit = re.search(r"\(([^)]*\{units\}[^)]*)\)", label)
+                text += " " + (unit.group(1).replace("{units}", session_units[sid]) if unit else session_units[sid])
+            cells.append(text)
+        rows.append([sid] + [fmt(s.get(c), "text") for c in sheet] + cells)
     for sid, s in sessions.items():
         for _, key, kind in cols:
             v = _get(s, key)
@@ -231,12 +260,16 @@ def build_step(step: Step, input_dir: Path, max_figures: int, issues: list[dict[
                 break
 
     # Session details (nested values) for the first few sessions.
-    used = {key.split(".")[0] for _, key, _ in cols}
+    used = {key for _, key, _ in cols if "." not in key}
     details = []
     for sid, s in list(sessions.items())[:DETAIL_SESSIONS]:
         lines, tables = [], []
         for k, v in s.items():
-            if k in used or k in A.SHEET_COLUMNS or k == "warnings":
+            if k in used or k in A.SHEET_COLUMNS or k in ("warnings", "status", "session_id", "units"):
+                continue
+            if _scalar(v):
+                if v not in (None, ""):
+                    lines.append((_humanise(k), fmt(v, kind_for(k))))
                 continue
             t = _nested_table(k, v)
             if t:
@@ -323,18 +356,21 @@ def build_step(step: Step, input_dir: Path, max_figures: int, issues: list[dict[
         gpu_text = gpu["name"] + (f", peak {fmt(gpu.get('peak_vram_mb'))} MB VRAM" if gpu.get("peak_vram_mb") else "")
     elif isinstance(gpu, str) and gpu:
         gpu_text = gpu
-    first = next(iter(sessions.values()), {})
-    params = prov.get("parameters") or {}
-    tmpl_values = {**{k.lower(): v for k, v in params.items()}, **{k: v for k, v in first.items() if _scalar(v)}}
-    main_tools = [f"{k} {v}" for k, v in tools.items() if k.lower() not in COMMON_TOOLS][:4]
+    params = prov.get("parameters") if isinstance(prov.get("parameters"), dict) else {}
+    tools = tools if isinstance(tools, dict) else {}
+    variant = str(prov.get("variant") or summ.get("variant") or "")
+    used = D.used_tools(app, params, sessions, tools, summ)
+    main_tools = [f"{k} {v}" for k, v in tools.items() if k.lower() not in COMMON_TOOLS and k.lower() in used][:4]
 
     return {
         "app": app, "label": step.label, "folder": step.rel, "known": app in A.APPS,
         "title": info.get("title", step.label) if step.label == app else f"{info.get('title', app)} — {step.label}",
         "about": info.get("about", ""),
-        "methods": _template(info.get("methods", f"The {app} step was run"), tmpl_values),
+        "run_note": D.run_note(app, params, sessions),
+        "methods": D.methods(app, params, sessions, tools, variant, summ),
+        "acknowledge": D.acknowledged(C.software_of(app), used),
         "version": prov.get("version") or summ.get("version") or "",
-        "variant": prov.get("variant") or summ.get("variant") or "",
+        "variant": variant,
         "tools": tools, "main_tools": main_tools,
         "parameters": params,
         "started": prov.get("started") or "", "finished": prov.get("finished") or "",
@@ -395,7 +431,8 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
             e["n"] = numbers[d]
             references.append(e)
             if not e["known"]:
-                warnings.append(f"DOI {d} is not in the report's citation table; it is listed DOI-only")
+                warnings.append(f"DOI {d} is not in the report's citation table; it is listed DOI-only"
+                                if e["url"] else f"citation {d!r} is not a DOI; it is listed as given, without a link")
         return numbers[d]
 
     for s in built:
@@ -421,14 +458,18 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
                          "n": cite(d), "paper": cite(paper) if paper else None})
 
     for d in A.demo_datasets(session_ids):
-        add_dataset(d["doi"], "recognised from the session ids", d["licence"], d["paper"], d["dandiset"])
+        add_dataset(d["doi"], "recognised from session ids", d["licence"], d["paper"], d["dandiset"])
     for d in re.split(r"[\s,;]+", params.get("DATASET_DOIS") or ""):
         if d:
             add_dataset(d, "DATASET_DOIS parameter")
     for r in sheet:
         for col in ("dataset_doi", "doi"):
             if r.get(col):
-                add_dataset(r[col], "session sheet")
+                if C.valid(r[col]):
+                    add_dataset(r[col], "session sheet")
+                else:
+                    issues.append({"app": "metadata", "folder": "sessions.csv",
+                                   "problem": f"{col} {r[col]!r} is not a DOI (10.<registrant>/<suffix>); ignored"})
     dandisets = sorted({str(r.get("dandiset") or "").strip() for r in sheet} - {""} - {d["dandiset"] for d in datasets})
 
     # Sessions across steps.
@@ -451,6 +492,25 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
                         break
             row[c] = str(val or "")
 
+    # ephys-curate writes an NWB Units table; when nwb-inspect checked it, say what it found.
+    inspect = [st for st in steps if st.app == "nwb-inspect" and isinstance(st.summary.get("sessions"), dict)]
+    for s in built:
+        if s["app"] != "ephys-curate" or not inspect:
+            continue
+        verdicts = []
+        for st in inspect:
+            for key, v in st.summary["sessions"].items():
+                if not isinstance(v, dict) or not str(key).endswith("_units"):
+                    continue
+                if v.get("session_id") in s["session_ids"] or any(str(key).startswith(x) for x in s["session_ids"]):
+                    ready = v.get("dandi_ready")
+                    verdicts.append(f"{key}: {v.get('status', '?')}" + (
+                        "" if ready is None else (", DANDI-ready" if ready else ", not DANDI-ready")))
+        if verdicts:
+            s["run_note"] = (s["run_note"] + " " if s["run_note"] else "") + \
+                "nwb-inspect's verdict on the Units file" + ("s" if len(verdicts) > 1 else "") + ": " + \
+                "; ".join(verdicts) + " (see its section)."
+
     starts = [t for t in (_when(s["started"]) for s in built) if t]
     ends = [t for t in (_when(s["finished"]) for s in built) if t]
     names = [w["name"] for w in workflows] or ["Systems neuroscience analysis"]
@@ -472,9 +532,8 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
 
     acknowledgements = []
     for s in built:
-        sw = C.software_of(s["app"])
-        if sw:
-            acknowledgements.append({"app": s["app"], "software": sw})
+        if s["acknowledge"]:
+            acknowledgements.append({"app": s["app"], "software": s["acknowledge"]})
     seen_ack: set[str] = set()
     acknowledgements = [a for a in acknowledgements if not (a["app"] in seen_ack or seen_ack.add(a["app"]))]
 
@@ -499,6 +558,7 @@ def build(steps: list[Step], sheets: list[Path], input_dir: Path, params: dict[s
         "steps": built,
         "sessions": list(by_session.values()),
         "datasets": datasets, "dandisets": dandisets,
+        "dandi": bool(dandisets) or any(d["doi"].startswith("10.48324/dandi.") for d in datasets),
         "references": references,
         "warnings": all_warnings,
         "issues": issues,

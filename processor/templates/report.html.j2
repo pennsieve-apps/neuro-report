@@ -122,7 +122,7 @@ the report (their results may still exist elsewhere).</figcaption></figure>
 <section id="step-{{ loop.index }}">
 <h2>{{ loop.index }}. {{ s.title }}</h2>
 <p class="step-meta">{{ s.app }} {{ s.version }}{% if s.variant %} · variant {{ s.variant }}{% endif %}{% if s.wall_seconds is not none %} · {{ s.wall_seconds|duration }}{% endif %}{% if s.refs %} · references {{ s.refs|refs }}{% endif %}</p>
-{% if s.about %}<p>{{ s.about }}</p>{% else %}<p class="note">No description is built into this report for <code>{{ s.app }}</code>; its results are shown as the app wrote them.</p>{% endif %}
+{% if s.about %}<p>{{ s.about }}{% if s.run_note %} <b>{{ s.run_note }}</b>{% endif %}</p>{% else %}<p class="note">No description is built into this report for <code>{{ s.app }}</code>; its results are shown as the app wrote them.</p>{% if s.run_note %}<p><b>{{ s.run_note }}</b></p>{% endif %}{% endif %}
 
 {% if s.warnings %}<div class="warnbox"><h4>Warnings</h4><ul>{% for w in s.warnings %}<li>{{ w }}</li>{% endfor %}</ul></div>{% endif %}
 
@@ -228,7 +228,7 @@ citations from its <code>provenance.json</code>.</p>
 <p class="note">The works each step cites in its provenance.json, and the datasets. Author lists, titles and
 journals come from the Pennsieve apps' CITATION.cff files, verified against Crossref, DataCite and PubMed.</p>
 <ol class="refs">
-{% for r in m.references %}<li id="ref-{{ r.n }}">{% if r.known %}{{ r.authors }}. {{ r.title }}. {{ r.where }} <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% else %}<span class="unknown">DOI only (not in the report's citation table):</span> <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% endif %}</li>
+{% for r in m.references %}<li id="ref-{{ r.n }}">{% if r.known %}{{ r.authors }}. {{ r.title }}. {{ r.where }} <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% elif r.url %}<span class="unknown">DOI only (not in the report's citation table):</span> <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% else %}<span class="unknown">Not a DOI, as the step gave it:</span> {{ r.doi }}{% endif %}</li>
 {% endfor %}</ol>
 </section>
 
@@ -242,11 +242,11 @@ as platform apps; it did not develop them. The steps in this report are built on
 {% if m.datasets %}
 <h3>Data</h3>
 <ul>
-{% for d in m.datasets %}<li>{% if d.creators %}{{ d.creators }}{% if d.year %} ({{ d.year }}){% endif %}. {% endif %}<i>{{ d.title }}</i>{% if d.publisher %}, {{ d.publisher }}{% endif %}{% if d.dandiset %} (DANDI:{{ d.dandiset }}){% endif %}. <a href="{{ d.url }}">doi:{{ d.doi }}</a>{% if d.licence %}, {{ d.licence }}{% endif %} [{{ d.n }}]{% if d.paper %}; described in [{{ d.paper }}]{% endif %}.{% if not d.known %} <span class="note">(not in the report's citation table)</span>{% endif %}</li>
+{% for d in m.datasets %}<li>{% if d.creators %}{{ d.creators }}{% if d.year %} ({{ d.year }}){% endif %}. {% endif %}<i>{{ d.title }}</i>{% if d.publisher %}, {{ d.publisher }}{% endif %}{% if d.dandiset %} (DANDI:{{ d.dandiset }}){% endif %}. <a href="{{ d.url }}">doi:{{ d.doi }}</a>{% if d.licence %}, {{ d.licence }}{% endif %} [{{ d.n }}]{% if d.paper %}; described in [{{ d.paper }}]{% endif %}. <span class="note">({{ d.how }}{% if not d.known %}; not in the report's citation table{% endif %})</span></li>
 {% endfor %}</ul>
 {% endif %}
 {% if m.dandisets %}<p>Dandisets named in the session sheet: {% for d in m.dandisets %}<a href="https://dandiarchive.org/dandiset/{{ d }}">DANDI:{{ d }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
-<p>The data are shared in the Neurodata Without Borders (NWB) format and the DANDI Archive.</p>
+{% if m.dandi %}<p>The data are shared in the Neurodata Without Borders (NWB) format on the DANDI Archive.</p>{% endif %}
 </section>
 
 <section id="cite">

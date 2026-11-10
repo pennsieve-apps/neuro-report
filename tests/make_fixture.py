@@ -52,7 +52,8 @@ HEADLINE = {
                    "max_drift_range_um": 12.5, "motion_corrected": True, "peaks_per_s": 412.3},
     "spike-sort": {"sorter": "kilosort4", "n_units": 211, "n_spikes": 154321, "median_firing_rate_hz": 3.2,
                    "n_units_above_50uV": 150, "wall_seconds": 95.0, "realtime_factor": 1.6},
-    "ephys-curate": {"n_units": 205, "n_good": 61, "n_mua": 100, "n_noise": 44, "bombcell_unitrefine_agreement": 0.81,
+    "ephys-curate": {"label_rule": "consensus", "bombcell_thresholds_note": "synthetic thresholds note",
+                     "n_units": 205, "n_good": 61, "n_mua": 100, "n_noise": 44, "bombcell_unitrefine_agreement": 0.81,
                      "median_snr_good": 7.4, "bombcell": {"good": 60, "mua": 101, "noise": 44},
                      "units_by_region": {"CA1": {"good": 30, "mua": 50, "noise": 10},
                                          "DG": {"good": 31, "mua": 50, "noise": 34}}},
@@ -82,6 +83,15 @@ HEADLINE = {
 
 ALL = list(HEADLINE)
 
+# A few real tool names and parameters, so methods and acknowledgements have something to go on.
+TOOLS = {"spike-sort": {"spikeinterface": "0.105.4", "kilosort": "4.1.7", "torch": "2.15.0"},
+         "neuro-embedding": {"cebra": "0.6.1", "elephant": "1.2.1", "torch": "2.15.0", "scikit-learn": "1.9.1"},
+         "behavior-syllables": {"dynamax": "1.0.3", "jax": "0.12.0"}}
+PARAMS = {"spike-sort": {"SORTER": "kilosort4"},
+          "neuro-embedding": {"METHODS": ["pca", "fa", "cebra"]},
+          "neuro-decoding": {"DECODERS": ["ridge", "bayes"], "CV_FOLDS": 5, "N_SHUFFLES": 200},
+          "behavior-syllables": {"METHOD": "hmm"}}
+
 
 def _png(path: Path, title: str, seed: int) -> None:
     import matplotlib.pyplot as plt
@@ -104,6 +114,8 @@ def write_app(root: Path, app: str, seed: int) -> Path:
         s = {"status": "ok", "subject_id": subj, "condition": cond, "group": ""}
         for k, v in HEADLINE[app].items():
             s[k] = (v * (1 + 0.1 * i)) if isinstance(v, float) and k not in ("frame_rate", "sampling_frequency") else v
+        if app == "pose-kinematics" and i == 1:
+            s["units"] = "px"
         sessions[sid] = s
         _png(top / sid / f"{sid}_overview.png", f"{sid}: {app} overview", seed + i)
         figures.append({"path": f"{sid}/{sid}_overview.png",
@@ -127,8 +139,8 @@ def write_app(root: Path, app: str, seed: int) -> Path:
         summary["syllables"] = [{"syllable": k, "usage": round(0.3 - 0.04 * k, 3), "mean_duration_s": 0.4} for k in range(6)]
     (top / "summary.json").write_text(json.dumps(summary, indent=1))
     prov = {"app": app, "version": "0.1.0", "variant": "cpu" if app in ("spike-sort", "suite2p") else "",
-            "tools": {"python": "3.12.11", "numpy": "2.5.4", f"{app}-core": "1.0.0"},
-            "parameters": {"SEED": 42, "THREADS": 0}, "inputs": ["x"],
+            "tools": {"python": "3.12.11", "numpy": "2.5.4", f"{app}-core": "1.0.0", **TOOLS.get(app, {})},
+            "parameters": {"SEED": 42, "THREADS": 0, **PARAMS.get(app, {})}, "inputs": ["x"],
             "started": f"2026-11-09T1{seed % 10}:00:00Z", "finished": f"2026-11-09T1{seed % 10}:05:00Z",
             "wall_seconds": 300.0, "peak_rss_mb": 512.0,
             "gpu": {"name": "Tesla T4", "peak_vram_mb": 2100} if app == "spike-sort" else None,

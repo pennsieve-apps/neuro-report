@@ -103,9 +103,14 @@ def test_headline_numbers_faithful(full):
     dec = next(s for s in m["steps"] if s["app"] == "neuro-decoding")
     t = next(t for d in dec["details"] for t in d["tables"] if t["name"] == "Variables")
     assert t["rows"][0][:2] == ["position", "0.63"]
-    # pose-kinematics labels take the session's units.
+    # pose-kinematics: the sessions have different units (cm, px), so they go in the cells.
     pk = next(s for s in m["steps"] if s["app"] == "pose-kinematics")
-    assert "Distance (cm)" in pk["session_header"]
+    assert "Distance" in pk["session_header"] and "Distance (cm)" not in pk["session_header"]
+    col = pk["session_header"].index("Distance")
+    assert pk["session_rows"][0][col].endswith(" cm") and pk["session_rows"][1][col].endswith(" px")
+    # Scalars outside the curated headline are kept, under "More numbers".
+    lines = dict(cur["details"][0]["lines"])
+    assert lines["Label rule"] == "consensus" and lines["Bombcell thresholds note"] == "synthetic thresholds note"
     # Top-level lists of records become tables (behavior-syllables `syllables`).
     bs = next(s for s in m["steps"] if s["app"] == "behavior-syllables")
     assert bs["overall_tables"][0]["n_rows"] == 6
@@ -235,11 +240,14 @@ def test_lambda_style_scratch(tmp_path, monkeypatch):
 
 
 def test_format_numbers():
-    from processor.model import fmt
+    from processor.model import fmt, kind_for
     assert fmt(2711794) == "2,711,794"
     assert fmt(0.7391, "pct") == "73.9 %"
-    assert fmt(30000.48) == "30,000"
+    assert fmt(30000.4800459792, kind_for("sampling_frequency")) == "30,000.48"
+    assert fmt(15.039856, kind_for("frame_rate")) == "15.04"
+    assert fmt(30000.48) == "30,000.5"
     assert fmt(8.369786) == "8.37"
+    assert fmt(0.73914) == "0.7391"
     assert fmt("58", "int") == "58"
     assert fmt(None) == "–" and fmt(True) == "yes"
     assert fmt(600.0, "num") == "600"
@@ -250,3 +258,97 @@ def test_generated_at_is_utc():
     from processor import model as M
     m = M.build([], [], Path("."), PARAMS, now, "0.1.0")
     assert m["generated"] == "2026-11-09 12:00 UTC" and m["steps"] == []
+
+
+def test_methods_follow_provenance(full):
+    _, m, _ = full
+    by = {s["app"]: s for s in m["steps"]}
+    emb = by["neuro-embedding"]["methods"]
+    assert "PCA, factor analysis and CEBRA" in emb and "GPFA" not in emb
+    assert "Kilosort4" in by["spike-sort"]["methods"]
+    dec = by["neuro-decoding"]["methods"]
+    assert "ridge regression and a Bayesian position decoder" in dec and "5-fold" in dec and "neural network" not in dec
+    assert "sticky autoregressive HMM" in by["behavior-syllables"]["methods"]
+    # Acknowledgements follow what ran: Kilosort4 ran, so Kilosort is credited.
+    ack = {a["app"]: [sw["title"] for sw in a["software"]] for a in m["acknowledgements"]}
+    assert "Kilosort" in ack["spike-sort"]
+
+
+def test_methods_say_less_when_values_are_missing():
+    from processor import describe as D
+    assert D.methods("spike-sort", {}, {"s": {}}, {}, "", {}) == "Spikes were sorted"
+    assert D.methods("neuro-embedding", {"METHODS": ["pca"]}, {}, {}, "", {}) == "Population activity was embedded with PCA"
+    used = D.used_tools("spike-sort", {"SORTER": "lupin"}, {"s": {"sorter": "lupin"}},
+                        {"spikeinterface": "1", "kilosort": "4", "torch": "2"}, {})
+    assert "kilosort" not in used and "torch" not in used and "spikeinterface" in used
+    used = D.used_tools("neuro-embedding", {"METHODS": ["pca", "fa"]}, {}, {"cebra": "1", "elephant": "1"}, {})
+    assert "cebra" not in used and "elephant" not in used
+
+
+def test_session_warnings_never_dropped_by_substring(tmp_path):
+    root = F.make(tmp_path / "in", "linked", ["neuro-align"])
+    p = root / "steps" / "neuro-align" / "summary.json"
+    summ = json.loads(p.read_text())
+    summ["warnings"] = ["sub-A01_ses-day1: few spikes in the window"]
+    summ["sessions"]["sub-A01_ses-day1"]["warnings"] = ["few spikes"]
+    summ["sessions"]["sub-B02_ses-day1"]["warnings"] = ["few spikes", "few spikes"]
+    p.write_text(json.dumps(summ))
+    assert app.run(root, tmp_path / "out", {**PARAMS, "WRITE_PDF": False}) == 0
+    m = json.loads((tmp_path / "out" / "neuro-report" / "report.json").read_text())
+    w = m["steps"][0]["warnings"]
+    assert w == ["sub-A01_ses-day1: few spikes in the window", "sub-A01_ses-day1: few spikes",
+                 "sub-B02_ses-day1: few spikes"]
+
+
+def test_lab_sessions_not_credited_to_demo_datasets():
+    assert A.demo_datasets(["sub-F1_ses-OF-mylab1", "sub-NR-0031_ses-other", "sub-Buddy_ses-mine"]) == []
+    assert [d["dandiset"] for d in A.demo_datasets(["sub-F07_ses-OF-F07-S1"])] == ["002047"]
+
+
+def test_quotes_and_bad_dois(tmp_path, monkeypatch):
+    root = F.make(tmp_path / "in", "linked", ["neuro-align"])
+    p = root / "steps" / "neuro-align" / "provenance.json"
+    prov = json.loads(p.read_text())
+    prov["citations"] = ["10.1234/it's\"quoted", "javascript:alert(1)"]
+    p.write_text(json.dumps(prov))
+    assert app.run(root, tmp_path / "out", PARAMS) == 0  # PDF too
+    out = tmp_path / "out" / "neuro-report"
+    html = (out / "report.html").read_text()
+    assert 'href="javascript' not in html and "javascript:alert(1)" in html
+    assert (out / "report.pdf").read_bytes().startswith(b"%PDF")
+    monkeypatch.setenv("INPUT_DIR", str(root))
+    monkeypatch.setenv("OUTPUT_DIR", str(tmp_path / "out2"))
+    monkeypatch.setenv("DATASET_DOIS", "javascript:alert(1)")
+    assert app.main() == 2
+    monkeypatch.setenv("DATASET_DOIS", "10.48324/dandi.000728/0.240827.1809, 10.1/x'y")
+    assert app.main() == 2
+
+
+def test_sessions_as_list_is_noted_not_fatal(tmp_path):
+    root = F.make(tmp_path / "in", "linked", ["suite2p", "neuro-align"])
+    p = root / "steps" / "suite2p" / "summary.json"
+    summ = json.loads(p.read_text())
+    summ["sessions"] = [{"session_id": "x"}]
+    p.write_text(json.dumps(summ))
+    assert app.run(root, tmp_path / "out", PARAMS) == 0
+    m = json.loads((tmp_path / "out" / "neuro-report" / "report.json").read_text())
+    s2p = next(s for s in m["steps"] if s["app"] == "suite2p")
+    assert s2p["session_rows"] == [] and len(s2p["figures"]) == 3
+    assert any("`sessions` is a list" in i["problem"] for i in m["issues"])
+
+
+def test_nwb_dandi_sentence_only_with_dandi_data(tmp_path, full):
+    _, m, html = full
+    assert not m["dandi"] and "on the DANDI Archive" not in html
+    code, out = run(tmp_path, apps=["suite2p"], DATASET_DOIS="10.48324/dandi.000728/0.240827.1809", WRITE_PDF=False)
+    assert "on the DANDI Archive" in (out / "report.html").read_text()
+
+
+def test_downscale_keeps_small_files(tmp_path):
+    from PIL import Image
+
+    from processor.figures import load_png
+    p = tmp_path / "wide.png"
+    Image.new("RGBA", (3200, 400), (255, 255, 255, 255)).save(p)
+    png, w, h = load_png(p)
+    assert len(png) <= p.stat().st_size and (w, h) in ((1600, 200), (3200, 400))
