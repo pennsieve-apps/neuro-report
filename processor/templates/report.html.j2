@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="Pennsieve neuro-report {{ m.version }}">
+<title>{{ m.title }}</title>
+<style>
+:root {
+  --ink: #111827; --muted: #4b5563; --faint: #6b7280; --line: #d9dee5; --soft: #f4f6f8;
+  --accent: #1f4e8c; --warn-bg: #fff7e6; --warn-line: #d97706; --warn-ink: #7c2d12;
+  --ok: #166534; --ok-bg: #e8f5ec; --bad: #991b1b; --bad-bg: #fdecec;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: #ffffff; color: var(--ink);
+  font: 15px/1.55 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "DejaVu Sans", sans-serif; }
+main { max-width: 980px; margin: 0 auto; padding: 28px 16px 64px; }
+h1 { font-size: 27px; line-height: 1.25; margin: 0 0 6px; }
+h2 { font-size: 21px; margin: 42px 0 10px; padding-top: 10px; border-top: 2px solid var(--ink); }
+h3 { font-size: 16px; margin: 22px 0 6px; }
+h4 { font-size: 14px; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 6px 0 10px; }
+a { color: var(--accent); }
+.sub { color: var(--muted); margin: 0 0 4px; }
+.meta { display: grid; grid-template-columns: max-content 1fr; gap: 2px 14px; margin: 14px 0; font-size: 14px; }
+.meta dt { color: var(--faint); }
+.meta dd { margin: 0; }
+nav.toc { background: var(--soft); border-radius: 6px; padding: 10px 14px; font-size: 14px; margin: 16px 0; }
+nav.toc ol { margin: 4px 0; padding-left: 20px; columns: 2; column-gap: 28px; }
+@media (max-width: 640px) { nav.toc ol { columns: 1; } .meta { grid-template-columns: 1fr; } }
+.tablewrap { overflow-x: auto; margin: 8px 0 12px; }
+table { border-collapse: collapse; font-size: 13px; width: auto; min-width: 40%; }
+th, td { border-bottom: 1px solid var(--line); padding: 4px 9px; text-align: left; vertical-align: top; }
+th { background: var(--soft); font-weight: 600; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.kv th { background: none; color: var(--muted); font-weight: normal; }
+.warnbox { background: var(--warn-bg); border-left: 4px solid var(--warn-line); padding: 8px 14px; margin: 12px 0;
+  color: var(--warn-ink); border-radius: 0 6px 6px 0; }
+.warnbox h3, .warnbox h4 { margin: 4px 0; color: var(--warn-ink); }
+.warnbox ul { margin: 4px 0; padding-left: 18px; }
+.note { color: var(--muted); font-size: 13px; }
+figure { margin: 18px 0 22px; page-break-inside: avoid; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; display: block; }
+figure img.overview { max-width: min(100%, 720px); border: none; }
+figcaption { font-size: 13.5px; color: #1f2937; margin-top: 6px; }
+figcaption b { color: var(--ink); }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; }
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.bad { background: var(--bad-bg); color: var(--bad); }
+.step-meta { font-size: 13px; color: var(--muted); }
+.refs li { margin-bottom: 7px; font-size: 13.5px; }
+.refs .unknown { color: var(--bad); }
+.params { font-size: 12.5px; }
+code { font-family: ui-monospace, "SFMono-Regular", Menlo, "DejaVu Sans Mono", monospace; font-size: 12.5px;
+  background: var(--soft); padding: 0 3px; border-radius: 3px; }
+details { margin: 8px 0; }
+summary { cursor: pointer; color: var(--accent); }
+footer { margin-top: 48px; color: var(--faint); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 10px; }
+@media print { main { max-width: none; } h2 { page-break-before: auto; } a { color: inherit; } }
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>{{ m.title }}</h1>
+{% if m.subtitle %}<p class="sub">{{ m.subtitle }}</p>{% endif %}
+<dl class="meta">
+  <dt>Report written</dt><dd>{{ m.generated }}</dd>
+  {% if m.run_window[0] %}<dt>Steps ran</dt><dd>{{ m.run_window[0] }} – {{ m.run_window[1] }}</dd>{% endif %}
+  <dt>Steps</dt><dd>{{ m.steps|length }} ({% for s in m.steps %}{{ s.label }}{% if not loop.last %}, {% endif %}{% endfor %})</dd>
+  <dt>Sessions</dt><dd>{{ m.sessions|length }}</dd>
+  {% if m.datasets %}<dt>Data</dt><dd>{% for d in m.datasets %}<a href="{{ d.url }}">{{ d.title }}</a>{% if d.dandiset %} (DANDI:{{ d.dandiset }}){% endif %}{% if not loop.last %}; {% endif %}{% endfor %}</dd>{% endif %}
+</dl>
+</header>
+
+<nav class="toc"><b>Contents</b>
+<ol>
+  <li><a href="#overview">Overview</a></li>
+  {% if m.warnings %}<li><a href="#warnings">Warnings ({{ m.warnings|length }})</a></li>{% endif %}
+  {% for s in m.steps %}<li><a href="#step-{{ loop.index }}">{{ s.title }}</a></li>{% endfor %}
+  <li><a href="#methods">Methods</a></li>
+  <li><a href="#software">Software &amp; provenance</a></li>
+  <li><a href="#references">References</a></li>
+  <li><a href="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#cite">How to cite this analysis</a></li>
+</ol></nav>
+
+<section id="overview">
+<h2>Overview</h2>
+<p>This report collects the results of {{ m.steps|length }} analysis step{{ 's' if m.steps|length != 1 }} of the
+{% for w in m.workflows %}<b>{{ w.name }}</b>{% if not loop.last %}{{ ' and ' if loop.revindex == 2 else ', ' }}{% endif %}{% endfor %} workflow{{ 's' if m.workflows|length != 1 }} on {{ m.sessions|length }} session{{ 's' if m.sessions|length != 1 }}.
+Each step's section says what the step does, shows its headline numbers and figures with the captions the step wrote,
+and lists its warnings. Numbers and captions are copied from each step's own <code>summary.json</code>; this report
+does not recompute them.</p>
+{% if overview %}
+<figure><img class="overview" src="{{ overview }}" alt="Workflow overview">
+<figcaption><b>Workflow overview.</b> The steps of each workflow found in this report, in pipeline order. Filled
+boxes are steps whose results are included; grey dashed boxes are steps of the workflow that were not linked into
+the report (their results may still exist elsewhere).</figcaption></figure>
+{% endif %}
+{% if m.sessions %}
+<h3>Sessions</h3>
+<div class="tablewrap"><table>
+<tr><th>Session</th>{% if has_subject %}<th>Subject</th>{% endif %}{% if has_condition %}<th>Condition</th>{% endif %}{% if has_group %}<th>Group</th>{% endif %}<th>Steps with results</th></tr>
+{% for r in m.sessions %}<tr><td>{{ r.session_id }}</td>{% if has_subject %}<td>{{ r.subject_id }}</td>{% endif %}{% if has_condition %}<td>{{ r.condition }}</td>{% endif %}{% if has_group %}<td>{{ r.group }}</td>{% endif %}<td>{{ r.steps|join(', ') }}</td></tr>
+{% endfor %}</table></div>
+{% endif %}
+</section>
+
+{% if m.warnings %}
+<section id="warnings">
+<div class="warnbox">
+<h3>Warnings ({{ m.warnings|length }})</h3>
+<p>Read these before interpreting the results. Each is repeated in its step's section.</p>
+<ul>{% for w in m.warnings %}<li><b>{{ w.step }}:</b> {{ w.text }}</li>{% endfor %}</ul>
+</div>
+</section>
+{% endif %}
+
+{% for s in m.steps %}
+<section id="step-{{ loop.index }}">
+<h2>{{ loop.index }}. {{ s.title }}</h2>
+<p class="step-meta">{{ s.app }} {{ s.version }}{% if s.variant %} · variant {{ s.variant }}{% endif %}{% if s.wall_seconds is not none %} · {{ s.wall_seconds|duration }}{% endif %}{% if s.refs %} · references {{ s.refs|refs }}{% endif %}</p>
+{% if s.about %}<p>{{ s.about }}</p>{% else %}<p class="note">No description is built into this report for <code>{{ s.app }}</code>; its results are shown as the app wrote them.</p>{% endif %}
+
+{% if s.warnings %}<div class="warnbox"><h4>Warnings</h4><ul>{% for w in s.warnings %}<li>{{ w }}</li>{% endfor %}</ul></div>{% endif %}
+
+{% if s.overall %}
+<div class="tablewrap"><table class="kv">{% for k, v in s.overall %}<tr><th>{{ k }}</th><td>{{ v }}</td></tr>{% endfor %}</table></div>
+{% endif %}
+
+{% if s.session_rows %}
+<h3>Headline numbers</h3>
+{% if s.app == 'nwb-inspect' %}
+<div class="tablewrap"><table>
+<tr>{% for h in s.session_header %}<th>{{ h }}</th>{% endfor %}</tr>
+{% for r in s.session_rows %}<tr>{% for c in r %}{% if s.session_header[loop.index0] == 'DANDI-ready' %}<td><span class="badge {{ 'ok' if c == 'yes' else 'bad' }}">{{ 'DANDI-ready' if c == 'yes' else ('not ready' if c == 'no' else c) }}</span></td>{% else %}<td{% if loop.index0 > 0 %} class="num"{% endif %}>{{ c }}</td>{% endif %}{% endfor %}</tr>{% endfor %}
+</table></div>
+{% elif s.transpose %}
+<div class="tablewrap"><table>
+<tr><th></th>{% for r in s.session_rows %}<th class="num">{{ r[0] }}</th>{% endfor %}</tr>
+{% for h in s.session_header[1:] %}{% set i = loop.index %}<tr><th>{{ h }}</th>{% for r in s.session_rows %}<td class="num">{{ r[i] }}</td>{% endfor %}</tr>{% endfor %}
+</table></div>
+{% else %}
+<div class="tablewrap"><table>
+<tr>{% for h in s.session_header %}<th{% if loop.index0 > 0 %} class="num"{% endif %}>{{ h }}</th>{% endfor %}</tr>
+{% for r in s.session_rows %}<tr>{% for c in r %}<td{% if loop.index0 > 0 %} class="num"{% endif %}>{{ c }}</td>{% endfor %}</tr>{% endfor %}
+</table></div>
+{% endif %}
+{% endif %}
+
+{% for t in s.overall_tables %}
+<h4>{{ t.name }}{% if t.truncated %} (first {{ t.rows|length }} of {{ t.n_rows }}){% endif %}</h4>
+<div class="tablewrap"><table><tr>{% for h in t.header %}<th>{{ h }}</th>{% endfor %}</tr>
+{% for r in t.rows %}<tr>{% for c in r %}<td{% if loop.index0 > 0 %} class="num"{% endif %}>{{ c }}</td>{% endfor %}</tr>{% endfor %}</table></div>
+{% endfor %}
+
+{% if s.details %}
+<details{% if s.n_sessions == 1 %} open{% endif %}><summary>More numbers{% if s.n_sessions > 1 %} for {{ s.details|length }} of {{ s.n_sessions }} sessions{% endif %}</summary>
+{% for d in s.details %}
+{% if s.n_sessions > 1 %}<h4>{{ d.session }}</h4>{% endif %}
+{% if d.lines %}<div class="tablewrap"><table class="kv">{% for k, v in d.lines %}<tr><th>{{ k }}</th><td>{{ v }}</td></tr>{% endfor %}</table></div>{% endif %}
+{% for t in d.tables %}
+<h4>{{ t.name }}{% if t.truncated %} (first {{ t.rows|length }} of {{ t.n_rows }}){% endif %}</h4>
+<div class="tablewrap"><table><tr>{% for h in t.header %}<th>{{ h }}</th>{% endfor %}</tr>
+{% for r in t.rows %}<tr>{% for c in r %}<td{% if loop.index0 > 0 %} class="num"{% endif %}>{{ c }}</td>{% endfor %}</tr>{% endfor %}</table></div>
+{% endfor %}
+{% endfor %}
+</details>
+{% endif %}
+
+{% if s.figures %}
+<h3>Figures</h3>
+{% for f in s.figures %}
+<figure>{% if f.src %}<img src="{{ f.src }}" alt="{{ f.rel }}">{% else %}<p class="note">(figure could not be read: {{ f.rel }})</p>{% endif %}
+<figcaption><b>Figure {{ f.number }}.</b> {{ f.caption or '(no caption in summary.json)' }} <span class="note">({{ f.rel }})</span></figcaption></figure>
+{% endfor %}
+{% endif %}
+{% if s.omitted_figures %}<p class="note">{{ s.omitted_figures|length }} more figure{{ 's' if s.omitted_figures|length != 1 }} of this step (MAX_FIGURES = {{ m.parameters.MAX_FIGURES }}) are in its output folder: {{ s.omitted_figures|join(', ') }}.</p>{% endif %}
+{% if s.missing_figures %}<p class="note">Listed in summary.json but missing from the output: {{ s.missing_figures|join(', ') }}.</p>{% endif %}
+
+{% set inl = s.tables|selectattr('inline')|list %}
+{% for t in inl %}
+<h4>Table: {{ t.rel }}</h4>{% if t.caption %}<p class="note">{{ t.caption }}</p>{% endif %}
+<div class="tablewrap"><table><tr>{% for h in t.inline.header %}<th>{{ h }}</th>{% endfor %}</tr>
+{% for r in t.inline.rows %}<tr>{% for c in r %}<td>{{ c }}</td>{% endfor %}</tr>{% endfor %}</table></div>
+{% endfor %}
+{% set rest = s.tables|rejectattr('inline')|list %}
+{% if rest %}
+<h4>Other tables in the step's output</h4>
+<ul class="note">{% for t in rest %}<li><code>{{ t.rel }}</code>{% if t.n_rows is not none %} ({{ t.n_rows|num }} rows){% endif %}{% if t.caption %}: {{ t.caption }}{% endif %}{% if not t.exists %} <b>(missing)</b>{% endif %}</li>{% endfor %}</ul>
+{% endif %}
+
+{% if s.parameters %}
+<details><summary>Parameters ({{ s.parameters|length }})</summary>
+<div class="tablewrap"><table class="kv params">{% for k, v in s.parameters.items() %}<tr><th><code>{{ k }}</code></th><td>{{ v|plain }}</td></tr>{% endfor %}</table></div>
+</details>
+{% endif %}
+</section>
+{% endfor %}
+
+<section id="methods">
+<h2>Methods</h2>
+{% for s in m.steps %}
+<p><b>{{ s.title }}.</b> {{ s.methods }}{% if s.main_tools %} ({{ s.main_tools|join(', ') }}){% endif %}{% if s.refs %} {{ s.refs|refs }}{% endif %}.
+The step ran as <code>{{ s.app }}</code> {{ s.version }}{% if s.variant %} (variant {{ s.variant }}){% endif %}{% if s.n_sessions %} on {{ s.n_sessions }} session{{ 's' if s.n_sessions != 1 }}{% endif %}; its parameters are listed in <a href="#step-{{ s.index }}">section {{ s.index }}</a>.</p>
+{% endfor %}
+<p>The report was written by <code>neuro-report</code> {{ m.version }} (Pennsieve), which copies each step's numbers,
+figures, captions and warnings from its <code>summary.json</code> and its software versions, parameters and
+citations from its <code>provenance.json</code>.</p>
+</section>
+
+<section id="software">
+<h2>Software &amp; provenance</h2>
+<div class="tablewrap"><table>
+<tr><th>Step</th><th>Version</th><th>Variant</th><th>Tools</th><th class="num">Run time</th><th class="num">Peak memory</th><th>GPU</th></tr>
+{% for s in m.steps %}<tr><td>{{ s.label }}</td><td>{{ s.version }}</td><td>{{ s.variant or '–' }}</td>
+<td class="params">{% for k, v in s.tools.items() %}{{ k }} {{ v }}{% if not loop.last %}; {% endif %}{% endfor %}</td>
+<td class="num">{{ s.wall_seconds|duration if s.wall_seconds is not none else '–' }}</td>
+<td class="num">{{ s.peak_rss_mb|mb }}</td><td>{{ s.gpu or 'none' }}</td></tr>{% endfor %}
+</table></div>
+<p class="note">Run time and peak memory are what each step recorded in its provenance.json (whole step, all sessions).</p>
+</section>
+
+<section id="references">
+<h2>References</h2>
+<p class="note">The works each step cites in its provenance.json, and the datasets. Author lists, titles and
+journals come from the Pennsieve apps' CITATION.cff files, verified against Crossref, DataCite and PubMed.</p>
+<ol class="refs">
+{% for r in m.references %}<li id="ref-{{ r.n }}">{% if r.known %}{{ r.authors }}. {{ r.title }}. {{ r.where }} <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% else %}<span class="unknown">DOI only (not in the report's citation table):</span> <a href="{{ r.url }}">doi:{{ r.doi }}</a>{% endif %}</li>
+{% endfor %}</ol>
+</section>
+
+<section id="acknowledgements">
+<h2>Acknowledgements</h2>
+<p>These analyses package other people's methods, and the credit for them is theirs. Pennsieve packaged the methods
+as platform apps; it did not develop them. The steps in this report are built on:</p>
+<ul>
+{% for a in m.acknowledgements %}<li><b>{{ a.app }}</b>: {% for sw in a.software %}{% if sw.url %}<a href="{{ sw.url }}">{{ sw.title }}</a>{% else %}{{ sw.title }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</li>
+{% endfor %}</ul>
+{% if m.datasets %}
+<h3>Data</h3>
+<ul>
+{% for d in m.datasets %}<li>{% if d.creators %}{{ d.creators }}{% if d.year %} ({{ d.year }}){% endif %}. {% endif %}<i>{{ d.title }}</i>{% if d.publisher %}, {{ d.publisher }}{% endif %}{% if d.dandiset %} (DANDI:{{ d.dandiset }}){% endif %}. <a href="{{ d.url }}">doi:{{ d.doi }}</a>{% if d.licence %}, {{ d.licence }}{% endif %} [{{ d.n }}]{% if d.paper %}; described in [{{ d.paper }}]{% endif %}.{% if not d.known %} <span class="note">(not in the report's citation table)</span>{% endif %}</li>
+{% endfor %}</ul>
+{% endif %}
+{% if m.dandisets %}<p>Dandisets named in the session sheet: {% for d in m.dandisets %}<a href="https://dandiarchive.org/dandiset/{{ d }}">DANDI:{{ d }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>{% endif %}
+<p>The data are shared in the Neurodata Without Borders (NWB) format and the DANDI Archive.</p>
+</section>
+
+<section id="cite">
+<h2>How to cite this analysis</h2>
+<p>If you use these results, please cite the methods each step rests on (References {{ m.references|map(attribute='n')|list|refs if m.references else '' }}),
+the dataset{{ 's' if m.datasets|length != 1 }} analysed{% if m.datasets %} ({% for d in m.datasets %}doi:{{ d.doi }}{% if not loop.last %}; {% endif %}{% endfor %}){% endif %}, and the Pennsieve apps that ran the analysis, with their versions:
+{% for a in m.apps_cited %}{{ a.app }} {{ a.version }}{% if a.repository %} (<a href="{{ a.repository }}">{{ a.repository }}</a>){% endif %}{% if not loop.last %}; {% endif %}{% endfor %}.
+Each app's CITATION.cff lists the full references. Keep this report with the results: it records the parameters and
+software versions that produced them.</p>
+</section>
+
+{% if m.issues %}
+<section id="inputs">
+<h2>Notes on the inputs</h2>
+<p class="note">Places where a step's output does not follow the shared output contract (conventions.md). They do not
+change the results above; they are listed for the app maintainers.</p>
+<ul class="note">{% for i in m.issues %}<li><b>{{ i.app }}</b> ({{ i.folder }}): {{ i.problem }}</li>{% endfor %}</ul>
+</section>
+{% endif %}
+
+<footer>Written by Pennsieve neuro-report {{ m.version }} on {{ m.generated }}. A PDF version of this report is
+<code>report.pdf</code> next to this file; the same content as data is <code>report.json</code>.</footer>
+</main>
+</body>
+</html>

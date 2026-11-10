@@ -1,0 +1,7 @@
+-r requirements.txt
+pytest==9.2.0
+pyyaml==6.0.3
+jsonschema
+cffconvert
+# PyMuPDF (AGPL) only to render PDF pages to PNG for a visual check; never in the image.
+pymupdf

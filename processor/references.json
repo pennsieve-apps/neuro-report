@@ -1,0 +1,7088 @@
+{
+ "_about": "Built by scripts/build_citations.py from the sibling apps' CITATION.cff files (verified against Crossref/DataCite/PubMed). Do not edit by hand.",
+ "apps": {
+  "ephys-prep": {
+   "title": "ephys-prep",
+   "repository": "https://github.com/pennsieve-apps/ephys-prep",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "spike-sort": {
+   "title": "spike-sort",
+   "repository": "https://github.com/pennsieve-apps/spike-sort",
+   "license": "GPL-3.0-or-later",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "ephys-curate": {
+   "title": "ephys-curate",
+   "repository": "https://github.com/pennsieve-apps/ephys-curate",
+   "license": "GPL-3.0-or-later",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "suite2p": {
+   "title": "suite2p",
+   "repository": "https://github.com/pennsieve-apps/suite2p",
+   "license": "GPL-3.0-or-later",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "ophys-traces": {
+   "title": "ophys-traces",
+   "repository": "https://github.com/pennsieve-apps/ophys-traces",
+   "license": "GPL-3.0-or-later",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "ophys-activity": {
+   "title": "ophys-activity",
+   "repository": "https://github.com/pennsieve-apps/ophys-activity",
+   "license": "GPL-3.0-or-later",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "pose-estimate": {
+   "title": "pose-estimate",
+   "repository": "https://github.com/pennsieve-apps/pose-estimate",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "pose-kinematics": {
+   "title": "Pose Kinematics",
+   "repository": "https://github.com/pennsieve-apps/pose-kinematics",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "behavior-syllables": {
+   "title": "Behaviour Syllables",
+   "repository": "https://github.com/pennsieve-apps/behavior-syllables",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "neuro-align": {
+   "title": "neuro-align",
+   "repository": "https://github.com/pennsieve-apps/neuro-align",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "neuro-encoding": {
+   "title": "neuro-encoding",
+   "repository": "https://github.com/pennsieve-apps/neuro-encoding",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "neuro-embedding": {
+   "title": "neuro-embedding",
+   "repository": "https://github.com/pennsieve-apps/neuro-embedding",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "neuro-decoding": {
+   "title": "neuro-decoding",
+   "repository": "https://github.com/pennsieve-apps/neuro-decoding",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "nwb-inspect": {
+   "title": "nwb-inspect",
+   "repository": "https://github.com/pennsieve-apps/nwb-inspect",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  },
+  "neuro-report": {
+   "title": "neuro-report",
+   "repository": "https://github.com/pennsieve-apps/neuro-report",
+   "license": "Apache-2.0",
+   "authors": [
+    "Pennsieve (University of Pennsylvania)"
+   ]
+  }
+ },
+ "software": {
+  "ephys-prep": [
+   {
+    "title": "SpikeInterface",
+    "url": "https://github.com/SpikeInterface/spikeinterface",
+    "doi": ""
+   },
+   {
+    "title": "probeinterface",
+    "url": "https://github.com/SpikeInterface/probeinterface",
+    "doi": ""
+   },
+   {
+    "title": "PyNWB",
+    "url": "https://github.com/NeurodataWithoutBorders/pynwb",
+    "doi": ""
+   },
+   {
+    "title": "mtscomp",
+    "url": "https://github.com/int-brain-lab/mtscomp",
+    "doi": ""
+   },
+   {
+    "title": "PyTorch",
+    "url": "https://github.com/pytorch/pytorch",
+    "doi": ""
+   },
+   {
+    "title": "AIND ephys pipeline",
+    "url": "https://github.com/AllenNeuralDynamics/aind-ephys-pipeline",
+    "doi": ""
+   }
+  ],
+  "spike-sort": [
+   {
+    "title": "Kilosort",
+    "url": "https://github.com/MouseLand/Kilosort",
+    "doi": ""
+   },
+   {
+    "title": "SpikeInterface",
+    "url": "https://github.com/SpikeInterface/spikeinterface",
+    "doi": ""
+   },
+   {
+    "title": "PyTorch",
+    "url": "https://github.com/pytorch/pytorch",
+    "doi": ""
+   },
+   {
+    "title": "AIND ephys pipeline",
+    "url": "https://github.com/AllenNeuralDynamics/aind-ephys-pipeline",
+    "doi": ""
+   }
+  ],
+  "ephys-curate": [
+   {
+    "title": "Bombcell: automated curation and cell classification of spike-sorted electrophysiology data",
+    "url": "https://github.com/Julie-Fabre/bombcell",
+    "doi": "10.5281/zenodo.8172821"
+   },
+   {
+    "title": "UnitRefine",
+    "url": "https://github.com/anoushkajain/UnitRefine",
+    "doi": "10.6084/m9.figshare.28282841.v2"
+   },
+   {
+    "title": "Phy: interactive visualization and manual spike sorting of large-scale ephys data",
+    "url": "https://github.com/cortex-lab/phy",
+    "doi": ""
+   }
+  ],
+  "suite2p": [
+   {
+    "title": "Suite2p",
+    "url": "https://github.com/MouseLand/suite2p",
+    "doi": ""
+   }
+  ],
+  "ophys-traces": [
+   {
+    "title": "CascadeTorch",
+    "url": "https://github.com/PTRRupprecht/CascadeTorch",
+    "doi": ""
+   },
+   {
+    "title": "OASIS",
+    "url": "https://github.com/j-friedrich/OASIS",
+    "doi": ""
+   }
+  ],
+  "ophys-activity": [
+   {
+    "title": "Rastermap",
+    "url": "https://github.com/MouseLand/rastermap",
+    "doi": ""
+   },
+   {
+    "title": "scikit-learn",
+    "url": "https://github.com/scikit-learn/scikit-learn",
+    "doi": ""
+   },
+   {
+    "title": "pandas",
+    "url": "https://github.com/pandas-dev/pandas",
+    "doi": ""
+   },
+   {
+    "title": "h5py",
+    "url": "https://github.com/h5py/h5py",
+    "doi": ""
+   }
+  ],
+  "pose-estimate": [
+   {
+    "title": "DeepLabCut",
+    "url": "https://github.com/DeepLabCut/DeepLabCut",
+    "doi": ""
+   },
+   {
+    "title": "ndx-pose",
+    "url": "https://github.com/rly/ndx-pose",
+    "doi": ""
+   },
+   {
+    "title": "PyNWB",
+    "url": "https://github.com/NeurodataWithoutBorders/pynwb",
+    "doi": ""
+   }
+  ],
+  "pose-kinematics": [
+   {
+    "title": "neuroinformatics-unit/movement: v0.17.0",
+    "url": "https://doi.org/10.5281/zenodo.12755724",
+    "doi": "10.5281/zenodo.12755724"
+   },
+   {
+    "title": "ndx-pose: NWB extension to store pose estimation data",
+    "url": "https://github.com/rly/ndx-pose",
+    "doi": ""
+   },
+   {
+    "title": "sleap-io: Standalone utilities for working with pose data from SLEAP and other tools",
+    "url": "https://github.com/talmolab/sleap-io",
+    "doi": ""
+   },
+   {
+    "title": "PyNWB",
+    "url": "https://github.com/NeurodataWithoutBorders/pynwb",
+    "doi": ""
+   }
+  ],
+  "behavior-syllables": [
+   {
+    "title": "scikit-learn: machine learning in Python",
+    "url": "https://github.com/scikit-learn/scikit-learn",
+    "doi": ""
+   },
+   {
+    "title": "JAX: composable transformations of Python+NumPy programs",
+    "url": "https://github.com/jax-ml/jax",
+    "doi": ""
+   },
+   {
+    "title": "PyNWB",
+    "url": "https://github.com/NeurodataWithoutBorders/pynwb",
+    "doi": ""
+   }
+  ],
+  "neuro-align": [
+   {
+    "title": "ndx-pose: NWB extension for storing pose estimation data",
+    "url": "https://github.com/rly/ndx-pose",
+    "doi": ""
+   }
+  ],
+  "neuro-encoding": [
+   {
+    "title": "NeMoS: Neural ModelS",
+    "url": "https://github.com/flatironinstitute/nemos",
+    "doi": "10.5281/zenodo.17553286"
+   },
+   {
+    "title": "JAX: composable transformations of Python+NumPy programs",
+    "url": "https://github.com/jax-ml/jax",
+    "doi": ""
+   }
+  ],
+  "neuro-embedding": [
+   {
+    "title": "Elephant 1.2.1",
+    "url": "https://doi.org/10.5281/zenodo.1186602",
+    "doi": "10.5281/zenodo.1186602"
+   },
+   {
+    "title": "CEBRA",
+    "url": "https://github.com/AdaptiveMotorControlLab/CEBRA",
+    "doi": ""
+   },
+   {
+    "title": "scikit-learn",
+    "url": "https://github.com/scikit-learn/scikit-learn",
+    "doi": ""
+   },
+   {
+    "title": "plotly.py",
+    "url": "https://github.com/plotly/plotly.py",
+    "doi": ""
+   }
+  ],
+  "neuro-decoding": [
+   {
+    "title": "scikit-learn",
+    "url": "https://github.com/scikit-learn/scikit-learn",
+    "doi": ""
+   }
+  ],
+  "nwb-inspect": [
+   {
+    "title": "NeurodataWithoutBorders/nwbinspector: v0.7.2",
+    "url": "https://github.com/NeurodataWithoutBorders/nwbinspector",
+    "doi": "10.5281/zenodo.10611726"
+   },
+   {
+    "title": "NeurodataWithoutBorders/pynwb: Latest",
+    "url": "https://github.com/NeurodataWithoutBorders/pynwb",
+    "doi": "10.5281/zenodo.10582180"
+   },
+   {
+    "title": "hdmf-dev/hdmf: Latest",
+    "url": "https://github.com/hdmf-dev/hdmf",
+    "doi": "10.5281/zenodo.8034516"
+   },
+   {
+    "title": "dandi/dandi-cli: 0.82.0",
+    "url": "https://github.com/dandi/dandi-cli",
+    "doi": "10.5281/zenodo.3692138"
+   },
+   {
+    "title": "dandischema: Schemata for DANDI archive project",
+    "url": "https://github.com/dandi/dandi-schema",
+    "doi": ""
+   }
+  ],
+  "neuro-report": [
+   {
+    "title": "ReportLab",
+    "url": "https://hg.reportlab.com/hg-public/reportlab",
+    "doi": ""
+   },
+   {
+    "title": "Jinja",
+    "url": "https://github.com/pallets/jinja",
+    "doi": ""
+   }
+  ]
+ },
+ "references": {
+  "10.1002/hipo.450040404": {
+   "doi": "10.1002/hipo.450040404",
+   "type": "article",
+   "title": "Spatial information content and reliability of hippocampal CA1 neurons: Effects of visual input",
+   "authors": [
+    {
+     "family": "Markus",
+     "given": "Etan J."
+    },
+    {
+     "family": "Barnes",
+     "given": "Carol A."
+    },
+    {
+     "family": "McNaughton",
+     "given": "Bruce L."
+    },
+    {
+     "family": "Gladden",
+     "given": "Victoria L."
+    },
+    {
+     "family": "Skaggs",
+     "given": "William E."
+    }
+   ],
+   "journal": "Hippocampus",
+   "publisher": "",
+   "year": 1994,
+   "volume": "4",
+   "issue": "4",
+   "pages": "410-421",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-encoding"
+   ]
+  },
+  "10.1016/0006-8993(71)90358-1": {
+   "doi": "10.1016/0006-8993(71)90358-1",
+   "type": "article",
+   "title": "The hippocampus as a spatial map. Preliminary evidence from unit activity in the freely-moving rat",
+   "authors": [
+    {
+     "family": "O'Keefe",
+     "given": "J."
+    },
+    {
+     "family": "Dostrovsky",
+     "given": "J."
+    }
+   ],
+   "journal": "Brain Research",
+   "publisher": "",
+   "year": 1971,
+   "volume": "34",
+   "issue": "1",
+   "pages": "171-175",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-encoding"
+   ]
+  },
+  "10.1016/0166-4328(94)90008-6": {
+   "doi": "10.1016/0166-4328(94)90008-6",
+   "type": "article",
+   "title": "Thigmotaxis as an index of anxiety in mice. Influence of dopaminergic transmissions",
+   "authors": [
+    {
+     "family": "Simon",
+     "given": "P."
+    },
+    {
+     "family": "Dupuis",
+     "given": "R."
+    },
+    {
+     "family": "Costentin",
+     "given": "J."
+    }
+   ],
+   "journal": "Behavioural Brain Research",
+   "publisher": "",
+   "year": 1994,
+   "volume": "61",
+   "issue": "1",
+   "pages": "59-64",
+   "pmid": "7913324",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics"
+   ]
+  },
+  "10.1016/j.jneumeth.2013.04.010": {
+   "doi": "10.1016/j.jneumeth.2013.04.010",
+   "type": "article",
+   "title": "Detecting cell assemblies in large neuronal populations",
+   "authors": [
+    {
+     "family": "Lopes-dos-Santos",
+     "given": "Vítor"
+    },
+    {
+     "family": "Ribeiro",
+     "given": "Sidarta"
+    },
+    {
+     "family": "Tort",
+     "given": "Adriano B.L."
+    }
+   ],
+   "journal": "Journal of Neuroscience Methods",
+   "publisher": "",
+   "year": 2013,
+   "volume": "220",
+   "issue": "2",
+   "pages": "149-166",
+   "pmid": "23639919",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.1016/j.neuron.2015.03.027": {
+   "doi": "10.1016/j.neuron.2015.03.027",
+   "type": "article",
+   "title": "A Cellular Resolution Map of Barrel Cortex Activity during Tactile Behavior",
+   "authors": [
+    {
+     "family": "Peron",
+     "given": "Simon P."
+    },
+    {
+     "family": "Freeman",
+     "given": "Jeremy"
+    },
+    {
+     "family": "Iyer",
+     "given": "Vijay"
+    },
+    {
+     "family": "Guo",
+     "given": "Caiying"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    }
+   ],
+   "journal": "Neuron",
+   "publisher": "",
+   "year": 2015,
+   "volume": "86",
+   "issue": "",
+   "pages": "783-799",
+   "pmid": "25913859",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-traces"
+   ]
+  },
+  "10.1016/j.neuron.2015.11.031": {
+   "doi": "10.1016/j.neuron.2015.11.031",
+   "type": "article",
+   "title": "Mapping Sub-Second Structure in Mouse Behavior",
+   "authors": [
+    {
+     "family": "Wiltschko",
+     "given": "Alexander B."
+    },
+    {
+     "family": "Johnson",
+     "given": "Matthew J."
+    },
+    {
+     "family": "Iurilli",
+     "given": "Giuliano"
+    },
+    {
+     "family": "Peterson",
+     "given": "Ralph E."
+    },
+    {
+     "family": "Katon",
+     "given": "Jesse M."
+    },
+    {
+     "family": "Pashkovski",
+     "given": "Stan L."
+    },
+    {
+     "family": "Abraira",
+     "given": "Victoria E."
+    },
+    {
+     "family": "Adams",
+     "given": "Ryan P."
+    },
+    {
+     "family": "Datta",
+     "given": "Sandeep Robert"
+    }
+   ],
+   "journal": "Neuron",
+   "publisher": "",
+   "year": 2015,
+   "volume": "88",
+   "issue": "6",
+   "pages": "1121-1135",
+   "pmid": "26687221",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.1016/j.neuron.2018.03.037": {
+   "doi": "10.1016/j.neuron.2018.03.037",
+   "type": "article",
+   "title": "Vision and Locomotion Shape the Interactions between Neuron Types in Mouse Visual Cortex",
+   "authors": [
+    {
+     "family": "Dipoppa",
+     "given": "Mario"
+    },
+    {
+     "family": "Ranson",
+     "given": "Adam"
+    },
+    {
+     "family": "Krumin",
+     "given": "Michael"
+    },
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    }
+   ],
+   "journal": "Neuron",
+   "publisher": "",
+   "year": 2018,
+   "volume": "98",
+   "issue": "",
+   "pages": "602-615.e8",
+   "pmid": "29656873",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-traces"
+   ]
+  },
+  "10.1016/j.neuron.2019.01.026": {
+   "doi": "10.1016/j.neuron.2019.01.026",
+   "type": "article",
+   "title": "Cortical Areas Interact through a Communication Subspace",
+   "authors": [
+    {
+     "family": "Semedo",
+     "given": "João D."
+    },
+    {
+     "family": "Zandvakili",
+     "given": "Amin"
+    },
+    {
+     "family": "Machens",
+     "given": "Christian K."
+    },
+    {
+     "family": "Yu",
+     "given": "Byron M."
+    },
+    {
+     "family": "Kohn",
+     "given": "Adam"
+    }
+   ],
+   "journal": "Neuron",
+   "publisher": "",
+   "year": 2019,
+   "volume": "102",
+   "issue": "1",
+   "pages": "249-259.e4",
+   "pmid": "30770252",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-decoding"
+   ]
+  },
+  "10.1016/s0014-2999(03)01272-x": {
+   "doi": "10.1016/s0014-2999(03)01272-x",
+   "type": "article",
+   "title": "The open field as a paradigm to measure the effects of drugs on anxiety-like behaviors: a review",
+   "authors": [
+    {
+     "family": "Prut",
+     "given": "Laetitia"
+    },
+    {
+     "family": "Belzung",
+     "given": "Catherine"
+    }
+   ],
+   "journal": "European Journal of Pharmacology",
+   "publisher": "",
+   "year": 2003,
+   "volume": "463",
+   "issue": "1-3",
+   "pages": "3-33",
+   "pmid": "12600700",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics"
+   ]
+  },
+  "10.1021/ac60214a047": {
+   "doi": "10.1021/ac60214a047",
+   "type": "article",
+   "title": "Smoothing and Differentiation of Data by Simplified Least Squares Procedures.",
+   "authors": [
+    {
+     "family": "Savitzky",
+     "given": "Abraham."
+    },
+    {
+     "family": "Golay",
+     "given": "M. J. E."
+    }
+   ],
+   "journal": "Analytical Chemistry",
+   "publisher": "",
+   "year": 1964,
+   "volume": "36",
+   "issue": "8",
+   "pages": "1627-1639",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics"
+   ]
+  },
+  "10.1038/nature07140": {
+   "doi": "10.1038/nature07140",
+   "type": "article",
+   "title": "Spatio-temporal correlations and visual signalling in a complete neuronal population",
+   "authors": [
+    {
+     "family": "Pillow",
+     "given": "Jonathan W."
+    },
+    {
+     "family": "Shlens",
+     "given": "Jonathon"
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Sher",
+     "given": "Alexander"
+    },
+    {
+     "family": "Litke",
+     "given": "Alan M."
+    },
+    {
+     "family": "Chichilnisky",
+     "given": "E. J."
+    },
+    {
+     "family": "Simoncelli",
+     "given": "Eero P."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2008,
+   "volume": "454",
+   "issue": "7207",
+   "pages": "995-999",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-encoding"
+   ]
+  },
+  "10.1038/nature14622": {
+   "doi": "10.1038/nature14622",
+   "type": "article",
+   "title": "Speed cells in the medial entorhinal cortex",
+   "authors": [
+    {
+     "family": "Kropff",
+     "given": "Emilio"
+    },
+    {
+     "family": "Carmichael",
+     "given": "James E."
+    },
+    {
+     "family": "Moser",
+     "given": "May-Britt"
+    },
+    {
+     "family": "Moser",
+     "given": "Edvard I."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2015,
+   "volume": "523",
+   "issue": "7561",
+   "pages": "419-424",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-encoding"
+   ]
+  },
+  "10.1038/nature24636": {
+   "doi": "10.1038/nature24636",
+   "type": "article",
+   "title": "Fully integrated silicon probes for high-density recording of neural activity",
+   "authors": [
+    {
+     "family": "Jun",
+     "given": "James J."
+    },
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Siegle",
+     "given": "Joshua H."
+    },
+    {
+     "family": "Denman",
+     "given": "Daniel J."
+    },
+    {
+     "family": "Bauza",
+     "given": "Marius"
+    },
+    {
+     "family": "Barbarits",
+     "given": "Brian"
+    },
+    {
+     "family": "Lee",
+     "given": "Albert K."
+    },
+    {
+     "family": "Anastassiou",
+     "given": "Costas A."
+    },
+    {
+     "family": "Andrei",
+     "given": "Alexandru"
+    },
+    {
+     "family": "Aydın",
+     "given": "Çağatay"
+    },
+    {
+     "family": "Barbic",
+     "given": "Mladen"
+    },
+    {
+     "family": "Blanche",
+     "given": "Timothy J."
+    },
+    {
+     "family": "Bonin",
+     "given": "Vincent"
+    },
+    {
+     "family": "Couto",
+     "given": "João"
+    },
+    {
+     "family": "Dutta",
+     "given": "Barundeb"
+    },
+    {
+     "family": "Gratiy",
+     "given": "Sergey L."
+    },
+    {
+     "family": "Gutnisky",
+     "given": "Diego A."
+    },
+    {
+     "family": "Häusser",
+     "given": "Michael"
+    },
+    {
+     "family": "Karsh",
+     "given": "Bill"
+    },
+    {
+     "family": "Ledochowitsch",
+     "given": "Peter"
+    },
+    {
+     "family": "Lopez",
+     "given": "Carolina Mora"
+    },
+    {
+     "family": "Mitelut",
+     "given": "Catalin"
+    },
+    {
+     "family": "Musa",
+     "given": "Silke"
+    },
+    {
+     "family": "Okun",
+     "given": "Michael"
+    },
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    },
+    {
+     "family": "Putzeys",
+     "given": "Jan"
+    },
+    {
+     "family": "Rich",
+     "given": "P. Dylan"
+    },
+    {
+     "family": "Rossant",
+     "given": "Cyrille"
+    },
+    {
+     "family": "Sun",
+     "given": "Wei-lung"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    },
+    {
+     "family": "Koch",
+     "given": "Christof"
+    },
+    {
+     "family": "O’Keefe",
+     "given": "John"
+    },
+    {
+     "family": "Harris",
+     "given": "Timothy D."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2017,
+   "volume": "551",
+   "issue": "7679",
+   "pages": "232-236",
+   "pmid": "29120427",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep"
+   ]
+  },
+  "10.1038/nn.2842": {
+   "doi": "10.1038/nn.2842",
+   "type": "article",
+   "title": "Measuring and interpreting neuronal correlations",
+   "authors": [
+    {
+     "family": "Cohen",
+     "given": "Marlene R"
+    },
+    {
+     "family": "Kohn",
+     "given": "Adam"
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2011,
+   "volume": "14",
+   "issue": "7",
+   "pages": "811-819",
+   "pmid": "21709677",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.1038/s41467-024-48792-2": {
+   "doi": "10.1038/s41467-024-48792-2",
+   "type": "article",
+   "title": "SuperAnimal pretrained pose estimation models for behavioral analysis",
+   "authors": [
+    {
+     "family": "Ye",
+     "given": "Shaokai"
+    },
+    {
+     "family": "Filippova",
+     "given": "Anastasiia"
+    },
+    {
+     "family": "Lauer",
+     "given": "Jessy"
+    },
+    {
+     "family": "Schneider",
+     "given": "Steffen"
+    },
+    {
+     "family": "Vidal",
+     "given": "Maxime"
+    },
+    {
+     "family": "Qiu",
+     "given": "Tian"
+    },
+    {
+     "family": "Mathis",
+     "given": "Alexander"
+    },
+    {
+     "family": "Mathis",
+     "given": "Mackenzie Weygandt"
+    }
+   ],
+   "journal": "Nature Communications",
+   "publisher": "",
+   "year": 2024,
+   "volume": "15",
+   "issue": "1",
+   "pages": "5165",
+   "pmid": "38906853",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-estimate"
+   ]
+  },
+  "10.1038/s41467-025-58698-2": {
+   "doi": "10.1038/s41467-025-58698-2",
+   "type": "article",
+   "title": "Multiplexed subspaces route neural activity across brain-wide networks",
+   "authors": [
+    {
+     "family": "MacDowell",
+     "given": "Camden J."
+    },
+    {
+     "family": "Libby",
+     "given": "Alexandra"
+    },
+    {
+     "family": "Jahn",
+     "given": "Caroline I."
+    },
+    {
+     "family": "Tafazoli",
+     "given": "Sina"
+    },
+    {
+     "family": "Ardalan",
+     "given": "Adel"
+    },
+    {
+     "family": "Buschman",
+     "given": "Timothy J."
+    }
+   ],
+   "journal": "Nature Communications",
+   "publisher": "",
+   "year": 2025,
+   "volume": "16",
+   "issue": "1",
+   "pages": "3359",
+   "pmid": "40204762",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-decoding"
+   ]
+  },
+  "10.1038/s41586-019-1787-x": {
+   "doi": "10.1038/s41586-019-1787-x",
+   "type": "article",
+   "title": "Distributed coding of choice, action and engagement across the mouse brain",
+   "authors": [
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Zatka-Haas",
+     "given": "Peter"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2019,
+   "volume": "576",
+   "issue": "7786",
+   "pages": "266-273",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-align"
+   ]
+  },
+  "10.1038/s41586-020-2649-2": {
+   "doi": "10.1038/s41586-020-2649-2",
+   "type": "article",
+   "title": "Array programming with NumPy",
+   "authors": [
+    {
+     "family": "Harris",
+     "given": "Charles R."
+    },
+    {
+     "family": "Millman",
+     "given": "K. Jarrod"
+    },
+    {
+     "family": "van der Walt",
+     "given": "Stéfan J."
+    },
+    {
+     "family": "Gommers",
+     "given": "Ralf"
+    },
+    {
+     "family": "Virtanen",
+     "given": "Pauli"
+    },
+    {
+     "family": "Cournapeau",
+     "given": "David"
+    },
+    {
+     "family": "Wieser",
+     "given": "Eric"
+    },
+    {
+     "family": "Taylor",
+     "given": "Julian"
+    },
+    {
+     "family": "Berg",
+     "given": "Sebastian"
+    },
+    {
+     "family": "Smith",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Kern",
+     "given": "Robert"
+    },
+    {
+     "family": "Picus",
+     "given": "Matti"
+    },
+    {
+     "family": "Hoyer",
+     "given": "Stephan"
+    },
+    {
+     "family": "van Kerkwijk",
+     "given": "Marten H."
+    },
+    {
+     "family": "Brett",
+     "given": "Matthew"
+    },
+    {
+     "family": "Haldane",
+     "given": "Allan"
+    },
+    {
+     "family": "del Río",
+     "given": "Jaime Fernández"
+    },
+    {
+     "family": "Wiebe",
+     "given": "Mark"
+    },
+    {
+     "family": "Peterson",
+     "given": "Pearu"
+    },
+    {
+     "family": "Gérard-Marchant",
+     "given": "Pierre"
+    },
+    {
+     "family": "Sheppard",
+     "given": "Kevin"
+    },
+    {
+     "family": "Reddy",
+     "given": "Tyler"
+    },
+    {
+     "family": "Weckesser",
+     "given": "Warren"
+    },
+    {
+     "family": "Abbasi",
+     "given": "Hameer"
+    },
+    {
+     "family": "Gohlke",
+     "given": "Christoph"
+    },
+    {
+     "family": "Oliphant",
+     "given": "Travis E."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2020,
+   "volume": "585",
+   "issue": "7825",
+   "pages": "357-362",
+   "pmid": "32939066",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.1038/s41586-023-06031-6": {
+   "doi": "10.1038/s41586-023-06031-6",
+   "type": "article",
+   "title": "Learnable latent embeddings for joint behavioural and neural analysis",
+   "authors": [
+    {
+     "family": "Schneider",
+     "given": "Steffen"
+    },
+    {
+     "family": "Lee",
+     "given": "Jin Hwa"
+    },
+    {
+     "family": "Mathis",
+     "given": "Mackenzie Weygandt"
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2023,
+   "volume": "617",
+   "issue": "7960",
+   "pages": "360-368",
+   "pmid": "37138088",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-embedding",
+    "neuro-decoding"
+   ]
+  },
+  "10.1038/s41586-025-09226-1": {
+   "doi": "10.1038/s41586-025-09226-1",
+   "type": "article",
+   "title": "Brain-wide representations of prior information in mouse decision-making",
+   "authors": [
+    {
+     "family": "Findling",
+     "given": "Charles"
+    },
+    {
+     "family": "Hubert",
+     "given": "Félix"
+    },
+    {
+     "name": "International Brain Laboratory"
+    },
+    {
+     "family": "Acerbi",
+     "given": "Luigi"
+    },
+    {
+     "family": "Benson",
+     "given": "Brandon"
+    },
+    {
+     "family": "Benson",
+     "given": "Julius"
+    },
+    {
+     "family": "Birman",
+     "given": "Daniel"
+    },
+    {
+     "family": "Bonacchi",
+     "given": "Niccolò"
+    },
+    {
+     "family": "Buchanan",
+     "given": "E. Kelly"
+    },
+    {
+     "family": "Bruijns",
+     "given": "Sebastian"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Catarino",
+     "given": "Joana A."
+    },
+    {
+     "family": "Chapuis",
+     "given": "Gaelle A."
+    },
+    {
+     "family": "Churchland",
+     "given": "Anne K."
+    },
+    {
+     "family": "Dan",
+     "given": "Yang"
+    },
+    {
+     "family": "Davatolhagh",
+     "given": "Felicia"
+    },
+    {
+     "family": "DeWitt",
+     "given": "Eric E. J."
+    },
+    {
+     "family": "Engel",
+     "given": "Tatiana A."
+    },
+    {
+     "family": "Fabbri",
+     "given": "Michele"
+    },
+    {
+     "family": "Faulkner",
+     "given": "Mayo A."
+    },
+    {
+     "family": "Fiete",
+     "given": "Ila Rani"
+    },
+    {
+     "family": "Freitas-Silva",
+     "given": "Laura"
+    },
+    {
+     "family": "Gerçek",
+     "given": "Berk"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    },
+    {
+     "family": "Häusser",
+     "given": "Michael"
+    },
+    {
+     "family": "Hofer",
+     "given": "Sonja B."
+    },
+    {
+     "family": "Hu",
+     "given": "Fei"
+    },
+    {
+     "family": "Huntenburg",
+     "given": "Julia M."
+    },
+    {
+     "family": "Khanal",
+     "given": "Anup"
+    },
+    {
+     "family": "Krasniak",
+     "given": "Chris"
+    },
+    {
+     "family": "Langdon",
+     "given": "Christopher"
+    },
+    {
+     "family": "Langfield",
+     "given": "Christopher A."
+    },
+    {
+     "family": "Latham",
+     "given": "Peter E."
+    },
+    {
+     "family": "Lau",
+     "given": "Petrina Y. P."
+    },
+    {
+     "family": "Mainen",
+     "given": "Zach"
+    },
+    {
+     "family": "Meijer",
+     "given": "Guido T."
+    },
+    {
+     "family": "Miska",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Mrsic-Flogel",
+     "given": "Thomas D."
+    },
+    {
+     "family": "Noel",
+     "given": "Jean-Paul"
+    },
+    {
+     "family": "Nylund",
+     "given": "Kai"
+    },
+    {
+     "family": "Pan-Vazquez",
+     "given": "Alejandro"
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Pillow",
+     "given": "Jonathan"
+    },
+    {
+     "family": "Rossant",
+     "given": "Cyrille"
+    },
+    {
+     "family": "Roth",
+     "given": "Noam"
+    },
+    {
+     "family": "Schaeffer",
+     "given": "Rylan"
+    },
+    {
+     "family": "Schartner",
+     "given": "Michael"
+    },
+    {
+     "family": "Shi",
+     "given": "Yanliang"
+    },
+    {
+     "family": "Socha",
+     "given": "Karolina Z."
+    },
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Tessereau",
+     "given": "Charline"
+    },
+    {
+     "family": "Urai",
+     "given": "Anne E."
+    },
+    {
+     "family": "Wells",
+     "given": "Miles J."
+    },
+    {
+     "family": "West",
+     "given": "Steven Jon"
+    },
+    {
+     "family": "Whiteway",
+     "given": "Matthew R."
+    },
+    {
+     "family": "Winter",
+     "given": "Olivier"
+    },
+    {
+     "family": "Witten",
+     "given": "Ilana B."
+    },
+    {
+     "family": "Zador",
+     "given": "Anthony"
+    },
+    {
+     "family": "Zhang",
+     "given": "Yizi"
+    },
+    {
+     "family": "Dayan",
+     "given": "Peter"
+    },
+    {
+     "family": "Pouget",
+     "given": "Alexandre"
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2025,
+   "volume": "645",
+   "issue": "8079",
+   "pages": "192-200",
+   "pmid": "40903597",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-decoding"
+   ]
+  },
+  "10.1038/s41586-025-09235-0": {
+   "doi": "10.1038/s41586-025-09235-0",
+   "type": "article",
+   "title": "A brain-wide map of neural activity during complex behaviour",
+   "authors": [
+    {
+     "name": "International Brain Laboratory"
+    },
+    {
+     "family": "Meshulam",
+     "given": "Leenoy"
+    },
+    {
+     "family": "Angelaki",
+     "given": "Dora"
+    },
+    {
+     "family": "Benson",
+     "given": "Julius"
+    },
+    {
+     "family": "McRoberts",
+     "given": "Isaiah"
+    },
+    {
+     "family": "Noel",
+     "given": "Jean-Paul"
+    },
+    {
+     "family": "Arlandis",
+     "given": "Jaime"
+    },
+    {
+     "family": "Bonacchi",
+     "given": "Niccolò"
+    },
+    {
+     "family": "Bougrova",
+     "given": "Kcenia"
+    },
+    {
+     "family": "Catarino",
+     "given": "Joana A."
+    },
+    {
+     "family": "Cazettes",
+     "given": "Fanny"
+    },
+    {
+     "family": "Crombie",
+     "given": "Davide"
+    },
+    {
+     "family": "DeWitt",
+     "given": "Eric EJ"
+    },
+    {
+     "family": "Freitas-Silva",
+     "given": "Laura"
+    },
+    {
+     "family": "Laranjeira",
+     "given": "Inês C."
+    },
+    {
+     "family": "Mainen",
+     "given": "Zachary F."
+    },
+    {
+     "family": "Meijer",
+     "given": "Guido T."
+    },
+    {
+     "family": "Rai",
+     "given": "Pranav"
+    },
+    {
+     "family": "Raiser",
+     "given": "Georg"
+    },
+    {
+     "family": "Rau",
+     "given": "Florian"
+    },
+    {
+     "family": "Schartner",
+     "given": "Michael M."
+    },
+    {
+     "family": "Winter",
+     "given": "Olivier"
+    },
+    {
+     "family": "Urai",
+     "given": "Anne E."
+    },
+    {
+     "family": "Aguillon-Rodriguez",
+     "given": "Valeria"
+    },
+    {
+     "family": "Soitu",
+     "given": "Cristian"
+    },
+    {
+     "family": "Zador",
+     "given": "Anthony M."
+    },
+    {
+     "family": "Krasniak",
+     "given": "Christopher S."
+    },
+    {
+     "family": "Dan",
+     "given": "Yang"
+    },
+    {
+     "family": "Hu",
+     "given": "Fei"
+    },
+    {
+     "family": "Benson",
+     "given": "Brandon"
+    },
+    {
+     "family": "Ganguli",
+     "given": "Surya"
+    },
+    {
+     "family": "Acerbi",
+     "given": "Luigi"
+    },
+    {
+     "family": "Chapuis",
+     "given": "Gaelle A."
+    },
+    {
+     "family": "Findling",
+     "given": "Charles"
+    },
+    {
+     "family": "Gercek",
+     "given": "Berk"
+    },
+    {
+     "family": "Huber",
+     "given": "Felix"
+    },
+    {
+     "family": "Pouget",
+     "given": "Alexandre"
+    },
+    {
+     "family": "Barrell",
+     "given": "Hailey"
+    },
+    {
+     "family": "Birman",
+     "given": "Dan"
+    },
+    {
+     "family": "Miller",
+     "given": "Kim"
+    },
+    {
+     "family": "Nylund",
+     "given": "Kai"
+    },
+    {
+     "family": "Roth",
+     "given": "Noam"
+    },
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Tucker",
+     "given": "Matthew"
+    },
+    {
+     "family": "Yang",
+     "given": "Kenneth"
+    },
+    {
+     "family": "Fiete",
+     "given": "Ila Rani"
+    },
+    {
+     "family": "Liu",
+     "given": "Ari"
+    },
+    {
+     "family": "Schaeffer",
+     "given": "Rylan"
+    },
+    {
+     "family": "Churchland",
+     "given": "Anne K."
+    },
+    {
+     "family": "Davatolhagh",
+     "given": "Felicia"
+    },
+    {
+     "family": "Khanal",
+     "given": "Anup"
+    },
+    {
+     "family": "Melin",
+     "given": "Maxwell"
+    },
+    {
+     "family": "Murakami",
+     "given": "Masayoshi"
+    },
+    {
+     "family": "Denève",
+     "given": "Sophie"
+    },
+    {
+     "family": "Gordeliy",
+     "given": "Ivan"
+    },
+    {
+     "family": "Ahmadi",
+     "given": "Mandana"
+    },
+    {
+     "family": "Amjad",
+     "given": "Jaweria"
+    },
+    {
+     "family": "Hiratani",
+     "given": "Naoki"
+    },
+    {
+     "family": "Krishnagopal",
+     "given": "Sanjukta"
+    },
+    {
+     "family": "Latham",
+     "given": "Peter"
+    },
+    {
+     "family": "Pezzotta",
+     "given": "Alberto"
+    },
+    {
+     "family": "Xu",
+     "given": "Zekai"
+    },
+    {
+     "family": "Banga",
+     "given": "Kush"
+    },
+    {
+     "family": "Bhagat",
+     "given": "Jai"
+    },
+    {
+     "family": "Faulkner",
+     "given": "Mayo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    },
+    {
+     "family": "Krumin",
+     "given": "Michael"
+    },
+    {
+     "family": "Picard",
+     "given": "Samuel"
+    },
+    {
+     "family": "Quadrado",
+     "given": "Carolina"
+    },
+    {
+     "family": "Rossant",
+     "given": "Cyrille"
+    },
+    {
+     "family": "Wells",
+     "given": "Miles J."
+    },
+    {
+     "family": "Wool",
+     "given": "Lauren E."
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Landemard",
+     "given": "Agnès"
+    },
+    {
+     "family": "Socha",
+     "given": "Karolina Z."
+    },
+    {
+     "family": "Bruijns",
+     "given": "Sebastian A."
+    },
+    {
+     "family": "Dayan",
+     "given": "Peter"
+    },
+    {
+     "family": "Huntenburg",
+     "given": "Julia M."
+    },
+    {
+     "family": "Kundu",
+     "given": "Debottam"
+    },
+    {
+     "family": "Oloomi",
+     "given": "Farideh"
+    },
+    {
+     "family": "Tessereau",
+     "given": "Charline"
+    },
+    {
+     "family": "Ashwood",
+     "given": "Zoe C."
+    },
+    {
+     "family": "Engel",
+     "given": "Tatiana"
+    },
+    {
+     "family": "Fetcho",
+     "given": "Robert"
+    },
+    {
+     "family": "Haetzel",
+     "given": "Laura M."
+    },
+    {
+     "family": "Langdon",
+     "given": "Christopher"
+    },
+    {
+     "family": "McMannon",
+     "given": "Brenna"
+    },
+    {
+     "family": "Mohammadi",
+     "given": "Zeinab"
+    },
+    {
+     "family": "Vazquez",
+     "given": "Alejandro Pan"
+    },
+    {
+     "family": "Pillow",
+     "given": "Jonathan W."
+    },
+    {
+     "family": "Roy",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Shi",
+     "given": "Yanliang"
+    },
+    {
+     "family": "Witten",
+     "given": "Ilana B."
+    },
+    {
+     "family": "Campbell",
+     "given": "Robert"
+    },
+    {
+     "family": "Ghani",
+     "given": "Naureen"
+    },
+    {
+     "family": "Hofer",
+     "given": "Sonja B."
+    },
+    {
+     "family": "Martinez-Vergara",
+     "given": "Hernando"
+    },
+    {
+     "family": "Miska",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Mrsic-Flogel",
+     "given": "Thomas"
+    },
+    {
+     "family": "West",
+     "given": "Steven J."
+    },
+    {
+     "family": "Yang",
+     "given": "Yaxuan"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Taheri",
+     "given": "Marsa"
+    },
+    {
+     "family": "Häusser",
+     "given": "Michael"
+    },
+    {
+     "family": "Lau",
+     "given": "Petrina Y. P."
+    },
+    {
+     "family": "Makri-Cottington",
+     "given": "Amalia"
+    },
+    {
+     "family": "Perrenoud",
+     "given": "Sabrina"
+    },
+    {
+     "family": "Abbot",
+     "given": "Larry"
+    },
+    {
+     "family": "Bayer",
+     "given": "Hannah M."
+    },
+    {
+     "family": "Boussard",
+     "given": "Julien"
+    },
+    {
+     "family": "Buchanan",
+     "given": "E. Kelly"
+    },
+    {
+     "family": "Fabbri",
+     "given": "Michele"
+    },
+    {
+     "family": "Hurwitz",
+     "given": "Cole"
+    },
+    {
+     "family": "Langfield",
+     "given": "Christopher"
+    },
+    {
+     "family": "Lee",
+     "given": "Hyun Dong"
+    },
+    {
+     "family": "Mitelut",
+     "given": "Catalin"
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Saniee",
+     "given": "Kamron"
+    },
+    {
+     "family": "Varol",
+     "given": "Erdem"
+    },
+    {
+     "family": "Wang",
+     "given": "Shuqi"
+    },
+    {
+     "family": "Whiteway",
+     "given": "Matthew R."
+    },
+    {
+     "family": "Windolf",
+     "given": "Charles"
+    },
+    {
+     "family": "Yu",
+     "given": "Han"
+    },
+    {
+     "family": "Zhang",
+     "given": "Yizi"
+    },
+    {
+     "family": "Angelaki",
+     "given": "Dora"
+    },
+    {
+     "family": "Benson",
+     "given": "Brandon"
+    },
+    {
+     "family": "Benson",
+     "given": "Julius"
+    },
+    {
+     "family": "Birman",
+     "given": "Daniel"
+    },
+    {
+     "family": "Bonacchi",
+     "given": "Niccolò"
+    },
+    {
+     "family": "Bougrova",
+     "given": "Kcénia"
+    },
+    {
+     "family": "Bruijns",
+     "given": "Sebastian A."
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Catarino",
+     "given": "Joana A."
+    },
+    {
+     "family": "Chapuis",
+     "given": "Gaelle A."
+    },
+    {
+     "family": "Churchland",
+     "given": "Anne K."
+    },
+    {
+     "family": "Dan",
+     "given": "Yang"
+    },
+    {
+     "family": "Davatolhagh",
+     "given": "Felicia"
+    },
+    {
+     "family": "Dayan",
+     "given": "Peter"
+    },
+    {
+     "family": "DeWitt",
+     "given": "Eric EJ"
+    },
+    {
+     "family": "Engel",
+     "given": "Tatiana A."
+    },
+    {
+     "family": "Fabbri",
+     "given": "Michele"
+    },
+    {
+     "family": "Faulkner",
+     "given": "Mayo"
+    },
+    {
+     "family": "Fiete",
+     "given": "Ila Rani"
+    },
+    {
+     "family": "Findling",
+     "given": "Charles"
+    },
+    {
+     "family": "Freitas-Silva",
+     "given": "Laura"
+    },
+    {
+     "family": "Gerçek",
+     "given": "Berk"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    },
+    {
+     "family": "Häusser",
+     "given": "Michael"
+    },
+    {
+     "family": "Hofer",
+     "given": "Sonja B."
+    },
+    {
+     "family": "Hu",
+     "given": "Fei"
+    },
+    {
+     "family": "Hubert",
+     "given": "Félix"
+    },
+    {
+     "family": "Huntenburg",
+     "given": "Julia M."
+    },
+    {
+     "family": "Khanal",
+     "given": "Anup"
+    },
+    {
+     "family": "Krasniak",
+     "given": "Christopher S."
+    },
+    {
+     "family": "Langdon",
+     "given": "Christopher"
+    },
+    {
+     "family": "Langfield",
+     "given": "Christopher"
+    },
+    {
+     "family": "Lau",
+     "given": "Petrina Y. P."
+    },
+    {
+     "family": "Mainen",
+     "given": "Zachary F."
+    },
+    {
+     "family": "Meijer",
+     "given": "Guido T."
+    },
+    {
+     "family": "Miska",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Mrsic-Flogel",
+     "given": "Thomas D."
+    },
+    {
+     "family": "Noel",
+     "given": "Jean-Paul"
+    },
+    {
+     "family": "Nylund",
+     "given": "Kai"
+    },
+    {
+     "family": "Pan-Vazquez",
+     "given": "Alejandro"
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Pouget",
+     "given": "Alexandre"
+    },
+    {
+     "family": "Rossant",
+     "given": "Cyrille"
+    },
+    {
+     "family": "Roth",
+     "given": "Noam"
+    },
+    {
+     "family": "Schaeffer",
+     "given": "Rylan"
+    },
+    {
+     "family": "Schartner",
+     "given": "Michael"
+    },
+    {
+     "family": "Shi",
+     "given": "Yanliang"
+    },
+    {
+     "family": "Socha",
+     "given": "Karolina Z."
+    },
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Urai",
+     "given": "Anne E."
+    },
+    {
+     "family": "Wells",
+     "given": "Miles J."
+    },
+    {
+     "family": "West",
+     "given": "Steven J."
+    },
+    {
+     "family": "Whiteway",
+     "given": "Matthew R."
+    },
+    {
+     "family": "Winter",
+     "given": "Olivier"
+    },
+    {
+     "family": "Witten",
+     "given": "Ilana B."
+    }
+   ],
+   "journal": "Nature",
+   "publisher": "",
+   "year": 2025,
+   "volume": "645",
+   "issue": "8079",
+   "pages": "177-191",
+   "pmid": "40903598",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort",
+    "ephys-curate",
+    "neuro-align",
+    "neuro-encoding",
+    "neuro-embedding",
+    "neuro-decoding",
+    "neuro-report"
+   ]
+  },
+  "10.1038/s41592-019-0686-2": {
+   "doi": "10.1038/s41592-019-0686-2",
+   "type": "article",
+   "title": "SciPy 1.0: fundamental algorithms for scientific computing in Python",
+   "authors": [
+    {
+     "family": "Virtanen",
+     "given": "Pauli"
+    },
+    {
+     "family": "Gommers",
+     "given": "Ralf"
+    },
+    {
+     "family": "Oliphant",
+     "given": "Travis E."
+    },
+    {
+     "family": "Haberland",
+     "given": "Matt"
+    },
+    {
+     "family": "Reddy",
+     "given": "Tyler"
+    },
+    {
+     "family": "Cournapeau",
+     "given": "David"
+    },
+    {
+     "family": "Burovski",
+     "given": "Evgeni"
+    },
+    {
+     "family": "Peterson",
+     "given": "Pearu"
+    },
+    {
+     "family": "Weckesser",
+     "given": "Warren"
+    },
+    {
+     "family": "Bright",
+     "given": "Jonathan"
+    },
+    {
+     "family": "van der Walt",
+     "given": "Stéfan J."
+    },
+    {
+     "family": "Brett",
+     "given": "Matthew"
+    },
+    {
+     "family": "Wilson",
+     "given": "Joshua"
+    },
+    {
+     "family": "Millman",
+     "given": "K. Jarrod"
+    },
+    {
+     "family": "Mayorov",
+     "given": "Nikolay"
+    },
+    {
+     "family": "Nelson",
+     "given": "Andrew R. J."
+    },
+    {
+     "family": "Jones",
+     "given": "Eric"
+    },
+    {
+     "family": "Kern",
+     "given": "Robert"
+    },
+    {
+     "family": "Larson",
+     "given": "Eric"
+    },
+    {
+     "family": "Carey",
+     "given": "C J"
+    },
+    {
+     "family": "Polat",
+     "given": "İlhan"
+    },
+    {
+     "family": "Feng",
+     "given": "Yu"
+    },
+    {
+     "family": "Moore",
+     "given": "Eric W."
+    },
+    {
+     "family": "VanderPlas",
+     "given": "Jake"
+    },
+    {
+     "family": "Laxalde",
+     "given": "Denis"
+    },
+    {
+     "family": "Perktold",
+     "given": "Josef"
+    },
+    {
+     "family": "Cimrman",
+     "given": "Robert"
+    },
+    {
+     "family": "Henriksen",
+     "given": "Ian"
+    },
+    {
+     "family": "Quintero",
+     "given": "E. A."
+    },
+    {
+     "family": "Harris",
+     "given": "Charles R."
+    },
+    {
+     "family": "Archibald",
+     "given": "Anne M."
+    },
+    {
+     "family": "Ribeiro",
+     "given": "Antônio H."
+    },
+    {
+     "family": "Pedregosa",
+     "given": "Fabian"
+    },
+    {
+     "family": "van Mulbregt",
+     "given": "Paul"
+    },
+    {
+     "name": "SciPy 1.0 Contributors"
+    },
+    {
+     "family": "Vijaykumar",
+     "given": "Aditya"
+    },
+    {
+     "family": "Bardelli",
+     "given": "Alessandro Pietro"
+    },
+    {
+     "family": "Rothberg",
+     "given": "Alex"
+    },
+    {
+     "family": "Hilboll",
+     "given": "Andreas"
+    },
+    {
+     "family": "Kloeckner",
+     "given": "Andreas"
+    },
+    {
+     "family": "Scopatz",
+     "given": "Anthony"
+    },
+    {
+     "family": "Lee",
+     "given": "Antony"
+    },
+    {
+     "family": "Rokem",
+     "given": "Ariel"
+    },
+    {
+     "family": "Woods",
+     "given": "C. Nathan"
+    },
+    {
+     "family": "Fulton",
+     "given": "Chad"
+    },
+    {
+     "family": "Masson",
+     "given": "Charles"
+    },
+    {
+     "family": "Häggström",
+     "given": "Christian"
+    },
+    {
+     "family": "Fitzgerald",
+     "given": "Clark"
+    },
+    {
+     "family": "Nicholson",
+     "given": "David A."
+    },
+    {
+     "family": "Hagen",
+     "given": "David R."
+    },
+    {
+     "family": "Pasechnik",
+     "given": "Dmitrii V."
+    },
+    {
+     "family": "Olivetti",
+     "given": "Emanuele"
+    },
+    {
+     "family": "Martin",
+     "given": "Eric"
+    },
+    {
+     "family": "Wieser",
+     "given": "Eric"
+    },
+    {
+     "family": "Silva",
+     "given": "Fabrice"
+    },
+    {
+     "family": "Lenders",
+     "given": "Felix"
+    },
+    {
+     "family": "Wilhelm",
+     "given": "Florian"
+    },
+    {
+     "family": "Young",
+     "given": "G."
+    },
+    {
+     "family": "Price",
+     "given": "Gavin A."
+    },
+    {
+     "family": "Ingold",
+     "given": "Gert-Ludwig"
+    },
+    {
+     "family": "Allen",
+     "given": "Gregory E."
+    },
+    {
+     "family": "Lee",
+     "given": "Gregory R."
+    },
+    {
+     "family": "Audren",
+     "given": "Hervé"
+    },
+    {
+     "family": "Probst",
+     "given": "Irvin"
+    },
+    {
+     "family": "Dietrich",
+     "given": "Jörg P."
+    },
+    {
+     "family": "Silterra",
+     "given": "Jacob"
+    },
+    {
+     "family": "Webber",
+     "given": "James T"
+    },
+    {
+     "family": "Slavič",
+     "given": "Janko"
+    },
+    {
+     "family": "Nothman",
+     "given": "Joel"
+    },
+    {
+     "family": "Buchner",
+     "given": "Johannes"
+    },
+    {
+     "family": "Kulick",
+     "given": "Johannes"
+    },
+    {
+     "family": "Schönberger",
+     "given": "Johannes L."
+    },
+    {
+     "family": "de Miranda Cardoso",
+     "given": "José Vinícius"
+    },
+    {
+     "family": "Reimer",
+     "given": "Joscha"
+    },
+    {
+     "family": "Harrington",
+     "given": "Joseph"
+    },
+    {
+     "family": "Rodríguez",
+     "given": "Juan Luis Cano"
+    },
+    {
+     "family": "Nunez-Iglesias",
+     "given": "Juan"
+    },
+    {
+     "family": "Kuczynski",
+     "given": "Justin"
+    },
+    {
+     "family": "Tritz",
+     "given": "Kevin"
+    },
+    {
+     "family": "Thoma",
+     "given": "Martin"
+    },
+    {
+     "family": "Newville",
+     "given": "Matthew"
+    },
+    {
+     "family": "Kümmerer",
+     "given": "Matthias"
+    },
+    {
+     "family": "Bolingbroke",
+     "given": "Maximilian"
+    },
+    {
+     "family": "Tartre",
+     "given": "Michael"
+    },
+    {
+     "family": "Pak",
+     "given": "Mikhail"
+    },
+    {
+     "family": "Smith",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Nowaczyk",
+     "given": "Nikolai"
+    },
+    {
+     "family": "Shebanov",
+     "given": "Nikolay"
+    },
+    {
+     "family": "Pavlyk",
+     "given": "Oleksandr"
+    },
+    {
+     "family": "Brodtkorb",
+     "given": "Per A."
+    },
+    {
+     "family": "Lee",
+     "given": "Perry"
+    },
+    {
+     "family": "McGibbon",
+     "given": "Robert T."
+    },
+    {
+     "family": "Feldbauer",
+     "given": "Roman"
+    },
+    {
+     "family": "Lewis",
+     "given": "Sam"
+    },
+    {
+     "family": "Tygier",
+     "given": "Sam"
+    },
+    {
+     "family": "Sievert",
+     "given": "Scott"
+    },
+    {
+     "family": "Vigna",
+     "given": "Sebastiano"
+    },
+    {
+     "family": "Peterson",
+     "given": "Stefan"
+    },
+    {
+     "family": "More",
+     "given": "Surhud"
+    },
+    {
+     "family": "Pudlik",
+     "given": "Tadeusz"
+    },
+    {
+     "family": "Oshima",
+     "given": "Takuya"
+    },
+    {
+     "family": "Pingel",
+     "given": "Thomas J."
+    },
+    {
+     "family": "Robitaille",
+     "given": "Thomas P."
+    },
+    {
+     "family": "Spura",
+     "given": "Thomas"
+    },
+    {
+     "family": "Jones",
+     "given": "Thouis R."
+    },
+    {
+     "family": "Cera",
+     "given": "Tim"
+    },
+    {
+     "family": "Leslie",
+     "given": "Tim"
+    },
+    {
+     "family": "Zito",
+     "given": "Tiziano"
+    },
+    {
+     "family": "Krauss",
+     "given": "Tom"
+    },
+    {
+     "family": "Upadhyay",
+     "given": "Utkarsh"
+    },
+    {
+     "family": "Halchenko",
+     "given": "Yaroslav O."
+    },
+    {
+     "family": "Vázquez-Baeza",
+     "given": "Yoshiki"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2020,
+   "volume": "17",
+   "issue": "3",
+   "pages": "261-272",
+   "pmid": "32015543",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.1038/s41592-020-01018-x": {
+   "doi": "10.1038/s41592-020-01018-x",
+   "type": "article",
+   "title": "Cellpose: a generalist algorithm for cellular segmentation",
+   "authors": [
+    {
+     "family": "Stringer",
+     "given": "Carsen"
+    },
+    {
+     "family": "Wang",
+     "given": "Tim"
+    },
+    {
+     "family": "Michaelos",
+     "given": "Michalis"
+    },
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2021,
+   "volume": "18",
+   "issue": "",
+   "pages": "100-106",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p"
+   ]
+  },
+  "10.1038/s41592-022-01426-1": {
+   "doi": "10.1038/s41592-022-01426-1",
+   "type": "article",
+   "title": "SLEAP: A deep learning system for multi-animal pose tracking",
+   "authors": [
+    {
+     "family": "Pereira",
+     "given": "Talmo D."
+    },
+    {
+     "family": "Tabris",
+     "given": "Nathaniel"
+    },
+    {
+     "family": "Matsliah",
+     "given": "Arie"
+    },
+    {
+     "family": "Turner",
+     "given": "David M."
+    },
+    {
+     "family": "Li",
+     "given": "Junyu"
+    },
+    {
+     "family": "Ravindranath",
+     "given": "Shruthi"
+    },
+    {
+     "family": "Papadoyannis",
+     "given": "Eleni S."
+    },
+    {
+     "family": "Normand",
+     "given": "Edna"
+    },
+    {
+     "family": "Deutsch",
+     "given": "David S."
+    },
+    {
+     "family": "Wang",
+     "given": "Z. Yan"
+    },
+    {
+     "family": "McKenzie-Smith",
+     "given": "Grace C."
+    },
+    {
+     "family": "Mitelut",
+     "given": "Catalin C."
+    },
+    {
+     "family": "Castro",
+     "given": "Marielisa Diez"
+    },
+    {
+     "family": "D’Uva",
+     "given": "John"
+    },
+    {
+     "family": "Kislin",
+     "given": "Mikhail"
+    },
+    {
+     "family": "Sanes",
+     "given": "Dan H."
+    },
+    {
+     "family": "Kocher",
+     "given": "Sarah D."
+    },
+    {
+     "family": "Wang",
+     "given": "Samuel S.-H."
+    },
+    {
+     "family": "Falkner",
+     "given": "Annegret L."
+    },
+    {
+     "family": "Shaevitz",
+     "given": "Joshua W."
+    },
+    {
+     "family": "Murthy",
+     "given": "Mala"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2022,
+   "volume": "19",
+   "issue": "4",
+   "pages": "486-495",
+   "pmid": "35379947",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics"
+   ]
+  },
+  "10.1038/s41592-022-01443-0": {
+   "doi": "10.1038/s41592-022-01443-0",
+   "type": "article",
+   "title": "Multi-animal pose estimation, identification and tracking with DeepLabCut",
+   "authors": [
+    {
+     "family": "Lauer",
+     "given": "Jessy"
+    },
+    {
+     "family": "Zhou",
+     "given": "Mu"
+    },
+    {
+     "family": "Ye",
+     "given": "Shaokai"
+    },
+    {
+     "family": "Menegas",
+     "given": "William"
+    },
+    {
+     "family": "Schneider",
+     "given": "Steffen"
+    },
+    {
+     "family": "Nath",
+     "given": "Tanmay"
+    },
+    {
+     "family": "Rahman",
+     "given": "Mohammed Mostafizur"
+    },
+    {
+     "family": "Di Santo",
+     "given": "Valentina"
+    },
+    {
+     "family": "Soberanes",
+     "given": "Daniel"
+    },
+    {
+     "family": "Feng",
+     "given": "Guoping"
+    },
+    {
+     "family": "Murthy",
+     "given": "Venkatesh N."
+    },
+    {
+     "family": "Lauder",
+     "given": "George"
+    },
+    {
+     "family": "Dulac",
+     "given": "Catherine"
+    },
+    {
+     "family": "Mathis",
+     "given": "Mackenzie Weygandt"
+    },
+    {
+     "family": "Mathis",
+     "given": "Alexander"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2022,
+   "volume": "19",
+   "issue": "4",
+   "pages": "496-504",
+   "pmid": "35414125",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-estimate"
+   ]
+  },
+  "10.1038/s41592-024-02232-7": {
+   "doi": "10.1038/s41592-024-02232-7",
+   "type": "article",
+   "title": "Spike sorting with Kilosort4",
+   "authors": [
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    },
+    {
+     "family": "Sridhar",
+     "given": "Shashwat"
+    },
+    {
+     "family": "Pennington",
+     "given": "Jacob"
+    },
+    {
+     "family": "Stringer",
+     "given": "Carsen"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2024,
+   "volume": "21",
+   "issue": "5",
+   "pages": "914-921",
+   "pmid": "38589517",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "spike-sort",
+    "ephys-curate"
+   ]
+  },
+  "10.1038/s41592-024-02318-2": {
+   "doi": "10.1038/s41592-024-02318-2",
+   "type": "article",
+   "title": "Keypoint-MoSeq: parsing behavior by linking point tracking to pose dynamics",
+   "authors": [
+    {
+     "family": "Weinreb",
+     "given": "Caleb"
+    },
+    {
+     "family": "Pearl",
+     "given": "Jonah E."
+    },
+    {
+     "family": "Lin",
+     "given": "Sherry"
+    },
+    {
+     "family": "Osman",
+     "given": "Mohammed Abdal Monium"
+    },
+    {
+     "family": "Zhang",
+     "given": "Libby"
+    },
+    {
+     "family": "Annapragada",
+     "given": "Sidharth"
+    },
+    {
+     "family": "Conlin",
+     "given": "Eli"
+    },
+    {
+     "family": "Hoffmann",
+     "given": "Red"
+    },
+    {
+     "family": "Makowska",
+     "given": "Sofia"
+    },
+    {
+     "family": "Gillis",
+     "given": "Winthrop F."
+    },
+    {
+     "family": "Jay",
+     "given": "Maya"
+    },
+    {
+     "family": "Ye",
+     "given": "Shaokai"
+    },
+    {
+     "family": "Mathis",
+     "given": "Alexander"
+    },
+    {
+     "family": "Mathis",
+     "given": "Mackenzie W."
+    },
+    {
+     "family": "Pereira",
+     "given": "Talmo"
+    },
+    {
+     "family": "Linderman",
+     "given": "Scott W."
+    },
+    {
+     "family": "Datta",
+     "given": "Sandeep Robert"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2024,
+   "volume": "21",
+   "issue": "7",
+   "pages": "1329-1339",
+   "pmid": "38997595",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.1038/s41592-025-02614-5": {
+   "doi": "10.1038/s41592-025-02614-5",
+   "type": "article",
+   "title": "DREDge: robust motion correction for high-density extracellular recordings across species",
+   "authors": [
+    {
+     "family": "Windolf",
+     "given": "Charlie"
+    },
+    {
+     "family": "Yu",
+     "given": "Han"
+    },
+    {
+     "family": "Paulk",
+     "given": "Angelique C."
+    },
+    {
+     "family": "Meszéna",
+     "given": "Domokos"
+    },
+    {
+     "family": "Muñoz",
+     "given": "William"
+    },
+    {
+     "family": "Boussard",
+     "given": "Julien"
+    },
+    {
+     "family": "Hardstone",
+     "given": "Richard"
+    },
+    {
+     "family": "Caprara",
+     "given": "Irene"
+    },
+    {
+     "family": "Jamali",
+     "given": "Mohsen"
+    },
+    {
+     "family": "Kfir",
+     "given": "Yoav"
+    },
+    {
+     "family": "Xu",
+     "given": "Duo"
+    },
+    {
+     "family": "Chung",
+     "given": "Jason E."
+    },
+    {
+     "family": "Sellers",
+     "given": "Kristin K."
+    },
+    {
+     "family": "Ye",
+     "given": "Zhiwen"
+    },
+    {
+     "family": "Shaker",
+     "given": "Jordan"
+    },
+    {
+     "family": "Lebedeva",
+     "given": "Anna"
+    },
+    {
+     "family": "Raghavan",
+     "given": "RT"
+    },
+    {
+     "family": "Trautmann",
+     "given": "Eric"
+    },
+    {
+     "family": "Melin",
+     "given": "Max"
+    },
+    {
+     "family": "Couto",
+     "given": "João"
+    },
+    {
+     "family": "Garcia",
+     "given": "Samuel"
+    },
+    {
+     "family": "Coughlin",
+     "given": "Brian"
+    },
+    {
+     "family": "Elmaleh",
+     "given": "Margot"
+    },
+    {
+     "family": "Christianson",
+     "given": "David"
+    },
+    {
+     "family": "Greenlee",
+     "given": "Jeremy D. W."
+    },
+    {
+     "family": "Horváth",
+     "given": "Csaba"
+    },
+    {
+     "family": "Fiáth",
+     "given": "Richárd"
+    },
+    {
+     "family": "Ulbert",
+     "given": "István"
+    },
+    {
+     "family": "Long",
+     "given": "Michael A."
+    },
+    {
+     "family": "Movshon",
+     "given": "J. Anthony"
+    },
+    {
+     "family": "Shadlen",
+     "given": "Michael N."
+    },
+    {
+     "family": "Churchland",
+     "given": "Mark M."
+    },
+    {
+     "family": "Churchland",
+     "given": "Anne K."
+    },
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Chang",
+     "given": "Edward F."
+    },
+    {
+     "family": "Schweitzer",
+     "given": "Jeffrey S."
+    },
+    {
+     "family": "Williams",
+     "given": "Ziv M."
+    },
+    {
+     "family": "Cash",
+     "given": "Sydney S."
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Varol",
+     "given": "Erdem"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2025,
+   "volume": "22",
+   "issue": "4",
+   "pages": "788-800",
+   "pmid": "40050699",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort"
+   ]
+  },
+  "10.1038/s41592-026-03183-x": {
+   "doi": "10.1038/s41592-026-03183-x",
+   "type": "article",
+   "title": "Spike inference from calcium imaging data acquired with GCaMP8 indicators",
+   "authors": [
+    {
+     "family": "Rupprecht",
+     "given": "Peter"
+    },
+    {
+     "family": "Rózsa",
+     "given": "Márton"
+    },
+    {
+     "family": "Fang",
+     "given": "Xusheng"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Helmchen",
+     "given": "Fritjof"
+    }
+   ],
+   "journal": "Nature Methods",
+   "publisher": "",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-traces"
+   ]
+  },
+  "10.1038/s41593-018-0209-y": {
+   "doi": "10.1038/s41593-018-0209-y",
+   "type": "article",
+   "title": "DeepLabCut: markerless pose estimation of user-defined body parts with deep learning",
+   "authors": [
+    {
+     "family": "Mathis",
+     "given": "Alexander"
+    },
+    {
+     "family": "Mamidanna",
+     "given": "Pranav"
+    },
+    {
+     "family": "Cury",
+     "given": "Kevin M."
+    },
+    {
+     "family": "Abe",
+     "given": "Taiga"
+    },
+    {
+     "family": "Murthy",
+     "given": "Venkatesh N."
+    },
+    {
+     "family": "Mathis",
+     "given": "Mackenzie Weygandt"
+    },
+    {
+     "family": "Bethge",
+     "given": "Matthias"
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2018,
+   "volume": "21",
+   "issue": "9",
+   "pages": "1281-1289",
+   "pmid": "30127430",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-estimate",
+    "pose-kinematics"
+   ]
+  },
+  "10.1038/s41593-019-0550-9": {
+   "doi": "10.1038/s41593-019-0550-9",
+   "type": "article",
+   "title": "A large-scale standardized physiological survey reveals functional organization of the mouse visual cortex",
+   "authors": [
+    {
+     "family": "de Vries",
+     "given": "Saskia E. J."
+    },
+    {
+     "family": "Lecoq",
+     "given": "Jerome A."
+    },
+    {
+     "family": "Buice",
+     "given": "Michael A."
+    },
+    {
+     "family": "Groblewski",
+     "given": "Peter A."
+    },
+    {
+     "family": "Ocker",
+     "given": "Gabriel K."
+    },
+    {
+     "family": "Oliver",
+     "given": "Michael"
+    },
+    {
+     "family": "Feng",
+     "given": "David"
+    },
+    {
+     "family": "Cain",
+     "given": "Nicholas"
+    },
+    {
+     "family": "Ledochowitsch",
+     "given": "Peter"
+    },
+    {
+     "family": "Millman",
+     "given": "Daniel"
+    },
+    {
+     "family": "Roll",
+     "given": "Kate"
+    },
+    {
+     "family": "Garrett",
+     "given": "Marina"
+    },
+    {
+     "family": "Keenan",
+     "given": "Tom"
+    },
+    {
+     "family": "Kuan",
+     "given": "Leonard"
+    },
+    {
+     "family": "Mihalas",
+     "given": "Stefan"
+    },
+    {
+     "family": "Olsen",
+     "given": "Shawn"
+    },
+    {
+     "family": "Thompson",
+     "given": "Carol"
+    },
+    {
+     "family": "Wakeman",
+     "given": "Wayne"
+    },
+    {
+     "family": "Waters",
+     "given": "Jack"
+    },
+    {
+     "family": "Williams",
+     "given": "Derric"
+    },
+    {
+     "family": "Barber",
+     "given": "Chris"
+    },
+    {
+     "family": "Berbesque",
+     "given": "Nathan"
+    },
+    {
+     "family": "Blanchard",
+     "given": "Brandon"
+    },
+    {
+     "family": "Bowles",
+     "given": "Nicholas"
+    },
+    {
+     "family": "Caldejon",
+     "given": "Shiella D."
+    },
+    {
+     "family": "Casal",
+     "given": "Linzy"
+    },
+    {
+     "family": "Cho",
+     "given": "Andrew"
+    },
+    {
+     "family": "Cross",
+     "given": "Sissy"
+    },
+    {
+     "family": "Dang",
+     "given": "Chinh"
+    },
+    {
+     "family": "Dolbeare",
+     "given": "Tim"
+    },
+    {
+     "family": "Edwards",
+     "given": "Melise"
+    },
+    {
+     "family": "Galbraith",
+     "given": "John"
+    },
+    {
+     "family": "Gaudreault",
+     "given": "Nathalie"
+    },
+    {
+     "family": "Gilbert",
+     "given": "Terri L."
+    },
+    {
+     "family": "Griffin",
+     "given": "Fiona"
+    },
+    {
+     "family": "Hargrave",
+     "given": "Perry"
+    },
+    {
+     "family": "Howard",
+     "given": "Robert"
+    },
+    {
+     "family": "Huang",
+     "given": "Lawrence"
+    },
+    {
+     "family": "Jewell",
+     "given": "Sean"
+    },
+    {
+     "family": "Keller",
+     "given": "Nika"
+    },
+    {
+     "family": "Knoblich",
+     "given": "Ulf"
+    },
+    {
+     "family": "Larkin",
+     "given": "Josh D."
+    },
+    {
+     "family": "Larsen",
+     "given": "Rachael"
+    },
+    {
+     "family": "Lau",
+     "given": "Chris"
+    },
+    {
+     "family": "Lee",
+     "given": "Eric"
+    },
+    {
+     "family": "Lee",
+     "given": "Felix"
+    },
+    {
+     "family": "Leon",
+     "given": "Arielle"
+    },
+    {
+     "family": "Li",
+     "given": "Lu"
+    },
+    {
+     "family": "Long",
+     "given": "Fuhui"
+    },
+    {
+     "family": "Luviano",
+     "given": "Jennifer"
+    },
+    {
+     "family": "Mace",
+     "given": "Kyla"
+    },
+    {
+     "family": "Nguyen",
+     "given": "Thuyanh"
+    },
+    {
+     "family": "Perkins",
+     "given": "Jed"
+    },
+    {
+     "family": "Robertson",
+     "given": "Miranda"
+    },
+    {
+     "family": "Seid",
+     "given": "Sam"
+    },
+    {
+     "family": "Shea-Brown",
+     "given": "Eric"
+    },
+    {
+     "family": "Shi",
+     "given": "Jianghong"
+    },
+    {
+     "family": "Sjoquist",
+     "given": "Nathan"
+    },
+    {
+     "family": "Slaughterbeck",
+     "given": "Cliff"
+    },
+    {
+     "family": "Sullivan",
+     "given": "David"
+    },
+    {
+     "family": "Valenza",
+     "given": "Ryan"
+    },
+    {
+     "family": "White",
+     "given": "Casey"
+    },
+    {
+     "family": "Williford",
+     "given": "Ali"
+    },
+    {
+     "family": "Witten",
+     "given": "Daniela M."
+    },
+    {
+     "family": "Zhuang",
+     "given": "Jun"
+    },
+    {
+     "family": "Zeng",
+     "given": "Hongkui"
+    },
+    {
+     "family": "Farrell",
+     "given": "Colin"
+    },
+    {
+     "family": "Ng",
+     "given": "Lydia"
+    },
+    {
+     "family": "Bernard",
+     "given": "Amy"
+    },
+    {
+     "family": "Phillips",
+     "given": "John W."
+    },
+    {
+     "family": "Reid",
+     "given": "R. Clay"
+    },
+    {
+     "family": "Koch",
+     "given": "Christof"
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2019,
+   "volume": "23",
+   "issue": "1",
+   "pages": "138-151",
+   "pmid": "31844315",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p",
+    "ophys-traces",
+    "ophys-activity",
+    "neuro-report"
+   ]
+  },
+  "10.1038/s41593-019-0555-4": {
+   "doi": "10.1038/s41593-019-0555-4",
+   "type": "article",
+   "title": "Long-term stability of cortical population dynamics underlying consistent behavior",
+   "authors": [
+    {
+     "family": "Gallego",
+     "given": "Juan A."
+    },
+    {
+     "family": "Perich",
+     "given": "Matthew G."
+    },
+    {
+     "family": "Chowdhury",
+     "given": "Raeed H."
+    },
+    {
+     "family": "Solla",
+     "given": "Sara A."
+    },
+    {
+     "family": "Miller",
+     "given": "Lee E."
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2020,
+   "volume": "23",
+   "issue": "2",
+   "pages": "260-270",
+   "pmid": "31907438",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-decoding"
+   ]
+  },
+  "10.1038/s41593-021-00895-5": {
+   "doi": "10.1038/s41593-021-00895-5",
+   "type": "article",
+   "title": "A database and deep learning toolbox for noise-optimized, generalized spike inference from calcium imaging",
+   "authors": [
+    {
+     "family": "Rupprecht",
+     "given": "Peter"
+    },
+    {
+     "family": "Carta",
+     "given": "Stefano"
+    },
+    {
+     "family": "Hoffmann",
+     "given": "Adrian"
+    },
+    {
+     "family": "Echizen",
+     "given": "Mayumi"
+    },
+    {
+     "family": "Blot",
+     "given": "Antonin"
+    },
+    {
+     "family": "Kwan",
+     "given": "Alex C."
+    },
+    {
+     "family": "Dan",
+     "given": "Yang"
+    },
+    {
+     "family": "Hofer",
+     "given": "Sonja B."
+    },
+    {
+     "family": "Kitamura",
+     "given": "Kazuo"
+    },
+    {
+     "family": "Helmchen",
+     "given": "Fritjof"
+    },
+    {
+     "family": "Friedrich",
+     "given": "Rainer W."
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2021,
+   "volume": "24",
+   "issue": "",
+   "pages": "1324-1337",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-traces"
+   ]
+  },
+  "10.1038/s41593-024-01783-4": {
+   "doi": "10.1038/s41593-024-01783-4",
+   "type": "article",
+   "title": "Rastermap: a discovery method for neural population recordings",
+   "authors": [
+    {
+     "family": "Stringer",
+     "given": "Carsen"
+    },
+    {
+     "family": "Zhong",
+     "given": "Lin"
+    },
+    {
+     "family": "Syeda",
+     "given": "Atika"
+    },
+    {
+     "family": "Du",
+     "given": "Fengtong"
+    },
+    {
+     "family": "Kesa",
+     "given": "Maria"
+    },
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2024,
+   "volume": "28",
+   "issue": "1",
+   "pages": "201-212",
+   "pmid": "39414974",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.1038/s41593-025-01985-4": {
+   "doi": "10.1038/s41593-025-01985-4",
+   "type": "article",
+   "title": "A flexible hippocampal population code for experience relative to reward",
+   "authors": [
+    {
+     "family": "Sosa",
+     "given": "Marielena"
+    },
+    {
+     "family": "Plitt",
+     "given": "Mark H."
+    },
+    {
+     "family": "Giocomo",
+     "given": "Lisa M."
+    }
+   ],
+   "journal": "Nature Neuroscience",
+   "publisher": "",
+   "year": 2025,
+   "volume": "28",
+   "issue": "7",
+   "pages": "1497-1509",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-align"
+   ]
+  },
+  "10.1038/s41596-019-0176-0": {
+   "doi": "10.1038/s41596-019-0176-0",
+   "type": "article",
+   "title": "Using DeepLabCut for 3D markerless pose estimation across species and behaviors",
+   "authors": [
+    {
+     "family": "Nath",
+     "given": "Tanmay"
+    },
+    {
+     "family": "Mathis",
+     "given": "Alexander"
+    },
+    {
+     "family": "Chen",
+     "given": "An Chi"
+    },
+    {
+     "family": "Patel",
+     "given": "Amir"
+    },
+    {
+     "family": "Bethge",
+     "given": "Matthias"
+    },
+    {
+     "family": "Mathis",
+     "given": "Mackenzie Weygandt"
+    }
+   ],
+   "journal": "Nature Protocols",
+   "publisher": "",
+   "year": 2019,
+   "volume": "14",
+   "issue": "7",
+   "pages": "2152-2176",
+   "pmid": "31227823",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-estimate",
+    "pose-kinematics"
+   ]
+  },
+  "10.1093/biomet/34.1-2.28": {
+   "doi": "10.1093/biomet/34.1-2.28",
+   "type": "article",
+   "title": "THE GENERALIZATION OF ‘STUDENT'S’ PROBLEM WHEN SEVERAL DIFFERENT POPULATION VARLANCES ARE INVOLVED",
+   "authors": [
+    {
+     "family": "WELCH",
+     "given": "B. L."
+    }
+   ],
+   "journal": "Biometrika",
+   "publisher": "",
+   "year": 1947,
+   "volume": "34",
+   "issue": "1-2",
+   "pages": "28-35",
+   "pmid": "20287819",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics",
+    "behavior-syllables"
+   ]
+  },
+  "10.1101/061507": {
+   "doi": "10.1101/061507",
+   "type": "article",
+   "title": "Suite2p: beyond 10,000 neurons with standard two-photon microscopy",
+   "authors": [
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    },
+    {
+     "family": "Stringer",
+     "given": "Carsen"
+    },
+    {
+     "family": "Dipoppa",
+     "given": "Mario"
+    },
+    {
+     "family": "Schröder",
+     "given": "Sylvia"
+    },
+    {
+     "family": "Rossi",
+     "given": "L. Federico"
+    },
+    {
+     "family": "Dalgleish",
+     "given": "Henry"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    }
+   ],
+   "journal": "",
+   "publisher": "bioRxiv",
+   "year": 2016,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p"
+   ]
+  },
+  "10.1101/2024.12.04.626805": {
+   "doi": "10.1101/2024.12.04.626805",
+   "type": "article",
+   "title": "Spike sorting biases and information loss in a detailed cortical model",
+   "authors": [
+    {
+     "family": "Laquitaine",
+     "given": "Steeve"
+    },
+    {
+     "family": "Imbeni",
+     "given": "Milo"
+    },
+    {
+     "family": "Tharayil",
+     "given": "Joseph"
+    },
+    {
+     "family": "Isbister",
+     "given": "James B."
+    },
+    {
+     "family": "Reimann",
+     "given": "Michael W."
+    }
+   ],
+   "journal": "bioRxiv",
+   "publisher": "",
+   "year": 2024,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort",
+    "ephys-curate",
+    "neuro-report"
+   ]
+  },
+  "10.1101/2025.03.30.645770": {
+   "doi": "10.1101/2025.03.30.645770",
+   "type": "article",
+   "title": "UnitRefine: A Community Toolbox for Automated Spike Sorting Curation",
+   "authors": [
+    {
+     "family": "Jain",
+     "given": "Anoushka"
+    },
+    {
+     "family": "Greene",
+     "given": "Robyn"
+    },
+    {
+     "family": "Halcrow",
+     "given": "Chris"
+    },
+    {
+     "family": "Swann",
+     "given": "Jake A."
+    },
+    {
+     "family": "Kleinjohann",
+     "given": "Alexander"
+    },
+    {
+     "family": "Spurio",
+     "given": "Federico"
+    },
+    {
+     "family": "Graff",
+     "given": "Severin"
+    },
+    {
+     "family": "Pan-Vazquez",
+     "given": "Alejandro"
+    },
+    {
+     "family": "Kampa",
+     "given": "Björn"
+    },
+    {
+     "family": "Gall",
+     "given": "Juergen"
+    },
+    {
+     "family": "Grün",
+     "given": "Sonja"
+    },
+    {
+     "family": "Winter",
+     "given": "Olivier"
+    },
+    {
+     "family": "Buccino",
+     "given": "Alessio"
+    },
+    {
+     "family": "Hennig",
+     "given": "Matthias H."
+    },
+    {
+     "family": "Musall",
+     "given": "Simon"
+    }
+   ],
+   "journal": "bioRxiv",
+   "publisher": "",
+   "year": 2025,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-curate"
+   ]
+  },
+  "10.1101/2025.04.28.651001": {
+   "doi": "10.1101/2025.04.28.651001",
+   "type": "article",
+   "title": "Cellpose-SAM: superhuman generalization for cellular segmentation",
+   "authors": [
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    },
+    {
+     "family": "Rariden",
+     "given": "Michael"
+    },
+    {
+     "family": "Stringer",
+     "given": "Carsen"
+    }
+   ],
+   "journal": "",
+   "publisher": "bioRxiv",
+   "year": 2025,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p"
+   ]
+  },
+  "10.1101/2025.06.20.660590": {
+   "doi": "10.1101/2025.06.20.660590",
+   "type": "article",
+   "title": "SLAy-ing oversplitting errors in high-density electrophysiology spike sorting",
+   "authors": [
+    {
+     "family": "Koukuntla",
+     "given": "Sai"
+    },
+    {
+     "family": "DeWeese",
+     "given": "Tate"
+    },
+    {
+     "family": "Cheng",
+     "given": "Alexandra"
+    },
+    {
+     "family": "Mildren",
+     "given": "Robyn"
+    },
+    {
+     "family": "Lawrence",
+     "given": "Aamna"
+    },
+    {
+     "family": "Graves",
+     "given": "Austin R."
+    },
+    {
+     "family": "Cullen",
+     "given": "Kathleen E."
+    },
+    {
+     "family": "Colonell",
+     "given": "Jennifer"
+    },
+    {
+     "family": "Harris",
+     "given": "Timothy D."
+    },
+    {
+     "family": "Charles",
+     "given": "Adam S."
+    }
+   ],
+   "journal": "bioRxiv",
+   "publisher": "",
+   "year": 2025,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "40666932",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-curate"
+   ]
+  },
+  "10.1109/5.18626": {
+   "doi": "10.1109/5.18626",
+   "type": "article",
+   "title": "A tutorial on hidden Markov models and selected applications in speech recognition",
+   "authors": [
+    {
+     "family": "Rabiner",
+     "given": "L.R."
+    }
+   ],
+   "journal": "Proceedings of the IEEE",
+   "publisher": "",
+   "year": 1989,
+   "volume": "77",
+   "issue": "2",
+   "pages": "257-286",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.1109/bigdata47090.2019.9005648": {
+   "doi": "10.1109/bigdata47090.2019.9005648",
+   "type": "conference-paper",
+   "title": "HDMF: Hierarchical Data Modeling Framework for Modern Science Data Standards",
+   "authors": [
+    {
+     "family": "Tritt",
+     "given": "Andrew J."
+    },
+    {
+     "family": "Rubel",
+     "given": "Oliver"
+    },
+    {
+     "family": "Dichter",
+     "given": "Benjamin"
+    },
+    {
+     "family": "Ly",
+     "given": "Ryan"
+    },
+    {
+     "family": "Kang",
+     "given": "Donghe"
+    },
+    {
+     "family": "Chang",
+     "given": "Edward F."
+    },
+    {
+     "family": "Frank",
+     "given": "Loren M."
+    },
+    {
+     "family": "Bouchard",
+     "given": "Kristofer"
+    }
+   ],
+   "journal": "2019 IEEE International Conference on Big Data (Big Data)",
+   "publisher": "",
+   "year": 2019,
+   "volume": "",
+   "issue": "",
+   "pages": "165-179",
+   "pmid": "34632466",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "nwb-inspect"
+   ]
+  },
+  "10.1109/cvpr.2019.00584": {
+   "doi": "10.1109/CVPR.2019.00584",
+   "type": "conference-paper",
+   "title": "Deep High-Resolution Representation Learning for Human Pose Estimation",
+   "authors": [
+    {
+     "family": "Sun",
+     "given": "Ke"
+    },
+    {
+     "family": "Xiao",
+     "given": "Bin"
+    },
+    {
+     "family": "Liu",
+     "given": "Dong"
+    },
+    {
+     "family": "Wang",
+     "given": "Jingdong"
+    }
+   ],
+   "journal": "2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+   "publisher": "",
+   "year": 2019,
+   "volume": "",
+   "issue": "",
+   "pages": "5686-5696",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-estimate"
+   ]
+  },
+  "10.1109/iembs.2009.5333230": {
+   "doi": "10.1109/iembs.2009.5333230",
+   "type": "article",
+   "title": "Common median referencing for improved action potential detection with multielectrode arrays",
+   "authors": [
+    {
+     "family": "Rolston",
+     "given": "J.D."
+    },
+    {
+     "family": "Gross",
+     "given": "R.E."
+    },
+    {
+     "family": "Potter",
+     "given": "S.M."
+    }
+   ],
+   "journal": "2009 Annual International Conference of the IEEE Engineering in Medicine and Biology Society",
+   "publisher": "",
+   "year": 2009,
+   "volume": "",
+   "issue": "",
+   "pages": "1604-1607",
+   "pmid": "19964004",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep"
+   ]
+  },
+  "10.1109/mcse.2007.55": {
+   "doi": "10.1109/MCSE.2007.55",
+   "type": "article",
+   "title": "Matplotlib: A 2D Graphics Environment",
+   "authors": [
+    {
+     "family": "Hunter",
+     "given": "John D."
+    }
+   ],
+   "journal": "Computing in Science & Engineering",
+   "publisher": "",
+   "year": 2007,
+   "volume": "9",
+   "issue": "3",
+   "pages": "90-95",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.1109/tit.1967.1054010": {
+   "doi": "10.1109/TIT.1967.1054010",
+   "type": "article",
+   "title": "Error bounds for convolutional codes and an asymptotically optimum decoding algorithm",
+   "authors": [
+    {
+     "family": "Viterbi",
+     "given": "A."
+    }
+   ],
+   "journal": "IEEE Transactions on Information Theory",
+   "publisher": "",
+   "year": 1967,
+   "volume": "13",
+   "issue": "2",
+   "pages": "260-269",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.1109/tpami.2016.2577031": {
+   "doi": "10.1109/TPAMI.2016.2577031",
+   "type": "article",
+   "title": "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks",
+   "authors": [
+    {
+     "family": "Ren",
+     "given": "Shaoqing"
+    },
+    {
+     "family": "He",
+     "given": "Kaiming"
+    },
+    {
+     "family": "Girshick",
+     "given": "Ross"
+    },
+    {
+     "family": "Sun",
+     "given": "Jian"
+    }
+   ],
+   "journal": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+   "publisher": "",
+   "year": 2017,
+   "volume": "39",
+   "issue": "6",
+   "pages": "1137-1149",
+   "pmid": "27295650",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-estimate"
+   ]
+  },
+  "10.1111/j.2517-6161.1995.tb02031.x": {
+   "doi": "10.1111/j.2517-6161.1995.tb02031.x",
+   "type": "article",
+   "title": "Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing",
+   "authors": [
+    {
+     "family": "Benjamini",
+     "given": "Yoav"
+    },
+    {
+     "family": "Hochberg",
+     "given": "Yosef"
+    }
+   ],
+   "journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+   "publisher": "",
+   "year": 1995,
+   "volume": "57",
+   "issue": "1",
+   "pages": "289-300",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity",
+    "behavior-syllables",
+    "neuro-encoding"
+   ]
+  },
+  "10.1126/science.287.5456.1273": {
+   "doi": "10.1126/science.287.5456.1273",
+   "type": "article",
+   "title": "Sparse Coding and Decorrelation in Primary Visual Cortex During Natural Vision",
+   "authors": [
+    {
+     "family": "Vinje",
+     "given": "William E."
+    },
+    {
+     "family": "Gallant",
+     "given": "Jack L."
+    }
+   ],
+   "journal": "Science",
+   "publisher": "",
+   "year": 2000,
+   "volume": "287",
+   "issue": "5456",
+   "pages": "1273-1276",
+   "pmid": "10678835",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.1126/science.aad1935": {
+   "doi": "10.1126/science.aad1935",
+   "type": "article",
+   "title": "Diversity in neural firing dynamics supports both rigid and learned hippocampal sequences",
+   "authors": [
+    {
+     "family": "Grosmark",
+     "given": "Andres D."
+    },
+    {
+     "family": "Buzsáki",
+     "given": "György"
+    }
+   ],
+   "journal": "Science",
+   "publisher": "",
+   "year": 2016,
+   "volume": "351",
+   "issue": "6280",
+   "pages": "1440-1443",
+   "pmid": "27013730",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-align",
+    "neuro-encoding",
+    "neuro-embedding",
+    "neuro-decoding",
+    "neuro-report"
+   ]
+  },
+  "10.1126/science.abf4588": {
+   "doi": "10.1126/science.abf4588",
+   "type": "article",
+   "title": "Neuropixels 2.0: A miniaturized high-density probe for stable, long-term brain recordings",
+   "authors": [
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas A."
+    },
+    {
+     "family": "Aydin",
+     "given": "Cagatay"
+    },
+    {
+     "family": "Lebedeva",
+     "given": "Anna"
+    },
+    {
+     "family": "Okun",
+     "given": "Michael"
+    },
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    },
+    {
+     "family": "Bauza",
+     "given": "Marius"
+    },
+    {
+     "family": "Beau",
+     "given": "Maxime"
+    },
+    {
+     "family": "Bhagat",
+     "given": "Jai"
+    },
+    {
+     "family": "Böhm",
+     "given": "Claudia"
+    },
+    {
+     "family": "Broux",
+     "given": "Martijn"
+    },
+    {
+     "family": "Chen",
+     "given": "Susu"
+    },
+    {
+     "family": "Colonell",
+     "given": "Jennifer"
+    },
+    {
+     "family": "Gardner",
+     "given": "Richard J."
+    },
+    {
+     "family": "Karsh",
+     "given": "Bill"
+    },
+    {
+     "family": "Kloosterman",
+     "given": "Fabian"
+    },
+    {
+     "family": "Kostadinov",
+     "given": "Dimitar"
+    },
+    {
+     "family": "Mora-Lopez",
+     "given": "Carolina"
+    },
+    {
+     "family": "O’Callaghan",
+     "given": "John"
+    },
+    {
+     "family": "Park",
+     "given": "Junchol"
+    },
+    {
+     "family": "Putzeys",
+     "given": "Jan"
+    },
+    {
+     "family": "Sauerbrei",
+     "given": "Britton"
+    },
+    {
+     "family": "van Daal",
+     "given": "Rik J. J."
+    },
+    {
+     "family": "Vollan",
+     "given": "Abraham Z."
+    },
+    {
+     "family": "Wang",
+     "given": "Shiwei"
+    },
+    {
+     "family": "Welkenhuysen",
+     "given": "Marleen"
+    },
+    {
+     "family": "Ye",
+     "given": "Zhiwen"
+    },
+    {
+     "family": "Dudman",
+     "given": "Joshua T."
+    },
+    {
+     "family": "Dutta",
+     "given": "Barundeb"
+    },
+    {
+     "family": "Hantman",
+     "given": "Adam W."
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    },
+    {
+     "family": "Lee",
+     "given": "Albert K."
+    },
+    {
+     "family": "Moser",
+     "given": "Edvard I."
+    },
+    {
+     "family": "O’Keefe",
+     "given": "John"
+    },
+    {
+     "family": "Renart",
+     "given": "Alfonso"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Häusser",
+     "given": "Michael"
+    },
+    {
+     "family": "Haesler",
+     "given": "Sebastian"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Timothy D."
+    }
+   ],
+   "journal": "Science",
+   "publisher": "",
+   "year": 2021,
+   "volume": "372",
+   "issue": "6539",
+   "pages": "eabf4588",
+   "pmid": "33859006",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep"
+   ]
+  },
+  "10.1145/1553374.1553511": {
+   "doi": "10.1145/1553374.1553511",
+   "type": "conference-paper",
+   "title": "Information theoretic measures for clusterings comparison",
+   "authors": [
+    {
+     "family": "Vinh",
+     "given": "Nguyen Xuan"
+    },
+    {
+     "family": "Epps",
+     "given": "Julien"
+    },
+    {
+     "family": "Bailey",
+     "given": "James"
+    }
+   ],
+   "journal": "",
+   "publisher": "",
+   "year": 2009,
+   "volume": "",
+   "issue": "",
+   "pages": "1073-1080",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.1152/jn.1998.79.2.1017": {
+   "doi": "10.1152/jn.1998.79.2.1017",
+   "type": "article",
+   "title": "Interpreting Neuronal Population Activity by Reconstruction: Unified Framework With Application to Hippocampal Place Cells",
+   "authors": [
+    {
+     "family": "Zhang",
+     "given": "Kechen"
+    },
+    {
+     "family": "Ginzburg",
+     "given": "Iris"
+    },
+    {
+     "family": "McNaughton",
+     "given": "Bruce L."
+    },
+    {
+     "family": "Sejnowski",
+     "given": "Terrence J."
+    }
+   ],
+   "journal": "Journal of Neurophysiology",
+   "publisher": "",
+   "year": 1998,
+   "volume": "79",
+   "issue": "2",
+   "pages": "1017-1044",
+   "pmid": "9463459",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-decoding"
+   ]
+  },
+  "10.1152/jn.90941.2008": {
+   "doi": "10.1152/jn.90941.2008",
+   "type": "article",
+   "title": "Gaussian-Process Factor Analysis for Low-Dimensional Single-Trial Analysis of Neural Population Activity",
+   "authors": [
+    {
+     "family": "Yu",
+     "given": "Byron M."
+    },
+    {
+     "family": "Cunningham",
+     "given": "John P."
+    },
+    {
+     "family": "Santhanam",
+     "given": "Gopal"
+    },
+    {
+     "family": "Ryu",
+     "given": "Stephen I."
+    },
+    {
+     "family": "Shenoy",
+     "given": "Krishna V."
+    },
+    {
+     "family": "Sahani",
+     "given": "Maneesh"
+    }
+   ],
+   "journal": "Journal of Neurophysiology",
+   "publisher": "",
+   "year": 2009,
+   "volume": "102",
+   "issue": "1",
+   "pages": "614-635",
+   "pmid": "19357332",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-embedding"
+   ]
+  },
+  "10.1214/10-aoas395": {
+   "doi": "10.1214/10-AOAS395",
+   "type": "article",
+   "title": "A sticky HDP-HMM with application to speaker diarization",
+   "authors": [
+    {
+     "family": "Fox",
+     "given": "Emily B."
+    },
+    {
+     "family": "Sudderth",
+     "given": "Erik B."
+    },
+    {
+     "family": "Jordan",
+     "given": "Michael I."
+    },
+    {
+     "family": "Willsky",
+     "given": "Alan S."
+    }
+   ],
+   "journal": "The Annals of Applied Statistics",
+   "publisher": "",
+   "year": 2011,
+   "volume": "5",
+   "issue": "2A",
+   "pages": "1020-1056",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.1214/aoms/1177730491": {
+   "doi": "10.1214/aoms/1177730491",
+   "type": "article",
+   "title": "On a Test of Whether one of Two Random Variables is Stochastically Larger than the Other",
+   "authors": [
+    {
+     "family": "Mann",
+     "given": "H. B."
+    },
+    {
+     "family": "Whitney",
+     "given": "D. R."
+    }
+   ],
+   "journal": "The Annals of Mathematical Statistics",
+   "publisher": "",
+   "year": 1947,
+   "volume": "18",
+   "issue": "1",
+   "pages": "50-60",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics",
+    "behavior-syllables"
+   ]
+  },
+  "10.12751/incf.ni2018.0019": {
+   "doi": "10.12751/incf.ni2018.0019",
+   "type": "article",
+   "title": "Collaborative HPC-enabled workflows on the HBP Collaboratory using the Elephant framework",
+   "authors": [
+    {
+     "family": "Denker",
+     "given": "Michael"
+    },
+    {
+     "family": "Yegenoglu",
+     "given": "Alper"
+    },
+    {
+     "family": "Grün",
+     "given": "Sonja"
+    }
+   ],
+   "journal": "",
+   "publisher": "G-Node",
+   "year": 2018,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-embedding"
+   ]
+  },
+  "10.1371/journal.pcbi.1005423": {
+   "doi": "10.1371/journal.pcbi.1005423",
+   "type": "article",
+   "title": "Fast online deconvolution of calcium imaging data",
+   "authors": [
+    {
+     "family": "Friedrich",
+     "given": "Johannes"
+    },
+    {
+     "family": "Zhou",
+     "given": "Pengcheng"
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    }
+   ],
+   "journal": "PLOS Computational Biology",
+   "publisher": "",
+   "year": 2017,
+   "volume": "13",
+   "issue": "",
+   "pages": "e1005423",
+   "pmid": "28291787",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p",
+    "ophys-traces"
+   ]
+  },
+  "10.1523/eneuro.0229-23.2023": {
+   "doi": "10.1523/eneuro.0229-23.2023",
+   "type": "article",
+   "title": "A Modular Implementation to Handle and Benchmark Drift Correction for High-Density Extracellular Recordings",
+   "authors": [
+    {
+     "family": "Garcia",
+     "given": "Samuel"
+    },
+    {
+     "family": "Windolf",
+     "given": "Charlie"
+    },
+    {
+     "family": "Boussard",
+     "given": "Julien"
+    },
+    {
+     "family": "Dichter",
+     "given": "Benjamin"
+    },
+    {
+     "family": "Buccino",
+     "given": "Alessio P."
+    },
+    {
+     "family": "Yger",
+     "given": "Pierre"
+    }
+   ],
+   "journal": "eneuro",
+   "publisher": "",
+   "year": 2024,
+   "volume": "11",
+   "issue": "2",
+   "pages": "ENEURO.0229-23.2023",
+   "pmid": "38238082",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort"
+   ]
+  },
+  "10.1523/eneuro.0506-19.2020": {
+   "doi": "10.1523/eneuro.0506-19.2020",
+   "type": "article",
+   "title": "Machine Learning for Neural Decoding",
+   "authors": [
+    {
+     "family": "Glaser",
+     "given": "Joshua I."
+    },
+    {
+     "family": "Benjamin",
+     "given": "Ari S."
+    },
+    {
+     "family": "Chowdhury",
+     "given": "Raeed H."
+    },
+    {
+     "family": "Perich",
+     "given": "Matthew G."
+    },
+    {
+     "family": "Miller",
+     "given": "Lee E."
+    },
+    {
+     "family": "Kording",
+     "given": "Konrad P."
+    }
+   ],
+   "journal": "eneuro",
+   "publisher": "",
+   "year": 2020,
+   "volume": "7",
+   "issue": "4",
+   "pages": "ENEURO.0506-19.2020",
+   "pmid": "32737181",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-decoding"
+   ]
+  },
+  "10.1523/jneurosci.0971-11.2011": {
+   "doi": "10.1523/JNEUROSCI.0971-11.2011",
+   "type": "article",
+   "title": "Quality Metrics to Accompany Spike Sorting of Extracellular Signals",
+   "authors": [
+    {
+     "family": "Hill",
+     "given": "D. N."
+    },
+    {
+     "family": "Mehta",
+     "given": "S. B."
+    },
+    {
+     "family": "Kleinfeld",
+     "given": "D."
+    }
+   ],
+   "journal": "Journal of Neuroscience",
+   "publisher": "",
+   "year": 2011,
+   "volume": "31",
+   "issue": "24",
+   "pages": "8699-8705",
+   "pmid": "21677152",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-curate"
+   ]
+  },
+  "10.1523/jneurosci.10-02-00420.1990": {
+   "doi": "10.1523/JNEUROSCI.10-02-00420.1990",
+   "type": "article",
+   "title": "Head-direction cells recorded from the postsubiculum in freely moving rats. I. Description and quantitative analysis",
+   "authors": [
+    {
+     "family": "Taube",
+     "given": "JS"
+    },
+    {
+     "family": "Muller",
+     "given": "RU"
+    },
+    {
+     "family": "Ranck",
+     "given": "JB"
+    }
+   ],
+   "journal": "The Journal of Neuroscience",
+   "publisher": "",
+   "year": 1990,
+   "volume": "10",
+   "issue": "2",
+   "pages": "420-435",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-encoding"
+   ]
+  },
+  "10.21105/joss.07069": {
+   "doi": "10.21105/joss.07069",
+   "type": "article",
+   "title": "Dynamax: A Python package for probabilistic state space modeling with JAX",
+   "authors": [
+    {
+     "family": "Linderman",
+     "given": "Scott W."
+    },
+    {
+     "family": "Chang",
+     "given": "Peter"
+    },
+    {
+     "family": "Harper-Donnelly",
+     "given": "Giles"
+    },
+    {
+     "family": "Kara",
+     "given": "Aleyna"
+    },
+    {
+     "family": "Li",
+     "given": "Xinglong"
+    },
+    {
+     "family": "Duran-Martin",
+     "given": "Gerardo"
+    },
+    {
+     "family": "Murphy",
+     "given": "Kevin"
+    }
+   ],
+   "journal": "Journal of Open Source Software",
+   "publisher": "",
+   "year": 2025,
+   "volume": "10",
+   "issue": "108",
+   "pages": "7069",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.3102/10769986006002107": {
+   "doi": "10.3102/10769986006002107",
+   "type": "article",
+   "title": "Distribution Theory for Glass's Estimator of Effect size and Related Estimators",
+   "authors": [
+    {
+     "family": "Hedges",
+     "given": "Larry V."
+    }
+   ],
+   "journal": "Journal of Educational Statistics",
+   "publisher": "",
+   "year": 1981,
+   "volume": "6",
+   "issue": "2",
+   "pages": "107-128",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics",
+    "behavior-syllables"
+   ]
+  },
+  "10.3389/fncir.2014.00092": {
+   "doi": "10.3389/fncir.2014.00092",
+   "type": "article",
+   "title": "Robust quantification of orientation selectivity and direction selectivity",
+   "authors": [
+    {
+     "family": "Mazurek",
+     "given": "Mark"
+    },
+    {
+     "family": "Kager",
+     "given": "Marisa"
+    },
+    {
+     "family": "Van Hooser",
+     "given": "Stephen D."
+    }
+   ],
+   "journal": "Frontiers in Neural Circuits",
+   "publisher": "",
+   "year": 2014,
+   "volume": "8",
+   "issue": "",
+   "pages": "",
+   "pmid": "25147504",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity"
+   ]
+  },
+  "10.3389/fninf.2014.00010": {
+   "doi": "10.3389/fninf.2014.00010",
+   "type": "article",
+   "title": "Neo: an object model for handling electrophysiology data in multiple formats",
+   "authors": [
+    {
+     "family": "Garcia",
+     "given": "Samuel"
+    },
+    {
+     "family": "Guarino",
+     "given": "Domenico"
+    },
+    {
+     "family": "Jaillet",
+     "given": "Florent"
+    },
+    {
+     "family": "Jennings",
+     "given": "Todd"
+    },
+    {
+     "family": "Pröpper",
+     "given": "Robert"
+    },
+    {
+     "family": "Rautenberg",
+     "given": "Philipp L."
+    },
+    {
+     "family": "Rodgers",
+     "given": "Chris C."
+    },
+    {
+     "family": "Sobolev",
+     "given": "Andrey"
+    },
+    {
+     "family": "Wachtler",
+     "given": "Thomas"
+    },
+    {
+     "family": "Yger",
+     "given": "Pierre"
+    },
+    {
+     "family": "Davison",
+     "given": "Andrew P."
+    }
+   ],
+   "journal": "Frontiers in Neuroinformatics",
+   "publisher": "",
+   "year": 2014,
+   "volume": "8",
+   "issue": "",
+   "pages": "",
+   "pmid": "24600386",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "neuro-embedding"
+   ]
+  },
+  "10.48324/dandi.000017/0.240329.1926": {
+   "doi": "10.48324/dandi.000017/0.240329.1926",
+   "type": "data",
+   "title": "Distributed coding of choice, action and engagement across the mouse brain",
+   "authors": [
+    {
+     "family": "Steinmetz",
+     "given": "Nicholas"
+    },
+    {
+     "family": "Zatka-Haas",
+     "given": "Peter"
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth"
+    }
+   ],
+   "journal": "",
+   "publisher": "DANDI Archive",
+   "year": 2024,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "0.240329.1926",
+   "license": "",
+   "cited_by": [
+    "neuro-align"
+   ]
+  },
+  "10.48324/dandi.000044/0.261106.0236": {
+   "doi": "10.48324/dandi.000044/0.261106.0236",
+   "type": "data",
+   "title": "Diversity in neural firing dynamics supports both rigid and learned hippocampal sequences",
+   "authors": [
+    {
+     "family": "Grosmark",
+     "given": "Andres D."
+    },
+    {
+     "family": "Buzsáki",
+     "given": "György"
+    }
+   ],
+   "journal": "",
+   "publisher": "DANDI Archive",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "0.261106.0236",
+   "license": "",
+   "cited_by": [
+    "neuro-align",
+    "neuro-encoding",
+    "neuro-embedding",
+    "neuro-decoding",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.48324/dandi.000409/0.260309.1324": {
+   "doi": "10.48324/dandi.000409/0.260309.1324",
+   "type": "data",
+   "title": "IBL - Brain Wide Map",
+   "authors": [
+    {
+     "name": "International Brain Laboratory"
+    }
+   ],
+   "journal": "",
+   "publisher": "DANDI Archive",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort",
+    "ephys-curate",
+    "neuro-align",
+    "neuro-encoding",
+    "neuro-embedding",
+    "neuro-decoding",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.48324/dandi.000728/0.240827.1809": {
+   "doi": "10.48324/dandi.000728/0.240827.1809",
+   "type": "data",
+   "title": "Allen Institute - Visual Coding - Optical Physiology",
+   "authors": [
+    {
+     "family": "Baker",
+     "given": "Cody"
+    }
+   ],
+   "journal": "",
+   "publisher": "DANDI Archive",
+   "year": 2024,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "https://doi.org/10.48324/dandi.000728/0.240827.1809",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p",
+    "ophys-traces",
+    "ophys-activity",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.48324/dandi.001250/0.261108.1908": {
+   "doi": "10.48324/dandi.001250/0.261108.1908",
+   "type": "data",
+   "title": "Spike sorting biases and information loss in a detailed cortical model",
+   "authors": [
+    {
+     "family": "Laquitaine",
+     "given": "Steeve"
+    },
+    {
+     "family": "Imbeni",
+     "given": "Milo"
+    },
+    {
+     "family": "Tharayil",
+     "given": "Joseph"
+    },
+    {
+     "family": "Isbister",
+     "given": "James"
+    },
+    {
+     "family": "Reimann",
+     "given": "Michael"
+    }
+   ],
+   "journal": "",
+   "publisher": "DANDI Archive",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort",
+    "ephys-curate",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.48324/dandi.002047/0.261106.0903": {
+   "doi": "10.48324/dandi.002047/0.261106.0903",
+   "type": "data",
+   "title": "Hippocampal CA1 one-photon calcium imaging and pose-tracked behavior in wild-type and 5xFAD mice across four behavioral paradigms",
+   "authors": [
+    {
+     "family": "Plusnin",
+     "given": "Viktor"
+    },
+    {
+     "family": "Pospelov",
+     "given": "Nikita"
+    }
+   ],
+   "journal": "",
+   "publisher": "DANDI Archive",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "https://doi.org/10.48324/dandi.002047/0.261106.0903",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-activity",
+    "pose-estimate",
+    "pose-kinematics",
+    "behavior-syllables",
+    "neuro-align",
+    "neuro-encoding",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.48550/arxiv.1912.01703": {
+   "doi": "10.48550/arxiv.1912.01703",
+   "type": "article",
+   "title": "PyTorch: An Imperative Style, High-Performance Deep Learning Library",
+   "authors": [
+    {
+     "family": "Paszke",
+     "given": "Adam"
+    },
+    {
+     "family": "Gross",
+     "given": "Sam"
+    },
+    {
+     "family": "Massa",
+     "given": "Francisco"
+    },
+    {
+     "family": "Lerer",
+     "given": "Adam"
+    },
+    {
+     "family": "Bradbury",
+     "given": "James"
+    },
+    {
+     "family": "Chanan",
+     "given": "Gregory"
+    },
+    {
+     "family": "Killeen",
+     "given": "Trevor"
+    },
+    {
+     "family": "Lin",
+     "given": "Zeming"
+    },
+    {
+     "family": "Gimelshein",
+     "given": "Natalia"
+    },
+    {
+     "family": "Antiga",
+     "given": "Luca"
+    },
+    {
+     "family": "Desmaison",
+     "given": "Alban"
+    },
+    {
+     "family": "Köpf",
+     "given": "Andreas"
+    },
+    {
+     "family": "Yang",
+     "given": "Edward"
+    },
+    {
+     "family": "DeVito",
+     "given": "Zach"
+    },
+    {
+     "family": "Raison",
+     "given": "Martin"
+    },
+    {
+     "family": "Tejani",
+     "given": "Alykhan"
+    },
+    {
+     "family": "Chilamkurthy",
+     "given": "Sasank"
+    },
+    {
+     "family": "Steiner",
+     "given": "Benoit"
+    },
+    {
+     "family": "Fang",
+     "given": "Lu"
+    },
+    {
+     "family": "Bai",
+     "given": "Junjie"
+    },
+    {
+     "family": "Chintala",
+     "given": "Soumith"
+    }
+   ],
+   "journal": "",
+   "publisher": "arXiv",
+   "year": 2019,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "1",
+   "license": "",
+   "cited_by": [
+    "neuro-embedding"
+   ]
+  },
+  "10.48550/arxiv.2609.22064": {
+   "doi": "10.48550/arxiv.2609.22064",
+   "type": "article",
+   "title": "BrainWideBench: Benchmarking large-scale pretraining and across-animal transfer in multi-region neural recordings",
+   "authors": [
+    {
+     "family": "Andre",
+     "given": "Alexandre"
+    },
+    {
+     "family": "Mahato",
+     "given": "Shivashriganesh P."
+    },
+    {
+     "family": "Arora",
+     "given": "Vinam"
+    },
+    {
+     "family": "Balaji",
+     "given": "Keshav"
+    },
+    {
+     "family": "Lachi",
+     "given": "Divyansha"
+    },
+    {
+     "family": "Krishna",
+     "given": "Nanda H."
+    },
+    {
+     "family": "Xiao",
+     "given": "Jingyun"
+    },
+    {
+     "family": "Zhang",
+     "given": "Yizi"
+    },
+    {
+     "family": "Mao",
+     "given": "Ximeng"
+    },
+    {
+     "family": "Ma",
+     "given": "Wenrui"
+    },
+    {
+     "family": "Yu",
+     "given": "Han"
+    },
+    {
+     "family": "Laboratory",
+     "given": "International Brain"
+    },
+    {
+     "family": "Birman",
+     "given": "Daniel"
+    },
+    {
+     "family": "Bonacchi",
+     "given": "Niccolò"
+    },
+    {
+     "family": "Chapuis",
+     "given": "Gaelle A."
+    },
+    {
+     "family": "Catarino",
+     "given": "Joana A."
+    },
+    {
+     "family": "Davatolhagh",
+     "given": "Felicia"
+    },
+    {
+     "family": "Faulkner",
+     "given": "Mayo"
+    },
+    {
+     "family": "Freitas-Silva",
+     "given": "Laura"
+    },
+    {
+     "family": "Hu",
+     "given": "Fei"
+    },
+    {
+     "family": "Huntenburg",
+     "given": "Julia M."
+    },
+    {
+     "family": "Khanal",
+     "given": "Anup"
+    },
+    {
+     "family": "Laranjeira",
+     "given": "Inês"
+    },
+    {
+     "family": "Lau",
+     "given": "Petrina"
+    },
+    {
+     "family": "Meijer",
+     "given": "Guido T."
+    },
+    {
+     "family": "Miska",
+     "given": "Nathaniel J."
+    },
+    {
+     "family": "Noel",
+     "given": "Jean-Paul"
+    },
+    {
+     "family": "Pan-Vazquez",
+     "given": "Alejandro"
+    },
+    {
+     "family": "Raiser",
+     "given": "Georg"
+    },
+    {
+     "family": "Rossant",
+     "given": "Cyrille"
+    },
+    {
+     "family": "Socha",
+     "given": "Karolina Z."
+    },
+    {
+     "family": "Urai",
+     "given": "Anne E."
+    },
+    {
+     "family": "Wells",
+     "given": "Miles J."
+    },
+    {
+     "family": "West",
+     "given": "Steven J."
+    },
+    {
+     "family": "Winter",
+     "given": "Olivier"
+    },
+    {
+     "family": "Richards",
+     "given": "Blake"
+    },
+    {
+     "family": "Lajoie",
+     "given": "Guillaume"
+    },
+    {
+     "family": "Hurwitz",
+     "given": "Cole"
+    },
+    {
+     "family": "Azabou",
+     "given": "Mehdi"
+    },
+    {
+     "family": "Whiteway",
+     "given": "Matthew R."
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Dyer",
+     "given": "Eva L."
+    }
+   ],
+   "journal": "",
+   "publisher": "arXiv",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "1",
+   "license": "",
+   "cited_by": [
+    "neuro-embedding",
+    "neuro-decoding"
+   ]
+  },
+  "10.51628/001c.127770": {
+   "doi": "10.51628/001c.127770",
+   "type": "article",
+   "title": "A study of animal action segmentation algorithms across supervised, unsupervised, and semi-supervised learning paradigms",
+   "authors": [
+    {
+     "family": "Blau",
+     "given": "Ari"
+    },
+    {
+     "family": "Schaffer",
+     "given": "Evan S"
+    },
+    {
+     "family": "Mishra",
+     "given": "Neeli"
+    },
+    {
+     "family": "Miska",
+     "given": "Nathaniel J"
+    },
+    {
+     "name": "International Brain Laboratory"
+    },
+    {
+     "family": "Paninski",
+     "given": "Liam"
+    },
+    {
+     "family": "Whiteway",
+     "given": "Matthew R"
+    }
+   ],
+   "journal": "Neurons, Behavior, Data analysis, and Theory",
+   "publisher": "",
+   "year": 2024,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "40843338",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "behavior-syllables"
+   ]
+  },
+  "10.5281/zenodo.10582180": {
+   "doi": "10.5281/zenodo.10582180",
+   "type": "software",
+   "title": "NeurodataWithoutBorders/pynwb: Latest",
+   "authors": [
+    {
+     "name": "Andrew Tritt"
+    },
+    {
+     "name": "Ben Dichter"
+    },
+    {
+     "name": "Oliver Ruebel"
+    },
+    {
+     "name": "Ryan Ly"
+    },
+    {
+     "name": "Jean-Christophe Fillion-Robin"
+    },
+    {
+     "name": "nicain"
+    },
+    {
+     "name": "Steph Prince"
+    },
+    {
+     "name": "Thomas Braun"
+    },
+    {
+     "name": "NileGraddis"
+    },
+    {
+     "name": "Matthew Avaylon"
+    },
+    {
+     "name": "Doruk Ozturk"
+    },
+    {
+     "name": "Heberto Mayorquin"
+    },
+    {
+     "name": "Tom Davidson"
+    },
+    {
+     "name": "Cody Baker"
+    },
+    {
+     "name": "Szonja Weigl"
+    },
+    {
+     "name": "Jay R Bolton"
+    },
+    {
+     "name": "Yaroslav Halchenko"
+    },
+    {
+     "name": "Jed Perkins"
+    },
+    {
+     "name": "tom"
+    },
+    {
+     "name": "Mario Melara"
+    },
+    {
+     "name": "Eric Angevine Miller"
+    },
+    {
+     "name": "John H. Yearsley"
+    },
+    {
+     "name": "kevinalexbrown"
+    },
+    {
+     "name": "matthias"
+    },
+    {
+     "name": "Ariel Rokem"
+    },
+    {
+     "name": "Jeremy Magland"
+    },
+    {
+     "name": "Jonny Saunders"
+    },
+    {
+     "name": "Zach McKenzie"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/NeurodataWithoutBorders/pynwb",
+   "version": "latest",
+   "license": "",
+   "cited_by": [
+    "nwb-inspect"
+   ]
+  },
+  "10.5281/zenodo.10611726": {
+   "doi": "10.5281/zenodo.10611726",
+   "type": "software",
+   "title": "NeurodataWithoutBorders/nwbinspector: v0.7.2",
+   "authors": [
+    {
+     "name": "Cody Baker"
+    },
+    {
+     "name": "Ben Dichter"
+    },
+    {
+     "name": "Ryan Ly"
+    },
+    {
+     "name": "Steph Prince"
+    },
+    {
+     "name": "Heberto Mayorquin"
+    },
+    {
+     "name": "Szonja Weigl"
+    },
+    {
+     "name": "Alessandra Trapani"
+    },
+    {
+     "name": "Oliver Ruebel"
+    },
+    {
+     "name": "Yaroslav Halchenko"
+    },
+    {
+     "name": "tom"
+    },
+    {
+     "name": "John T. Wodder II"
+    },
+    {
+     "name": "daphnedequatrebarbes"
+    },
+    {
+     "name": "Alessio Buccino"
+    },
+    {
+     "name": "Yutaka Sprague"
+    },
+    {
+     "name": "Roland Ferger"
+    },
+    {
+     "name": "Paul Adkisson-Floro"
+    },
+    {
+     "name": "Zach McKenzie"
+    },
+    {
+     "name": "Eivind Hennestad"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/NeurodataWithoutBorders/nwbinspector",
+   "version": "v0.7.2",
+   "license": "",
+   "cited_by": [
+    "nwb-inspect"
+   ]
+  },
+  "10.5281/zenodo.1186602": {
+   "doi": "10.5281/zenodo.1186602",
+   "type": "software",
+   "title": "Elephant 1.2.1",
+   "authors": [
+    {
+     "family": "Denker",
+     "given": "Michael"
+    },
+    {
+     "family": "Kern",
+     "given": "Moritz"
+    },
+    {
+     "family": "Köhler",
+     "given": "Cristiano"
+    },
+    {
+     "family": "Jos",
+     "given": "Harris Antony"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "v1.2.1",
+   "license": "",
+   "cited_by": [
+    "neuro-embedding"
+   ]
+  },
+  "10.5281/zenodo.12755724": {
+   "doi": "10.5281/zenodo.12755724",
+   "type": "software",
+   "title": "neuroinformatics-unit/movement: v0.17.0",
+   "authors": [
+    {
+     "name": "Niko Sirmpilatze"
+    },
+    {
+     "name": "Chang Huan Lo"
+    },
+    {
+     "name": "sfmig"
+    },
+    {
+     "name": "Adam Tyson"
+    },
+    {
+     "name": "Will Graham"
+    },
+    {
+     "name": "Stella Prins"
+    },
+    {
+     "name": "Tushar Das"
+    },
+    {
+     "name": "Brandon Peri"
+    },
+    {
+     "name": "Dhruv"
+    },
+    {
+     "name": "Ishaan Shaikh"
+    },
+    {
+     "name": "Sanjana soni"
+    },
+    {
+     "name": "Varun Singh"
+    },
+    {
+     "name": "ishan372or"
+    },
+    {
+     "name": "Eduardo Augusto Almeida lira"
+    },
+    {
+     "name": "Luigi Petrucco"
+    },
+    {
+     "name": "Tushar-Verma"
+    },
+    {
+     "name": "animeshsasan"
+    },
+    {
+     "name": "carlocastoldi"
+    },
+    {
+     "name": "vybhav72954"
+    },
+    {
+     "name": "Anna Teruel"
+    },
+    {
+     "name": "CeliaLrt"
+    },
+    {
+     "name": "DPWebster"
+    },
+    {
+     "name": "Dhruv yadav"
+    },
+    {
+     "name": "Holly Morley"
+    },
+    {
+     "name": "Haris shakeel"
+    },
+    {
+     "name": "Harsh Bhanushali"
+    },
+    {
+     "name": "Harshdip Saha"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "pose-kinematics"
+   ]
+  },
+  "10.5281/zenodo.17553286": {
+   "doi": "10.5281/zenodo.17553286",
+   "type": "software",
+   "title": "NeMoS: Neural ModelS",
+   "authors": [
+    {
+     "family": "Balzani",
+     "given": "Edoardo"
+    },
+    {
+     "family": "Bagi",
+     "given": "Bence"
+    },
+    {
+     "family": "Biswas",
+     "given": "Arnab"
+    },
+    {
+     "family": "Broderick",
+     "given": "William F."
+    },
+    {
+     "family": "Venditto",
+     "given": "Sarah Jo"
+    },
+    {
+     "family": "Lewis",
+     "given": "Caitlin"
+    },
+    {
+     "family": "Maura",
+     "given": "Camila"
+    },
+    {
+     "family": "Crespo Darriba",
+     "given": "Pablo"
+    },
+    {
+     "family": "Viejo",
+     "given": "Guillaume"
+    },
+    {
+     "family": "Modumudi",
+     "given": "Pranati"
+    },
+    {
+     "family": "Thomson",
+     "given": "Eric"
+    },
+    {
+     "family": "Williams",
+     "given": "Alex"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/flatironinstitute/nemos",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-encoding"
+   ]
+  },
+  "10.5281/zenodo.3692138": {
+   "doi": "10.5281/zenodo.3692138",
+   "type": "software",
+   "title": "dandi/dandi-cli: 0.82.0",
+   "authors": [
+    {
+     "name": "Yaroslav Halchenko"
+    },
+    {
+     "name": "John T. Wodder II"
+    },
+    {
+     "name": "Horea Christian"
+    },
+    {
+     "name": "Satrajit Ghosh"
+    },
+    {
+     "name": "Cody Baker"
+    },
+    {
+     "name": "Isaac To"
+    },
+    {
+     "name": "Saksham Sharda"
+    },
+    {
+     "name": "Dorota Jarecka"
+    },
+    {
+     "name": "Ben Dichter"
+    },
+    {
+     "name": "Claude"
+    },
+    {
+     "name": "Kabilar Gunalan"
+    },
+    {
+     "name": "Amirali Moradniaei"
+    },
+    {
+     "name": "Dandi Bot"
+    },
+    {
+     "name": "Austin Macdonald"
+    },
+    {
+     "name": "Daniel Chiquito"
+    },
+    {
+     "name": "GitMate for @yarikoptic"
+    },
+    {
+     "name": "Jacob Nesbitt"
+    },
+    {
+     "name": "Mike VanDenburgh"
+    },
+    {
+     "name": "Aditya Singh"
+    },
+    {
+     "name": "Mary Elise Dedicke"
+    },
+    {
+     "name": "Brian Helba"
+    },
+    {
+     "name": "Heberto Mayorquin"
+    },
+    {
+     "name": "Kyle Meyer"
+    },
+    {
+     "name": "Nicole Tregoning"
+    },
+    {
+     "name": "Ryan Ly"
+    },
+    {
+     "name": "Jonny Saunders"
+    },
+    {
+     "name": "Kevin Z"
+    },
+    {
+     "name": "Dan LaManna"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/dandi/dandi-cli",
+   "version": "0.82.0",
+   "license": "",
+   "cited_by": [
+    "nwb-inspect"
+   ]
+  },
+  "10.5281/zenodo.8034516": {
+   "doi": "10.5281/zenodo.8034516",
+   "type": "software",
+   "title": "hdmf-dev/hdmf: Latest",
+   "authors": [
+    {
+     "name": "Andrew Tritt"
+    },
+    {
+     "name": "Ryan Ly"
+    },
+    {
+     "name": "Ben Dichter"
+    },
+    {
+     "name": "Oliver Ruebel"
+    },
+    {
+     "name": "Matthew Avaylon"
+    },
+    {
+     "name": "Jean-Christophe Fillion-Robin"
+    },
+    {
+     "name": "nicain"
+    },
+    {
+     "name": "Doruk Ozturk"
+    },
+    {
+     "name": "Thomas Braun"
+    },
+    {
+     "name": "Heberto Mayorquin"
+    },
+    {
+     "name": "Steph Prince"
+    },
+    {
+     "name": "Cody Baker"
+    },
+    {
+     "name": "NileGraddis"
+    },
+    {
+     "name": "Darin Erat Sleiter"
+    },
+    {
+     "name": "Jay R Bolton"
+    },
+    {
+     "name": "Jed Perkins"
+    },
+    {
+     "name": "Paul Adkisson-Floro"
+    },
+    {
+     "name": "matthias"
+    },
+    {
+     "name": "Ariel Rokem"
+    },
+    {
+     "name": "Yaroslav Halchenko"
+    },
+    {
+     "name": "Sejal"
+    },
+    {
+     "name": "John H. Yearsley"
+    },
+    {
+     "name": "Jeremy Magland"
+    },
+    {
+     "name": "Tom Davidson"
+    },
+    {
+     "name": "d-sot"
+    },
+    {
+     "name": "Ben Beasley"
+    },
+    {
+     "name": "Chadwick Boulay"
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/hdmf-dev/hdmf",
+   "version": "latest",
+   "license": "",
+   "cited_by": [
+    "nwb-inspect"
+   ]
+  },
+  "10.5281/zenodo.8172821": {
+   "doi": "10.5281/zenodo.8172821",
+   "type": "software",
+   "title": "Bombcell: automated curation and cell classification of spike-sorted electrophysiology data",
+   "authors": [
+    {
+     "family": "Fabre",
+     "given": "Julie M.J."
+    },
+    {
+     "family": "Van Beest",
+     "given": "Enny H."
+    },
+    {
+     "family": "Peters",
+     "given": "Andrew J."
+    },
+    {
+     "family": "Carandini",
+     "given": "Matteo"
+    },
+    {
+     "family": "Harris",
+     "given": "Kenneth D."
+    }
+   ],
+   "journal": "",
+   "publisher": "Zenodo",
+   "year": 2023,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/Julie-Fabre/bombcell",
+   "version": "1.0.0",
+   "license": "",
+   "cited_by": [
+    "ephys-curate"
+   ]
+  },
+  "10.6084/m9.figshare.19705522": {
+   "doi": "10.6084/m9.figshare.19705522",
+   "type": "generic",
+   "title": "Spike sorting pipeline for the International Brain Laboratory",
+   "authors": [
+    {
+     "family": "Laboratory",
+     "given": "International Brain"
+    }
+   ],
+   "journal": "",
+   "publisher": "figshare",
+   "year": 2024,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "ephys-curate"
+   ]
+  },
+  "10.6084/m9.figshare.28282841.v2": {
+   "doi": "10.6084/m9.figshare.28282841.v2",
+   "type": "software",
+   "title": "UnitRefine",
+   "authors": [
+    {
+     "family": "Musall",
+     "given": "Simon"
+    },
+    {
+     "family": "Jain",
+     "given": "Anoushka"
+    }
+   ],
+   "journal": "",
+   "publisher": "figshare",
+   "year": 2025,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "https://github.com/anoushkajain/UnitRefine",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-curate"
+   ]
+  },
+  "10.64898/2026.02.04.703741": {
+   "doi": "10.64898/2026.02.04.703741",
+   "type": "article",
+   "title": "Extracting large-scale neural activity with Suite2p",
+   "authors": [
+    {
+     "family": "Stringer",
+     "given": "Carsen"
+    },
+    {
+     "family": "Ki",
+     "given": "Chris"
+    },
+    {
+     "family": "Del Grosso",
+     "given": "Nicholas"
+    },
+    {
+     "family": "LaFosse",
+     "given": "Paul"
+    },
+    {
+     "family": "Zhang",
+     "given": "Qingqing"
+    },
+    {
+     "family": "Pachitariu",
+     "given": "Marius"
+    }
+   ],
+   "journal": "",
+   "publisher": "bioRxiv",
+   "year": 2026,
+   "volume": "",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "suite2p",
+    "ophys-traces"
+   ]
+  },
+  "10.7554/elife.110170": {
+   "doi": "10.7554/elife.110170",
+   "type": "article",
+   "title": "Efficient and reproducible pipelines for spike sorting large-scale electrophysiology data",
+   "authors": [
+    {
+     "family": "Buccino",
+     "given": "Alessio Paolo"
+    },
+    {
+     "family": "Sridhar",
+     "given": "Arjun"
+    },
+    {
+     "family": "Feng",
+     "given": "David"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Siegle",
+     "given": "Joshua H"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2026,
+   "volume": "15",
+   "issue": "",
+   "pages": "RP110170",
+   "pmid": "42554034",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort",
+    "ephys-curate"
+   ]
+  },
+  "10.7554/elife.110588": {
+   "doi": "10.7554/elife.110588",
+   "type": "article",
+   "title": "Opening the black box toward a modular approach to spike sorting",
+   "authors": [
+    {
+     "family": "Garcia",
+     "given": "Samuel"
+    },
+    {
+     "family": "Halcrow",
+     "given": "Chris"
+    },
+    {
+     "family": "Windolf",
+     "given": "Charlie"
+    },
+    {
+     "family": "McKenzie",
+     "given": "Zachary M"
+    },
+    {
+     "family": "Adkisson-Floro",
+     "given": "Paul"
+    },
+    {
+     "family": "Mayorquin",
+     "given": "Heberto Ramon"
+    },
+    {
+     "family": "Dichter",
+     "given": "Benjamin K"
+    },
+    {
+     "family": "Buccino",
+     "given": "Alessio Paolo"
+    },
+    {
+     "family": "Yger",
+     "given": "Pierre"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2026,
+   "volume": "15",
+   "issue": "",
+   "pages": "RP110588",
+   "pmid": "42789325",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "spike-sort"
+   ]
+  },
+  "10.7554/elife.34518": {
+   "doi": "10.7554/elife.34518",
+   "type": "article",
+   "title": "A spike sorting toolbox for up to thousands of electrodes validated with ground truth recordings in vitro and in vivo",
+   "authors": [
+    {
+     "family": "Yger",
+     "given": "Pierre"
+    },
+    {
+     "family": "Spampinato",
+     "given": "Giulia LB"
+    },
+    {
+     "family": "Esposito",
+     "given": "Elric"
+    },
+    {
+     "family": "Lefebvre",
+     "given": "Baptiste"
+    },
+    {
+     "family": "Deny",
+     "given": "Stéphane"
+    },
+    {
+     "family": "Gardella",
+     "given": "Christophe"
+    },
+    {
+     "family": "Stimberg",
+     "given": "Marcel"
+    },
+    {
+     "family": "Jetter",
+     "given": "Florian"
+    },
+    {
+     "family": "Zeck",
+     "given": "Guenther"
+    },
+    {
+     "family": "Picaud",
+     "given": "Serge"
+    },
+    {
+     "family": "Duebel",
+     "given": "Jens"
+    },
+    {
+     "family": "Marre",
+     "given": "Olivier"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2018,
+   "volume": "7",
+   "issue": "",
+   "pages": "e34518",
+   "pmid": "29557782",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "spike-sort"
+   ]
+  },
+  "10.7554/elife.51675": {
+   "doi": "10.7554/eLife.51675",
+   "type": "article",
+   "title": "Relationship between simultaneously recorded spiking activity and fluorescence signal in GCaMP6 transgenic mice",
+   "authors": [
+    {
+     "family": "Huang",
+     "given": "Lawrence"
+    },
+    {
+     "family": "Ledochowitsch",
+     "given": "Peter"
+    },
+    {
+     "family": "Knoblich",
+     "given": "Ulf"
+    },
+    {
+     "family": "Lecoq",
+     "given": "Jérôme"
+    },
+    {
+     "family": "Murphy",
+     "given": "Gabe J"
+    },
+    {
+     "family": "Reid",
+     "given": "R Clay"
+    },
+    {
+     "family": "de Vries",
+     "given": "Saskia EJ"
+    },
+    {
+     "family": "Koch",
+     "given": "Christof"
+    },
+    {
+     "family": "Zeng",
+     "given": "Hongkui"
+    },
+    {
+     "family": "Buice",
+     "given": "Michael A"
+    },
+    {
+     "family": "Waters",
+     "given": "Jack"
+    },
+    {
+     "family": "Li",
+     "given": "Lu"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2021,
+   "volume": "10",
+   "issue": "",
+   "pages": "e51675",
+   "pmid": "33683198",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ophys-traces"
+   ]
+  },
+  "10.7554/elife.61834": {
+   "doi": "10.7554/elife.61834",
+   "type": "article",
+   "title": "SpikeInterface, a unified framework for spike sorting",
+   "authors": [
+    {
+     "family": "Buccino",
+     "given": "Alessio P"
+    },
+    {
+     "family": "Hurwitz",
+     "given": "Cole L"
+    },
+    {
+     "family": "Garcia",
+     "given": "Samuel"
+    },
+    {
+     "family": "Magland",
+     "given": "Jeremy"
+    },
+    {
+     "family": "Siegle",
+     "given": "Joshua H"
+    },
+    {
+     "family": "Hurwitz",
+     "given": "Roger"
+    },
+    {
+     "family": "Hennig",
+     "given": "Matthias H"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2020,
+   "volume": "9",
+   "issue": "",
+   "pages": "e61834",
+   "pmid": "33170122",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "spike-sort",
+    "ephys-curate"
+   ]
+  },
+  "10.7554/elife.78362": {
+   "doi": "10.7554/elife.78362",
+   "type": "article",
+   "title": "The Neurodata Without Borders ecosystem for neurophysiological data science",
+   "authors": [
+    {
+     "family": "Rübel",
+     "given": "Oliver"
+    },
+    {
+     "family": "Tritt",
+     "given": "Andrew"
+    },
+    {
+     "family": "Ly",
+     "given": "Ryan"
+    },
+    {
+     "family": "Dichter",
+     "given": "Benjamin K"
+    },
+    {
+     "family": "Ghosh",
+     "given": "Satrajit"
+    },
+    {
+     "family": "Niu",
+     "given": "Lawrence"
+    },
+    {
+     "family": "Baker",
+     "given": "Pamela"
+    },
+    {
+     "family": "Soltesz",
+     "given": "Ivan"
+    },
+    {
+     "family": "Ng",
+     "given": "Lydia"
+    },
+    {
+     "family": "Svoboda",
+     "given": "Karel"
+    },
+    {
+     "family": "Frank",
+     "given": "Loren"
+    },
+    {
+     "family": "Bouchard",
+     "given": "Kristofer E"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2022,
+   "volume": "11",
+   "issue": "",
+   "pages": "e78362",
+   "pmid": "36193886",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "ephys-prep",
+    "ephys-curate",
+    "suite2p",
+    "ophys-traces",
+    "ophys-activity",
+    "pose-estimate",
+    "pose-kinematics",
+    "behavior-syllables",
+    "neuro-align",
+    "nwb-inspect",
+    "neuro-report"
+   ]
+  },
+  "10.7554/elife.85786": {
+   "doi": "10.7554/eLife.85786",
+   "type": "article",
+   "title": "Pynapple, a toolbox for data analysis in neuroscience",
+   "authors": [
+    {
+     "family": "Viejo",
+     "given": "Guillaume"
+    },
+    {
+     "family": "Levenstein",
+     "given": "Daniel"
+    },
+    {
+     "family": "Skromne Carrasco",
+     "given": "Sofia"
+    },
+    {
+     "family": "Mehrotra",
+     "given": "Dhruv"
+    },
+    {
+     "family": "Mahallati",
+     "given": "Sara"
+    },
+    {
+     "family": "Vite",
+     "given": "Gilberto R"
+    },
+    {
+     "family": "Denny",
+     "given": "Henry"
+    },
+    {
+     "family": "Sjulson",
+     "given": "Lucas"
+    },
+    {
+     "family": "Battaglia",
+     "given": "Francesco P"
+    },
+    {
+     "family": "Peyrache",
+     "given": "Adrien"
+    }
+   ],
+   "journal": "eLife",
+   "publisher": "",
+   "year": 2023,
+   "volume": "12",
+   "issue": "",
+   "pages": "",
+   "pmid": "",
+   "url": "",
+   "repository": "",
+   "version": "",
+   "license": "",
+   "cited_by": [
+    "neuro-align",
+    "neuro-encoding"
+   ]
+  }
+ }
+}
